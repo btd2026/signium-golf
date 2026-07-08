@@ -433,6 +433,24 @@ footer.site{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957;
 }
 
+/* ============ IMAGERY ============ */
+.img-cover{width:100%;height:100%;object-fit:cover;display:block}
+.hero-visual img{width:100%;height:auto;border-radius:6px;box-shadow:0 40px 90px -40px rgba(42,54,46,.5)}
+.manifesto-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,4vw,72px);align-items:center}
+.m-img{border-radius:4px;overflow:hidden;box-shadow:0 30px 70px -35px rgba(42,54,46,.45)}
+.m-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;display:block}
+@media(max-width:860px){.manifesto-grid{grid-template-columns:1fr}.m-img img{aspect-ratio:3/2}}
+.cnum.on-photo{color:#F6F1E7;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.duo-card.jr{padding:0}
+.duo-card.jr .duo-body{padding:clamp(28px,3vw,44px) clamp(36px,4vw,58px) clamp(36px,4vw,58px)}
+.duo-media{aspect-ratio:16/10;overflow:hidden}
+.prog-media{aspect-ratio:16/10;overflow:hidden;border-radius:2px;margin-bottom:14px}
+.process-craft{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:center;margin-top:clamp(60px,7vw,90px)}
+.pc-img{border-radius:4px;overflow:hidden;box-shadow:0 30px 70px -35px rgba(42,54,46,.4)}
+.pc-img img{width:100%;display:block}
+.process-craft .process-quote{margin:0;text-align:left;max-width:none;font-size:clamp(22px,2.2vw,30px)}
+@media(max-width:860px){.process-craft{grid-template-columns:1fr}}
+
 /* ============ REVEAL ============ */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -502,31 +520,8 @@ footer.site{
           <a class="btn btn-outline" href="#collection">View the Collection</a>
         </div>
       </div>
-      <div class="hero-visual reveal" aria-hidden="true">
-        <svg viewBox="0 0 560 620" role="img" aria-label="A debossed personal monogram on full-grain leather">
-          <defs>
-            <linearGradient id="heroLeather" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#CDB897"/>
-              <stop offset="55%" stop-color="#BCA37E"/>
-              <stop offset="100%" stop-color="#A98F69"/>
-            </linearGradient>
-          </defs>
-          <g filter="url(#grain)">
-            <rect x="10" y="10" width="540" height="600" rx="14" fill="url(#heroLeather)"/>
-            <rect x="10" y="10" width="540" height="600" rx="14" fill="url(#tileLight)"/>
-          </g>
-          <rect x="30" y="30" width="500" height="560" rx="8" fill="none" stroke="#8A7250" stroke-opacity=".55" stroke-dasharray="3 6" stroke-width="1.6"/>
-          <g id="heroMonogram" filter="url(#deboss)" fill="#82683F" opacity=".9">
-            <text x="248" y="330" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="240" font-weight="600">S</text>
-            <text x="330" y="392" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="240" font-weight="500" font-style="italic" opacity=".85">G</text>
-          </g>
-          <g transform="translate(452,108)">
-            <circle r="34" fill="url(#brassGrad)"/>
-            <circle r="27" fill="none" stroke="#6E5426" stroke-width="1.2"/>
-            <text y="10" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="30" font-weight="600" fill="#4E3B17">3</text>
-          </g>
-          <text x="280" y="560" text-anchor="middle" font-family="SF Mono,Menlo,monospace" font-size="10" letter-spacing="4" fill="#7E6844">HAND-FINISHED · ONE OF ONE</text>
-        </svg>
+      <div class="hero-visual reveal">
+        <img src="assets/img/hero-commission-set.jpg" alt="A commissioned set of taupe full-grain leather headcovers with a debossed personal monogram and antique-brass numeral, beside an olive branch on ivory limestone" width="1536" height="1024">
       </div>
     </div>
     <div class="hero-foot reveal">
@@ -542,8 +537,15 @@ footer.site{
 <section class="manifesto section-pad" id="standard">
   <div class="rail"><span>The Standard</span><span class="num">02 // 09</span></div>
   <div class="wrap">
-    <p class="eyebrow reveal">The Standard</p>
-    <p class="statement reveal">Most golf gear looks the same. Most golfers arrive looking the same. <em>Signum celebrates people, not products.</em></p>
+    <div class="manifesto-grid">
+      <div>
+        <p class="eyebrow reveal">The Standard</p>
+        <p class="statement reveal">Most golf gear looks the same. Most golfers arrive looking the same. <em>Signum celebrates people, not products.</em></p>
+      </div>
+      <div class="m-img reveal">
+        <img src="assets/img/standard-first-light.jpg" alt="A golfer in ivory knitwear walking up a misty fairway at first light, leather bag over one shoulder" width="1122" height="1402">
+      </div>
+    </div>
     <div class="pillars">
       <div class="pillar reveal">
         <span class="pnum">I</span>
@@ -647,14 +649,9 @@ footer.site{
         </div>
       </article>
       <article class="ccard reveal">
-        <div class="ccard-tile" style="background:#25314B">
-          <span class="cnum" style="color:#9FB0CE">Commission Nº 019</span>
-          <svg viewBox="0 0 200 150" style="width:70%" aria-hidden="true">
-            <g filter="url(#deboss)" fill="#D8C49A">
-              <circle cx="100" cy="78" r="52" fill="none" stroke="#D8C49A" stroke-width="2"/>
-              <text x="100" y="92" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="44" font-weight="600">E·9</text>
-            </g>
-          </svg>
+        <div class="ccard-tile">
+          <span class="cnum on-photo">Commission Nº 019</span>
+          <img class="img-cover" src="assets/img/commission-ninth-birthday.jpg" alt="A young girl at the first tee holding a navy leather headcover embroidered with her initials" width="1448" height="1086">
         </div>
         <div class="ccard-body">
           <h3>A Ninth Birthday</h3>
@@ -663,14 +660,9 @@ footer.site{
         </div>
       </article>
       <article class="ccard reveal">
-        <div class="ccard-tile" style="background:#26382E">
-          <span class="cnum" style="color:#A8B8A4">Commission Nº 022</span>
-          <svg viewBox="0 0 200 150" style="width:70%" aria-hidden="true">
-            <g filter="url(#deboss)" fill="#C6A45C">
-              <text x="100" y="72" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="40" font-weight="600" letter-spacing="2">XXIV</text>
-              <text x="100" y="108" text-anchor="middle" font-family="SF Mono,Menlo,monospace" font-size="11" letter-spacing="4" opacity=".8">TWO BY TWO</text>
-            </g>
-          </svg>
+        <div class="ccard-tile">
+          <span class="cnum on-photo">Commission Nº 022</span>
+          <img class="img-cover" src="assets/img/commission-member-guest.jpg" alt="Twenty-four matching racing-green leather headcovers with gold marks arranged on white linen before a trophy cabinet" width="1448" height="1086">
         </div>
         <div class="ccard-body">
           <h3>The Member-Guest Gift</h3>
@@ -693,16 +685,8 @@ footer.site{
     </div>
     <div class="col-grid">
       <article class="pcard reveal">
-        <div class="pcard-tile" style="background:#BCA37E">
-          <svg viewBox="0 0 320 200" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <g filter="url(#grain)"><rect width="320" height="200" fill="#BCA37E"/><rect width="320" height="200" fill="url(#tileLight)"/></g>
-            <g filter="url(#deboss)" fill="#82683F">
-              <text x="118" y="128" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="86" font-weight="600">S</text>
-              <text x="152" y="146" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="86" font-style="italic" opacity=".85">G</text>
-            </g>
-            <circle cx="258" cy="60" r="22" fill="url(#brassGrad)"/>
-            <text x="258" y="67" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="20" font-weight="600" fill="#4E3B17">3</text>
-          </svg>
+        <div class="pcard-tile">
+          <img class="img-cover" src="assets/img/collection-headcovers.jpg" alt="Four stone-grey full-grain leather headcovers with debossed marks standing in a row on parchment" width="1672" height="941">
         </div>
         <div class="pcard-body">
           <span class="peyebrow">01 — Signature</span>
@@ -713,17 +697,7 @@ footer.site{
       </article>
       <article class="pcard reveal">
         <div class="pcard-tile">
-          <svg viewBox="0 0 320 200" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <g filter="url(#grain)"><rect width="320" height="200" fill="#4A392C"/></g>
-            <rect x="52" width="6" height="200" fill="#382A1F"/>
-            <rect x="120" width="6" height="200" fill="#382A1F"/>
-            <rect x="196" width="6" height="200" fill="#382A1F"/>
-            <rect x="264" width="6" height="200" fill="#382A1F"/>
-            <rect width="320" height="200" fill="url(#tileLight)"/>
-            <line x1="0" y1="46" x2="320" y2="46" stroke="#C9A24B" stroke-width="1.4" stroke-dasharray="4 5"/>
-            <line x1="0" y1="158" x2="320" y2="158" stroke="#C9A24B" stroke-width="1.4" stroke-dasharray="4 5"/>
-            <g filter="url(#deboss)" fill="#C9A24B"><text x="160" y="115" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="40" font-weight="600" letter-spacing="3">S·G</text></g>
-          </svg>
+          <img class="img-cover" src="assets/img/collection-stand-bag.jpg" alt="An espresso-brown leather stand bag with brass hardware on a stone terrace at golden hour" width="1672" height="941">
         </div>
         <div class="pcard-body">
           <span class="peyebrow">02 — Carry</span>
@@ -734,21 +708,7 @@ footer.site{
       </article>
       <article class="pcard reveal">
         <div class="pcard-tile">
-          <svg viewBox="0 0 320 200" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <pattern id="weave" width="8" height="8" patternUnits="userSpaceOnUse">
-                <rect width="8" height="8" fill="#25314B"/>
-                <path d="M0 0H4V4H0zM4 4H8V8H4z" fill="#2C3A58"/>
-              </pattern>
-            </defs>
-            <rect width="320" height="200" fill="url(#weave)"/>
-            <rect width="320" height="200" fill="url(#tileLight)"/>
-            <rect x="0" y="86" width="320" height="30" fill="#1E2840"/>
-            <g fill="#D8C49A">
-              <text x="160" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="34" font-weight="600" font-style="italic">S G</text>
-            </g>
-            <circle cx="284" cy="170" r="12" fill="url(#brassGrad)"/>
-          </svg>
+          <img class="img-cover" src="assets/img/collection-towel.jpg" alt="A navy tournament towel with champagne embroidered initials and brass clip draped over a leather bag strap" width="1672" height="941">
         </div>
         <div class="pcard-body">
           <span class="peyebrow">03 — Finish</span>
@@ -759,21 +719,7 @@ footer.site{
       </article>
       <article class="pcard reveal">
         <div class="pcard-tile">
-          <svg viewBox="0 0 320 200" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <pattern id="knit" width="6" height="10" patternUnits="userSpaceOnUse">
-                <rect width="6" height="10" fill="#F0E9DA"/>
-                <path d="M0 5 Q1.5 2 3 5 Q4.5 8 6 5" stroke="#E2D8C2" fill="none"/>
-              </pattern>
-            </defs>
-            <rect width="320" height="200" fill="url(#knit)"/>
-            <rect width="320" height="200" fill="url(#tileLight)"/>
-            <g fill="#8A6A47">
-              <text x="238" y="76" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="26" font-weight="600">S<tspan font-style="italic">G</tspan></text>
-            </g>
-            <line x1="40" y1="130" x2="280" y2="130" stroke="#D9CFBA" stroke-width="1"/>
-            <line x1="40" y1="150" x2="280" y2="150" stroke="#D9CFBA" stroke-width="1"/>
-          </svg>
+          <img class="img-cover" src="assets/img/collection-polo.jpg" alt="A cream knit performance polo with a small tonal monogram at the chest, worn against a travertine wall" width="1672" height="941">
         </div>
         <div class="pcard-body">
           <span class="peyebrow">04 — Wear</span>
@@ -784,14 +730,7 @@ footer.site{
       </article>
       <article class="pcard reveal">
         <div class="pcard-tile">
-          <svg viewBox="0 0 320 200" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <g filter="url(#grain)"><rect width="320" height="200" fill="#2B2B28"/></g>
-            <rect width="320" height="200" fill="url(#tileLight)"/>
-            <path d="M0 152 H320" stroke="#4A4A44" stroke-width="1.4"/>
-            <path d="M28 152 C60 96 120 76 176 84 C232 92 268 120 296 152 Z" fill="#3A362F" stroke="#57534A" stroke-width="1.2"/>
-            <path d="M60 132 C100 102 180 96 240 122" fill="none" stroke="#C9A24B" stroke-width="1.2" stroke-dasharray="3 4"/>
-            <g fill="#C9A24B"><text x="176" y="140" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="22" font-weight="600" font-style="italic">S G</text></g>
-          </svg>
+          <img class="img-cover" src="assets/img/collection-footwear.jpg" alt="Ivory-and-saddle leather golf shoes on dew-covered fairway grass at sunrise" width="1672" height="941">
         </div>
         <div class="pcard-body">
           <span class="peyebrow">05 — Step</span>
@@ -802,17 +741,7 @@ footer.site{
       </article>
       <article class="pcard reveal">
         <div class="pcard-tile">
-          <svg viewBox="0 0 320 200" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect width="64" height="200" fill="#BCA37E"/>
-            <rect x="64" width="64" height="200" fill="#26382E"/>
-            <rect x="128" width="64" height="200" fill="#25314B"/>
-            <rect x="192" width="64" height="200" fill="#4A392C"/>
-            <rect x="256" width="64" height="200" fill="#EFE6D6"/>
-            <rect width="320" height="200" fill="url(#tileLight)"/>
-            <circle cx="160" cy="100" r="46" fill="url(#brassGrad)"/>
-            <circle cx="160" cy="100" r="38" fill="none" stroke="#6E5426" stroke-width="1.2"/>
-            <text x="160" y="114" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="38" font-weight="600" fill="#4E3B17">SG</text>
-          </svg>
+          <img class="img-cover" src="assets/img/collection-full-commission.jpg" alt="A complete racing-green commissioned set — stand bag, headcovers, towel, glove and shoes — arranged as one work on ivory linen" width="1536" height="1024">
         </div>
         <div class="pcard-body">
           <span class="peyebrow">06 — Complete</span>
@@ -838,11 +767,16 @@ footer.site{
         <a class="tlink" href="#begin" data-type="For Her">Begin her commission &rarr;</a>
       </div>
       <div class="duo-card jr reveal">
-        <p class="eyebrow">For Junior</p>
-        <p class="duo-big">Stand out from the first tee.</p>
-        <p>Every serious junior athlete has gear that signals identity. In golf, that usually disappears. Signum gives juniors a number, initials, or a mark that is entirely theirs.</p>
-        <div class="chips"><span>$185 Set Starts</span><span>3-Pc Headcover Set</span><span>Made for Them</span></div>
-        <a class="tlink" href="#begin" data-type="For Junior">Begin their commission &rarr;</a>
+        <div class="duo-media">
+          <img class="img-cover" src="assets/img/junior-first-tee.jpg" alt="A young golfer walking off the green carrying his own bag with a navy number-seven headcover, parents applauding behind" width="1536" height="1024">
+        </div>
+        <div class="duo-body">
+          <p class="eyebrow">For Junior</p>
+          <p class="duo-big">Stand out from the first tee.</p>
+          <p>Every serious junior athlete has gear that signals identity. In golf, that usually disappears. Signum gives juniors a number, initials, or a mark that is entirely theirs.</p>
+          <div class="chips"><span>$185 Set Starts</span><span>3-Pc Headcover Set</span><span>Made for Them</span></div>
+          <a class="tlink" href="#begin" data-type="For Junior">Begin their commission &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -859,18 +793,35 @@ footer.site{
     </div>
     <div class="prog-grid">
       <article class="prog reveal">
+        <div class="prog-media" aria-hidden="true">
+          <svg viewBox="0 0 320 200" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice">
+            <g filter="url(#grain)"><rect width="320" height="200" fill="#EFE8D8"/><rect width="320" height="200" fill="url(#tileLight)"/></g>
+            <rect x="92" y="72" width="136" height="76" rx="4" fill="#F9F6EF" stroke="#D8CDB6"/>
+            <rect x="84" y="56" width="152" height="26" rx="4" fill="#F6F1E7" stroke="#D8CDB6"/>
+            <rect x="156" y="56" width="8" height="92" fill="#B8902E" opacity=".85"/>
+            <circle cx="160" cy="112" r="17" fill="url(#brassGrad)"/>
+            <text x="160" y="118" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="600" fill="#4E3B17">SG</text>
+            <text x="160" y="180" text-anchor="middle" font-family="SF Mono,Menlo,monospace" font-size="8.5" letter-spacing="3" fill="#9C7B41">PRESENTED IN SIGNUM PACKAGING</text>
+          </svg>
+        </div>
         <span class="glyph">i</span>
         <h3>Corporate &amp; Executive Gifting</h3>
         <p>Retire the logoed pullover. Closing gifts, client thank-yous, and retreat gifts carrying each recipient’s own initials — presented in Signum packaging, drop-shipped or delivered as one.</p>
         <a class="tlink" href="#begin" data-type="Corporate & Executive Gifting">Enquire &rarr;</a>
       </article>
       <article class="prog reveal">
+        <div class="prog-media">
+          <img class="img-cover" src="assets/img/program-member-guest.jpg" alt="A row of golf carts at dawn outside a clubhouse, each seat holding an identical boxed gift set" width="1672" height="941">
+        </div>
         <span class="glyph">ii</span>
         <h3>Member-Guest &amp; Invitationals</h3>
         <p>The tee gift they keep. Per-team marks, event numerals, and tournament colorways — delivered sorted by pairing, ready to set on the cart seat.</p>
         <a class="tlink" href="#begin" data-type="Member-Guest & Invitationals">Enquire &rarr;</a>
       </article>
       <article class="prog reveal">
+        <div class="prog-media">
+          <img class="img-cover" src="assets/img/program-private-clubs.jpg" alt="A trunk-show table in a club library with leather swatches, brass stamps, sample headcovers and a commission ledger" width="1448" height="1086">
+        </div>
         <span class="glyph">iii</span>
         <h3>Private Clubs &amp; Resorts</h3>
         <p>A commissioning program under your own roof — trunk-show fittings for members, guest-of-honor gifts, and house colorways reserved to your club alone.</p>
@@ -910,7 +861,12 @@ footer.site{
         <p>Three to four weeks. Presented as it deserves to be.</p>
       </div>
     </div>
-    <p class="process-quote reveal">Signum is for the golfer who refuses to look like everyone else — at any age, at any level, at any course in the world.</p>
+    <div class="process-craft">
+      <div class="pc-img reveal">
+        <img src="assets/img/craft-atelier.jpg" alt="An artisan pressing a heated brass monogram stamp into full-grain leather at the workbench" width="1448" height="1086">
+      </div>
+      <p class="process-quote reveal">Signum is for the golfer who refuses to look like everyone else — at any age, at any level, at any course in the world.</p>
+    </div>
   </div>
 </section>
 
