@@ -88,3 +88,35 @@ bar," regenerate — the brand ground is ivory daylight, always.
 
 **24. "A gift that outlasts the season"**
 > Create a photorealistic editorial photograph in wide 16:9 format: an ivory gift box with a leather headcover inside, sitting on a leather club chair beside a fireplace in a clubhouse library, warm evening lamplight, the quiet after a tournament day. Understated, sentimental, luxurious. No visible text or brand logos, no watermark.
+
+---
+
+# Round 2 — People Become the Hero (editorial upgrade)
+
+The bar for this round: every frame should look like it belongs in Monocle, Robb Report, or
+Condé Nast Traveler. Bright natural light, movement, emotion, texture. People first, product
+in a supporting role. No swing poses, no logos, no moody bar lighting.
+
+**R2-1. The new hero — a couple walking off the 18th (3:2 landscape)**
+> Create a photorealistic editorial photograph in wide 3:2 landscape format, shot like a luxury travel magazine cover story: an elegant couple in their forties walking off the 18th green together at golden hour, laughing mid-conversation, he carrying a distinctive forest-green leather golf bag with a small gold monogram, she holding the flagstick playfully. Sweeping links landscape behind, warm low sun, genuine movement and joy, candid not posed, shot on medium-format film, Condé Nast Traveler energy. No visible text or brand logos, no watermark, no golf swing poses, not oversaturated.
+
+**R2-2. Father and daughter (4:3)**
+> Create a photorealistic editorial photograph in 4:3 format: a father kneeling beside his eight-year-old daughter on a putting green in soft morning light, both studying her ball line, her tiny navy leather headcover with gold initials resting beside them on the fringe. Genuine concentration and warmth, shallow depth of field, bright natural light, family-legacy emotion, Ralph Lauren family campaign aesthetic. No visible text or brand logos, no watermark.
+
+**R2-3. The executive arrival (4:5 portrait)**
+> Create a photorealistic editorial photograph in 4:5 portrait format: a confident executive in a navy blazer stepping out of a classic car at a private club entrance at morning, a porter lifting a distinctive espresso leather golf bag with brass hardware from the trunk, limestone clubhouse facade softly blurred. Movement, anticipation, quiet power, bright natural light, Robb Report cover energy. No visible text or brand logos, no watermark.
+
+**R2-4. The women's foursome (16:9)**
+> Create a photorealistic editorial photograph in wide 16:9 format: four stylish women golfers of varied ages walking down the first fairway together in bright mid-morning light, mid-laughter, each with a distinct cream or navy leather headcover visible in her bag, colorful but tasteful knitwear, genuine friendship and movement, links landscape, Monocle magazine energy. No visible text or brand logos, no watermark, not oversaturated.
+
+**R2-5. Three generations (16:9 — Family Legacy header)**
+> Create a photorealistic editorial photograph in wide 16:9 format: a grandfather, father, and teenage son walking a fairway together at late afternoon, bags on shoulders, the same matching racing-green leather headcovers visible in all three bags, long warm shadows, easy conversation, generational warmth, shot from a slight distance like a documentary photographer, medium-format film feel. No visible text or brand logos, no watermark.
+
+**R2-6. The halfway house (4:3)**
+> Create a photorealistic editorial photograph in 4:3 format: a couple pausing at a clubhouse terrace between nines, espresso cups and a leather scorecard holder on the marble table, her monogrammed cream glove resting beside it, bright open daylight, relaxed elegance, European golf-travel mood, Condé Nast Traveler aesthetic. No visible text or brand logos, no watermark.
+
+**R2-7. Polo shoulder mark detail (16:10 — supports the new customization option)**
+> Create a photorealistic luxury fashion detail photograph in wide landscape format: close crop of the shoulder of a sage-green knit performance golf polo showing a small tonal embroidered two-letter monogram on the sleeve shoulder seam, fabric texture crisp in soft directional daylight, a second cream polo folded beneath with a chest monogram just visible, Zegna product-detail aesthetic. No other visible text or brand logos, no watermark.
+
+**R2-8. The arrival of the box (4:3 — unboxing emotion)**
+> Create a photorealistic editorial photograph in 4:3 format: a woman opening an ivory presentation box at her kitchen island in bright morning light, tissue paper lifting to reveal a blush leather headcover with rose-gold initials, her expression caught mid-delight, warm domestic luxury, genuine emotion, lifestyle-magazine energy. No visible text or brand logos, no watermark.

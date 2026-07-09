@@ -327,7 +327,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--brass)}
 .prog .tlink{margin-top:10px}
 
 /* ============ PROCESS ============ */
-.process{background:var(--parchment)}
+.process{background:var(--ivory)}
 .steps{
   display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2vw,30px);
   margin-top:clamp(44px,5vw,70px);
@@ -346,7 +346,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--brass)}
 .process-quote::after{content:"”"}
 
 /* ============ WORDS ============ */
-.words{background:var(--ivory)}
+.words{background:var(--parchment)}
 .quotes{
   display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);
   margin-top:clamp(44px,5vw,70px);
@@ -451,6 +451,29 @@ footer.site{
 .process-craft .process-quote{margin:0;text-align:left;max-width:none;font-size:clamp(22px,2.2vw,30px)}
 @media(max-width:860px){.process-craft{grid-template-columns:1fr}}
 
+/* ============ REVAMP ============ */
+.hero-visual img{max-height:74vh;object-fit:cover}
+.m-img.landscape img{aspect-ratio:3/2}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,72px);align-items:center;
+  margin-top:clamp(56px,7vw,96px);padding-top:clamp(40px,5vw,60px);border-top:1px solid var(--hairline);
+}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+.prog-grid.two{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.prog-grid.two{grid-template-columns:1fr}}
+.corporate{background:var(--parchment)}
+.corp-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,84px);align-items:center}
+@media(max-width:900px){.corp-grid{grid-template-columns:1fr}}
+.corp-points{margin-top:30px}
+.corp-points li::before{color:var(--brass)}
+.steps.five{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1100px){.steps.five{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.steps.five{grid-template-columns:1fr}}
+.quotes.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.quotes.three{grid-template-columns:1fr}}
+.qphoto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px;display:block}
+.qphoto figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-top:14px}
+
 /* ============ REVEAL ============ */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -495,33 +518,33 @@ footer.site{
       <span class="wordmark">Signum</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#standard">The Standard</a></li>
-      <li><a href="#mark">The Mark</a></li>
-      <li><a href="#collection">Collection</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#identity">Your Identity</a></li>
+      <li><a href="#collection">The Collection</a></li>
+      <li><a href="#legacy">Family Legacy</a></li>
+      <li><a href="#clubs">Clubs &amp; Tournaments</a></li>
+      <li><a href="#corporate">Corporate</a></li>
     </ul>
-    <a class="btn btn-gold" href="#begin">Begin &rarr;</a>
+    <a class="btn btn-gold" href="#begin">Commission &rarr;</a>
   </nav>
 </header>
 
 <!-- ============ 01 HERO ============ -->
 <main id="top">
 <section class="hero">
-  <div class="rail"><span>Archetype</span><span class="num">01 // 09</span></div>
+  <div class="rail"><span>Archetype</span><span class="num">01 // 10</span></div>
   <div class="wrap" style="display:flex;flex-direction:column;justify-content:space-between;width:100%">
     <div class="hero-inner">
       <div class="hero-copy">
         <p class="eyebrow reveal">Est. 2026 — Commissioned Golf Goods</p>
         <h1 class="reveal">Your Mark.<br>Carried by<br><em>No One Else.</em></h1>
-        <p class="lede reveal">Custom golf gear designed and crafted entirely around the golfer who refuses to look like everyone else — at any age, at any level, at any course in the world.</p>
+        <p class="lede reveal">Bespoke golf craftsmanship for every golfer who values personal identity — designed one-on-one around your name, your number, your mark. At any age, at any level, at any course in the world.</p>
         <div class="hero-ctas reveal">
           <a class="btn btn-gold" href="#begin">Begin a Commission</a>
           <a class="btn btn-outline" href="#collection">View the Collection</a>
         </div>
       </div>
       <div class="hero-visual reveal">
-        <img src="assets/img/hero-commission-set.jpg" alt="A commissioned set of taupe full-grain leather headcovers with a debossed personal monogram and antique-brass numeral, beside an olive branch on ivory limestone" width="1536" height="1024">
+        <img src="assets/img/standard-first-light.jpg" alt="A golfer in ivory knitwear walking up a misty fairway at first light, a commissioned leather bag over one shoulder" width="1122" height="1402">
       </div>
     </div>
     <div class="hero-foot reveal">
@@ -534,18 +557,11 @@ footer.site{
 </section>
 
 <!-- ============ 02 THE STANDARD ============ -->
-<section class="manifesto section-pad" id="standard">
-  <div class="rail"><span>The Standard</span><span class="num">02 // 09</span></div>
+<section class="manifesto section-pad" id="identity">
+  <div class="rail"><span>Your Identity</span><span class="num">02 // 10</span></div>
   <div class="wrap">
-    <div class="manifesto-grid">
-      <div>
-        <p class="eyebrow reveal">The Standard</p>
-        <p class="statement reveal">Most golf gear looks the same. Most golfers arrive looking the same. <em>Signum celebrates people, not products.</em></p>
-      </div>
-      <div class="m-img reveal">
-        <img src="assets/img/standard-first-light.jpg" alt="A golfer in ivory knitwear walking up a misty fairway at first light, leather bag over one shoulder" width="1122" height="1402">
-      </div>
-    </div>
+    <p class="eyebrow reveal">Your Identity</p>
+    <p class="statement reveal">Most golf gear looks the same. Most golfers arrive looking the same. <em>Signum celebrates people, not products.</em></p>
     <div class="pillars">
       <div class="pillar reveal">
         <span class="pnum">I</span>
@@ -560,7 +576,17 @@ footer.site{
       <div class="pillar reveal">
         <span class="pnum">III</span>
         <h3>The Meaning</h3>
-        <p>Custom golf goods were once the quiet privilege of a few clubs. Signum opens the atelier to anyone who has earned their own mark — no membership required.</p>
+        <p>Signum brings bespoke golf craftsmanship to every golfer who values personal identity — not just those with access to a private club.</p>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="m-img landscape reveal">
+        <img src="assets/img/hero-commission-set.jpg" alt="A commissioned set of taupe leather headcovers with a debossed personal mark and antique-brass numeral, beside an olive branch" width="1536" height="1024">
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Why Signum Exists</p>
+        <h3 style="margin:18px 0 16px">The mark used to mean access. Now it means you.</h3>
+        <p style="font-size:17.5px">For a century, a personal mark on golf gear meant one thing: a locker at the right club, a name on the right list. The craft was real — the door was closed. Signum was founded to change the terms, not the standard. The same full-grain leather, the same hand-finishing, the same one-of-one design — commissioned directly, by any golfer who values what a mark says about the person carrying it.</p>
       </div>
     </div>
   </div>
@@ -568,7 +594,7 @@ footer.site{
 
 <!-- ============ 03 THE MARK SYSTEM ============ -->
 <section class="mark section-pad" id="mark">
-  <div class="rail"><span>The Mark System</span><span class="num">03 // 09</span></div>
+  <div class="rail"><span>The Mark System</span><span class="num">03 // 10</span></div>
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow reveal">The Mark System</p>
@@ -624,7 +650,7 @@ footer.site{
 
 <!-- ============ 04 COMMISSIONS ============ -->
 <section class="commissions section-pad" id="commissions">
-  <div class="rail"><span>Commissions</span><span class="num">04 // 09</span></div>
+  <div class="rail"><span>Commissions</span><span class="num">04 // 10</span></div>
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow reveal">Recent Commissions</p>
@@ -633,19 +659,14 @@ footer.site{
     </div>
     <div class="card-grid">
       <article class="ccard reveal">
-        <div class="ccard-tile" style="background:#BCA37E">
-          <span class="cnum" style="color:#5E4A2E">Commission Nº 014</span>
-          <svg viewBox="0 0 200 150" style="width:70%" aria-hidden="true">
-            <g filter="url(#deboss)" fill="#82683F">
-              <text x="88" y="95" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="72" font-weight="600">M</text>
-              <text x="122" y="112" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="72" font-weight="500" font-style="italic" opacity=".85">G</text>
-            </g>
-          </svg>
+        <div class="ccard-tile">
+          <span class="cnum on-photo">Commission Nº 001</span>
+          <img class="img-cover" src="assets/img/commission-grand-boule.jpg" alt="A real commissioned set of glacier-blue numbered leather headcovers with a tournament towel, photographed in play on the course" width="1600" height="1200">
         </div>
         <div class="ccard-body">
-          <h3>The Montgomerie Set</h3>
-          <p>A full-bag commission in taupe calf — driver through putter, brass numerals, one interlocked mark repeated from headcover to towel clip.</p>
-          <span class="meta">Full Commission · Taupe &amp; Brass</span>
+          <h3>The Grand Boule Set</h3>
+          <p>A real tournament commission, photographed in play — glacier-blue calf numbered through the bag, with an event towel stitched for the Grand Boule’s fiftieth playing.</p>
+          <span class="meta">Event Commission · Glacier Blue · In the Wild</span>
         </div>
       </article>
       <article class="ccard reveal">
@@ -676,7 +697,7 @@ footer.site{
 
 <!-- ============ 05 COLLECTION ============ -->
 <section class="collection section-pad" id="collection">
-  <div class="rail"><span>Collection</span><span class="num">05 // 09</span></div>
+  <div class="rail"><span>Collection</span><span class="num">05 // 10</span></div>
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow reveal">The Collection</p>
@@ -724,7 +745,7 @@ footer.site{
         <div class="pcard-body">
           <span class="peyebrow">04 — Wear</span>
           <h3>The Signature Polo</h3>
-          <p>Four-way stretch, a premium hand feel, and your mark at the chest in place of a brand’s logo.</p>
+          <p>Four-way stretch, a premium hand feel, and your mark where you choose it — the chest, the shoulder, or both.</p>
           <a class="tlink" href="#begin" data-type="The Signature Polo">Commission this piece &rarr;</a>
         </div>
       </article>
@@ -755,10 +776,15 @@ footer.site{
 </section>
 
 <!-- ============ 06 HER / JUNIOR ============ -->
-<section class="duo section-pad" id="her-junior">
-  <div class="rail"><span>For Her / Junior</span><span class="num">06 // 09</span></div>
+<section class="duo section-pad" id="legacy">
+  <div class="rail"><span>Family Legacy</span><span class="num">06 // 10</span></div>
   <div class="wrap">
-    <div class="duo-grid">
+    <div class="section-head">
+      <p class="eyebrow reveal">Family Legacy</p>
+      <h2 class="reveal">One mark. Passed down.</h2>
+      <p class="lede reveal">Couples who play together, juniors finding their game, families with a standing Sunday tee time — a Signum mark is made to be shared, and one day, handed on.</p>
+    </div>
+    <div class="duo-grid" style="margin-top:clamp(44px,5vw,70px)">
       <div class="duo-card her reveal">
         <div class="duo-media">
           <img class="img-cover" src="assets/img/her-terrace.jpg" alt="A woman golfer in cream cashmere laughing on a clubhouse terrace at golden hour, a monogrammed cream headcover beside her espresso" width="1672" height="941">
@@ -788,38 +814,29 @@ footer.site{
 </section>
 
 <!-- ============ 07 PROGRAMS ============ -->
-<section class="programs section-pad" id="programs">
-  <div class="rail"><span>Programs</span><span class="num">07 // 09</span></div>
+<section class="programs section-pad" id="clubs">
+  <div class="rail"><span>Clubs &amp; Tournaments</span><span class="num">07 // 10</span></div>
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow reveal">Programs</p>
-      <h2 class="reveal">For the firm, the field, and the club.</h2>
-      <p class="lede reveal">One conversation with the atelier can outfit a boardroom, an invitational, or an entire membership — every recipient with a mark of their own.</p>
+      <p class="eyebrow reveal">Clubs &amp; Tournaments</p>
+      <h2 class="reveal">The tee gift they keep.</h2>
+      <p class="lede reveal">One conversation with the atelier can outfit an invitational field or an entire membership — every player with a mark of their own.</p>
     </div>
-    <div class="prog-grid">
-      <article class="prog reveal">
-        <div class="prog-media">
-          <img class="img-cover" src="assets/img/program-corporate.jpg" alt="An ivory gift box on an executive desk holding a forest-green leather headcover with gold initials, tissue paper and a note card" width="1448" height="1086">
-        </div>
-        <span class="glyph">i</span>
-        <h3>Corporate &amp; Executive Gifting</h3>
-        <p>Retire the logoed pullover. Closing gifts, client thank-yous, and retreat gifts carrying each recipient’s own initials — presented in Signum packaging, drop-shipped or delivered as one.</p>
-        <a class="tlink" href="#begin" data-type="Corporate & Executive Gifting">Enquire &rarr;</a>
-      </article>
+    <div class="prog-grid two">
       <article class="prog reveal">
         <div class="prog-media">
           <img class="img-cover" src="assets/img/program-member-guest.jpg" alt="A row of golf carts at dawn outside a clubhouse, each seat holding an identical boxed gift set" width="1672" height="941">
         </div>
-        <span class="glyph">ii</span>
+        <span class="glyph">i</span>
         <h3>Member-Guest &amp; Invitationals</h3>
-        <p>The tee gift they keep. Per-team marks, event numerals, and tournament colorways — delivered sorted by pairing, ready to set on the cart seat.</p>
+        <p>Per-team marks, event numerals, and tournament colorways — delivered sorted by pairing, ready to set on the cart seat before the field arrives.</p>
         <a class="tlink" href="#begin" data-type="Member-Guest & Invitationals">Enquire &rarr;</a>
       </article>
       <article class="prog reveal">
         <div class="prog-media">
           <img class="img-cover" src="assets/img/program-private-clubs.jpg" alt="A trunk-show table in a club library with leather swatches, brass stamps, sample headcovers and a commission ledger" width="1448" height="1086">
         </div>
-        <span class="glyph">iii</span>
+        <span class="glyph">ii</span>
         <h3>Private Clubs &amp; Resorts</h3>
         <p>A commissioning program under your own roof — trunk-show fittings for members, guest-of-honor gifts, and house colorways reserved to your club alone.</p>
         <a class="tlink" href="#begin" data-type="Private Clubs & Resorts">Enquire &rarr;</a>
@@ -828,34 +845,62 @@ footer.site{
   </div>
 </section>
 
+<!-- ============ 08 CORPORATE ============ -->
+<section class="corporate section-pad" id="corporate">
+  <div class="rail"><span>Corporate Collections</span><span class="num">08 // 10</span></div>
+  <div class="wrap">
+    <div class="corp-grid">
+      <div class="m-img landscape reveal">
+        <img src="assets/img/program-corporate.jpg" alt="An ivory gift box on an executive desk holding a forest-green leather headcover with gold initials, tissue paper and a note card" width="1448" height="1086">
+      </div>
+      <div>
+        <p class="eyebrow reveal">Corporate Collections</p>
+        <h2 class="reveal" style="margin:24px 0 20px">Retire the logoed pullover.</h2>
+        <p class="lede reveal">The gift that says you know exactly who it’s for. Each recipient’s own initials, drawn by our studio and presented in Signum packaging.</p>
+        <ul class="begin-points corp-points">
+          <li class="reveal">Closing gifts and client thank-yous, drop-shipped or delivered as one.</li>
+          <li class="reveal">Executive retreats and board gifts with a single house colorway.</li>
+          <li class="reveal">Programs quoted to scope — from four recipients to four hundred.</li>
+        </ul>
+        <a class="tlink reveal" style="display:inline-block;margin-top:30px" href="#begin" data-type="Corporate & Executive Gifting">Enquire &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 08 PROCESS ============ -->
 <section class="process section-pad" id="process">
-  <div class="rail"><span>The Process</span><span class="num">08 // 09</span></div>
+  <div class="rail"><span>The Process</span><span class="num">09 // 10</span></div>
   <div class="wrap">
     <div class="section-head center">
-      <p class="eyebrow center reveal">The Process</p>
+      <p class="eyebrow center reveal">The Commission</p>
       <h2 class="reveal">Designed with you. Made for you alone.</h2>
     </div>
-    <div class="steps">
+    <div class="steps five">
       <div class="step reveal">
         <span class="rn">I.</span>
-        <h3>Choose</h3>
-        <p>One piece, or the complete set — for him, for her, or for junior.</p>
+        <h3>Discover</h3>
+        <p>One piece, or the complete set — for him, for her, for junior, for the whole family.</p>
       </div>
       <div class="step reveal">
         <span class="rn">II.</span>
-        <h3>Design</h3>
-        <p>Name, number, emblem. Our designers bring it to life with you, one-on-one.</p>
+        <h3>Design Consultation</h3>
+        <p>One-on-one with our studio: your name, number, emblem, and colorway.</p>
       </div>
       <div class="step reveal">
         <span class="rn">III.</span>
-        <h3>Approve</h3>
+        <h3>Concept Review</h3>
         <p>A full proof before a single stitch is made. Nothing proceeds without your word.</p>
       </div>
       <div class="step reveal">
         <span class="rn">IV.</span>
-        <h3>Receive</h3>
-        <p>Three to four weeks. Presented as it deserves to be.</p>
+        <h3>Craftsmanship</h3>
+        <p>Full-grain leather, tournament cloth, brass — hand-finished over three to four weeks.</p>
+      </div>
+      <div class="step reveal">
+        <span class="rn">V.</span>
+        <h3>Delivery</h3>
+        <p>Presented as it deserves to be — and made to be asked about.</p>
       </div>
     </div>
     <div class="process-craft">
@@ -874,7 +919,7 @@ footer.site{
       <p class="eyebrow reveal">In Their Words</p>
       <h2 class="reveal">The question every piece gets asked.</h2>
     </div>
-    <div class="quotes">
+    <div class="quotes three">
       <blockquote class="quote reveal">
         <p>The first time a playing partner asked where my bag was from, I realized nothing else I own gets that question.</p>
         <footer>R.M. — Commission Nº 007, Scottsdale</footer>
@@ -883,6 +928,10 @@ footer.site{
         <p>My daughter carried her own initials into her first junior event. She walked to the tee differently. That was the whole point.</p>
         <footer>A.T. — Commission Nº 019, Charleston</footer>
       </blockquote>
+      <figure class="quote qphoto reveal">
+        <img src="assets/img/real-links.jpg" alt="A Signum client mid-round on a seaside links course, commissioned headcover in his bag" width="1200" height="1600">
+        <figcaption>Commission Nº 001, in play — links golf, 2025</figcaption>
+      </figure>
     </div>
     <div class="journal">
       <p class="eyebrow reveal">Notes from the Atelier</p>
@@ -912,7 +961,7 @@ footer.site{
   <div class="wrap">
     <div class="begin-grid">
       <div>
-        <p class="eyebrow reveal">Begin</p>
+        <p class="eyebrow reveal">Commission Your Mark</p>
         <h2 class="reveal">A Conversation.<br>Not a Checkout.</h2>
         <p class="lede reveal">We design your mark, present a proof, and begin production only when you say so.</p>
         <ul class="begin-points">
@@ -991,9 +1040,10 @@ footer.site{
       <div class="fcol">
         <h4>House</h4>
         <ul>
-          <li><a href="#standard">The Standard</a></li>
-          <li><a href="#process">The Process</a></li>
-          <li><a href="#programs">Programs</a></li>
+          <li><a href="#identity">Your Identity</a></li>
+          <li><a href="#process">The Commission</a></li>
+          <li><a href="#clubs">Clubs &amp; Tournaments</a></li>
+          <li><a href="#corporate">Corporate Collections</a></li>
           <li><a href="#begin">Begin a Commission</a></li>
         </ul>
       </div>
