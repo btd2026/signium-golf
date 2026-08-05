@@ -28,6 +28,19 @@ a:hover{color:#26382E}
   *{animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 
+/* ---- responsive focal points for the full-bleed photography ----
+   Landscape frames lose ~2/3 of their width when covering a portrait
+   viewport, so each subject gets its own crop centre on narrow screens:
+   the woman on the terrace sits at ~73% left, the junior at ~25%. */
+.pos-hero{object-position:50% 42%}
+.pos-identity{object-position:60% 40%}
+.pos-legacy{object-position:50% 40%}
+@media (max-aspect-ratio: 1/1){
+  .pos-hero{object-position:45% 42%}
+  .pos-identity{object-position:74% 40%}
+  .pos-legacy{object-position:26% 40%}
+}
+
 /* ---- hover states (the design authors these per-element; inline styles would
    beat plain :hover rules, hence the !important) ---- */
 .hov-parch:hover{background:#EBD9A8!important}
@@ -88,32 +101,32 @@ a:hover{color:#26382E}
   </div>
   <nav style="padding:clamp(28px,6vh,80px) clamp(20px,4vw,54px) 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,44px);max-width:1500px;margin:0 auto">
     <a href="#identity" style="display:block;text-decoration:none">
-      <div style="overflow:hidden;border-radius:2px"><img src="assets/img/her-terrace.png" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.94)"></div>
+      <div style="overflow:hidden;border-radius:2px"><img src="assets/img/her-terrace.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.94)"></div>
       <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter I</p>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Your Identity</h3>
     </a>
     <a href="#collection" style="display:block;text-decoration:none">
-      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/collection-headcovers.png" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
       <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter II</p>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">The Collection</h3>
     </a>
     <a href="#commission" style="display:block;text-decoration:none">
-      <div style="overflow:hidden;border-radius:2px"><img src="assets/img/craft-atelier.png" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>
+      <div style="overflow:hidden;border-radius:2px"><img src="assets/img/craft-atelier.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>
       <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter III</p>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Commission Your Mark</h3>
     </a>
     <a href="#clubs" style="display:block;text-decoration:none">
-      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/program-member-guest.png" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/program-member-guest.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
       <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter IV</p>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Clubs &amp; Tournaments</h3>
     </a>
     <a href="#corporate" style="display:block;text-decoration:none">
-      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/program-corporate.png" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/program-corporate.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
       <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter V</p>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Corporate Collections</h3>
     </a>
     <a href="#legacy" style="display:block;text-decoration:none">
-      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/junior-first-tee.png" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/junior-first-tee.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>
       <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter VI</p>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Family Legacy</h3>
     </a>
@@ -131,7 +144,7 @@ a:hover{color:#26382E}
 
 <!-- ============ I. THE OPENING FRAME ============ -->
 <section id="top" data-screen-label="Hero" style="position:relative;height:100svh;min-height:660px;overflow:hidden;background:#1F2D25">
-  <img data-m="zoom" src="assets/img/standard-first-light.webp" fetchpriority="high" decoding="async" alt="A golfer walking the fairway at first light, leather bag on the shoulder" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;will-change:transform">
+  <img data-m="zoom" src="assets/img/standard-first-light.webp" fetchpriority="high" decoding="async" alt="A golfer walking the fairway at first light, leather bag on the shoulder" class="pos-hero" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform">
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,30,24,.44) 0%,rgba(24,30,24,.08) 32%,rgba(24,30,24,.16) 62%,rgba(22,28,22,.72) 100%)"></div>
   <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,54px) clamp(38px,6vh,74px)">
     <div style="max-width:1500px;margin:0 auto">
@@ -170,7 +183,7 @@ a:hover{color:#26382E}
 <section id="identity" data-screen-label="Your Identity" style="position:relative;background:#1F2D25">
   <div style="position:relative">
     <div style="position:relative;height:100vh;overflow:hidden">
-      <img data-m="idpar" src="assets/img/her-terrace.png" alt="A woman on the clubhouse terrace at golden hour, monogrammed headcover on the table" style="width:100%;height:100%;object-fit:cover;object-position:60% 40%;will-change:transform">
+      <img data-m="idpar" src="assets/img/her-terrace.webp" alt="A woman on the clubhouse terrace at golden hour, monogrammed headcover on the table" class="pos-identity" style="width:100%;height:100%;object-fit:cover;will-change:transform">
       <div data-m="scrim" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(24,30,24,.82) 0%,rgba(24,30,24,.42) 42%,rgba(24,30,24,0) 66%)"></div>
       <div data-m="hold" style="position:absolute;inset:0;display:flex;align-items:center;padding:0 clamp(20px,4vw,54px)">
         <div style="max-width:1500px;margin:0 auto;width:100%">
@@ -221,7 +234,7 @@ a:hover{color:#26382E}
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:1px;background:#D8CDB6;border:1px solid #D8CDB6;border-radius:3px;overflow:hidden;margin-top:clamp(34px,4.6vw,64px)">
       <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-headcovers.png" alt="Commissioned leather headcovers" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="Commissioned leather headcovers" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
         <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
           <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">I — Headcovers</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">The set of four</h3>
@@ -230,7 +243,7 @@ a:hover{color:#26382E}
         </div>
       </article>
       <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-stand-bag.png" alt="Commissioned stand bag" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-stand-bag.webp" alt="Commissioned stand bag" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
         <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
           <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">II — Stand Bag</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">The carry</h3>
@@ -239,7 +252,7 @@ a:hover{color:#26382E}
         </div>
       </article>
       <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-polo.png" alt="Commissioned shirt with monogram" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-polo.webp" alt="Commissioned shirt with monogram" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
         <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
           <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">III — Shirt</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Chest, shoulder, or both</h3>
@@ -248,7 +261,7 @@ a:hover{color:#26382E}
         </div>
       </article>
       <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-towel.png" alt="Commissioned towel" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-towel.webp" alt="Commissioned towel" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
         <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
           <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">IV — Towel</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Woven, not printed</h3>
@@ -257,7 +270,7 @@ a:hover{color:#26382E}
         </div>
       </article>
       <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-footwear.png" alt="Commissioned footwear" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-footwear.webp" alt="Commissioned footwear" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
         <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
           <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">V — Footwear</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Marked at the heel</h3>
@@ -266,7 +279,7 @@ a:hover{color:#26382E}
         </div>
       </article>
       <article data-m="mask" style="background:#26382E;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-full-commission.png" alt="The full commission, laid out" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.05) brightness(.94);transition:transform .8s ease"></div>
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-full-commission.webp" alt="The full commission, laid out" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.05) brightness(.94);transition:transform .8s ease"></div>
         <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
           <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#D8BF7F">VI — The Full Commission</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Everything, as one work</h3>
@@ -298,9 +311,9 @@ a:hover{color:#26382E}
         </div>
 
         <div id="stage" style="position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:2px;background:#EFE8D8;container-type:inline-size;touch-action:none">
-          <img id="stage-polo" loading="lazy" decoding="async" src="assets/img/collection-polo.png" alt="Your mark shown on the commissioned shirt" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-          <img id="stage-headcover" loading="lazy" decoding="async" src="assets/img/collection-headcovers.png" alt="Your mark shown on the commissioned headcovers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
-          <img id="stage-bag" loading="lazy" decoding="async" src="assets/img/collection-stand-bag.png" alt="Your mark shown on the commissioned stand bag" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
+          <img id="stage-polo" loading="lazy" decoding="async" src="assets/img/collection-polo.webp" alt="Your mark shown on the commissioned shirt" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <img id="stage-headcover" loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="Your mark shown on the commissioned headcovers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
+          <img id="stage-bag" loading="lazy" decoding="async" src="assets/img/collection-stand-bag.webp" alt="Your mark shown on the commissioned stand bag" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
 
           <div id="zone" style="display:none"><span id="zoneLabel" style="position:absolute;left:0;top:-18px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#FBF8F1;text-shadow:0 1px 6px rgba(20,26,20,.8);white-space:nowrap"></span></div>
 
@@ -388,9 +401,9 @@ a:hover{color:#26382E}
 <section data-m="story" data-screen-label="The Process" style="background:#26382E">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
     <div data-m="media" style="min-height:420px;position:relative;align-self:stretch;overflow:hidden;background:#1F2D25">
-      <img data-m="frame" src="assets/img/craft-atelier.png" alt="A brass hand-stamp pressing a monogram into vegetable-tanned leather" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;will-change:transform,opacity">
-      <img data-m="frame" loading="lazy" decoding="async" src="assets/img/collection-headcovers.png" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;will-change:transform,opacity">
-      <img data-m="frame" loading="lazy" decoding="async" src="assets/img/collection-full-commission.png" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;will-change:transform,opacity">
+      <img data-m="frame" src="assets/img/craft-atelier.webp" alt="A brass hand-stamp pressing a monogram into vegetable-tanned leather" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;will-change:transform,opacity">
+      <img data-m="frame" loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;will-change:transform,opacity">
+      <img data-m="frame" loading="lazy" decoding="async" src="assets/img/collection-full-commission.webp" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;will-change:transform,opacity">
     </div>
     <div data-m="story-col" style="padding:clamp(52px,7vw,110px) clamp(24px,4vw,80px);display:flex;flex-direction:column;justify-content:center">
       <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#D8BF7F">The Commission <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
@@ -453,17 +466,17 @@ a:hover{color:#26382E}
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,2.6vw,34px);margin-top:clamp(34px,4.6vw,64px)">
       <article data-m="mask">
-        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/program-member-guest.png" alt="Member-guest tee gifts" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
+        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/program-member-guest.webp" alt="Member-guest tee gifts" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#2A362E;margin:20px 0 10px;line-height:1.14">Member-Guest</h3>
         <p style="font-size:16.5px;line-height:1.6">Each guest's own initials rather than the tournament logo.</p>
       </article>
       <article data-m="mask">
-        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/program-private-clubs.png" alt="Trunk show at a private club" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
+        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/program-private-clubs.webp" alt="Trunk show at a private club" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#2A362E;margin:20px 0 10px;line-height:1.14">Club Trunk Shows</h3>
         <p style="font-size:16.5px;line-height:1.6">We bring the leather, stamps and drawing table to your clubhouse for a weekend.</p>
       </article>
       <article data-m="mask">
-        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/commission-member-guest.png" alt="Tournament field commission" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
+        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/commission-member-guest.webp" alt="Tournament field commission" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#2A362E;margin:20px 0 10px;line-height:1.14">Full Fields</h3>
         <p style="font-size:16.5px;line-height:1.6">Individually marked pieces for a field of a hundred and forty, boxed and named.</p>
       </article>
@@ -486,7 +499,7 @@ a:hover{color:#26382E}
       <a data-m="cta" href="#enquire" class="hov-dark" style="display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#F1EADA;background:#26382E;padding:17px 30px;border-radius:2px;margin-top:30px;transition:background .3s ease">Speak to the atelier <span data-m="arrow" style="font-size:13px">→</span></a>
     </div>
     <div>
-      <div style="overflow:hidden;border-radius:3px"><img data-m="par" data-d=".1" loading="lazy" decoding="async" src="assets/img/program-corporate.png" alt="Corporate commission presentation" style="width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.82) contrast(1.04);will-change:transform"></div>
+      <div style="overflow:hidden;border-radius:3px"><img data-m="par" data-d=".1" loading="lazy" decoding="async" src="assets/img/program-corporate.webp" alt="Corporate commission presentation" style="width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.82) contrast(1.04);will-change:transform"></div>
     </div>
   </div>
 </section>
@@ -503,7 +516,7 @@ a:hover{color:#26382E}
     </div>
   </div>
   <div style="position:relative;margin-top:clamp(34px,4.6vw,60px);height:clamp(480px,80vh,780px);overflow:hidden">
-    <img data-m="par" data-d=".18" src="assets/img/junior-first-tee.png" alt="A junior golfer walking off the green, parents applauding behind" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%">
+    <img data-m="par" data-d=".18" src="assets/img/junior-first-tee.webp" alt="A junior golfer walking off the green, parents applauding behind" class="pos-legacy" style="width:100%;height:100%;object-fit:cover">
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,28,22,.8) 0%,rgba(22,28,22,.12) 52%,rgba(22,28,22,0) 100%)"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,54px) clamp(38px,5vw,70px)">
       <div data-m="head" style="max-width:1500px;margin:0 auto">
