@@ -119,7 +119,7 @@ a:hover{color:#26382E}
   </nav>
 </div>
 
-<nav aria-label="Chapters" id="rail">
+<nav aria-label="Chapters" id="rail" class="hidden">
   <a href="#identity" class="on"><span aria-hidden="true" class="plate"></span><span class="lab">Your Identity</span><span class="num">I</span><span class="tick"></span></a>
   <a href="#collection"><span aria-hidden="true" class="plate"></span><span class="lab">The Collection</span><span class="num">II</span><span class="tick"></span></a>
   <a href="#commission"><span aria-hidden="true" class="plate"></span><span class="lab">Commission</span><span class="num">III</span><span class="tick"></span></a>
@@ -755,13 +755,13 @@ var menu = $('#menu'), rail = $('#rail');
 function openMenu() {
   state.menuOpen = true;
   menu.classList.add('open');
-  rail.classList.add('hidden');
+  updateRail();
   if (lenis) lenis.stop();
 }
 function closeMenu() {
   state.menuOpen = false;
   menu.classList.remove('open');
-  rail.classList.remove('hidden');
+  updateRail();
   if (lenis) lenis.start();
 }
 $('#menuBtn').addEventListener('click', openMenu);
@@ -769,6 +769,23 @@ $('#menuClose').addEventListener('click', closeMenu);
 $$('#menu nav a').forEach(function (a) { a.addEventListener('click', closeMenu); });
 
 /* ================= chapter rail ================= */
+// The rail stays hidden over the opening frames and fades in once Chapter I
+// reaches the activation band (55% of the viewport — the same line the
+// chapter observer uses), fading back out above it.
+var railVisible = false;
+function updateRail() {
+  rail.classList.toggle('hidden', state.menuOpen || !railVisible);
+}
+var idSection = document.getElementById('identity');
+function checkRail() {
+  if (!idSection) return;
+  var vis = idSection.getBoundingClientRect().top <= window.innerHeight * .55;
+  if (vis !== railVisible) { railVisible = vis; updateRail(); }
+}
+window.addEventListener('scroll', checkRail, { passive: true });
+window.addEventListener('resize', checkRail, { passive: true });
+checkRail();
+
 // CHAPTERS order matches document order — rail numerals run I–VI down the page.
 var CHAPTERS = ['identity', 'collection', 'commission', 'clubs', 'corporate', 'legacy'];
 var railLinks = $$('#rail a');
