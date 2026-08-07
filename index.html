@@ -1318,15 +1318,25 @@ function buildMotion(g, ST) {
       }
       var nums = steps.map(function (li) { return li.firstElementChild; });
       var heads = steps.map(function (li) { return li.querySelector('h3'); });
+      var paras = steps.map(function (li) { return li.querySelector('p'); });
       var DIM = 'rgba(216,191,127,.34)';
-      g.set(nums, { color: DIM });
-      g.set(heads, { opacity: .42 });
+      g.set(nums, { color: DIM, transformOrigin: 'left center' });
+      g.set(heads, { opacity: .38 });
+      g.set(paras, { opacity: .3 });
       var active = -1;
       var setActive = function (i) {
         if (i === active) return;
         active = i;
-        nums.forEach(function (n, k) { g.to(n, { color: k <= i ? '#D8BF7F' : DIM, duration: .34, ease: 'power2.out' }); });
-        heads.forEach(function (h, k) { g.to(h, { opacity: k === i ? 1 : (k < i ? .72 : .42), duration: .34, ease: 'power2.out' }); });
+        nums.forEach(function (n, k) { g.to(n, { color: k <= i ? '#D8BF7F' : DIM, scale: k === i ? 1.22 : 1, duration: .34, ease: 'power2.out' }); });
+        heads.forEach(function (h, k) { g.to(h, { opacity: k === i ? 1 : (k < i ? .6 : .38), duration: .34, ease: 'power2.out' }); });
+        paras.forEach(function (p, k) { g.to(p, { opacity: k === i ? 1 : (k < i ? .45 : .3), duration: .34, ease: 'power2.out' }); });
+        steps.forEach(function (li, k) {
+          g.to(li, {
+            x: k === i ? 12 : 0,
+            backgroundColor: k === i ? 'rgba(216,191,127,.06)' : 'rgba(216,191,127,0)',
+            duration: .4, ease: 'power2.out'
+          });
+        });
       };
       var st = pinned
         // scrub 1 lets the timeline ease toward the scroll position instead of tracking it
@@ -1356,9 +1366,10 @@ function buildMotion(g, ST) {
       return function () {
         setActive(-1);
         g.set([story, grid, media, col], { clearProps: 'height,padding,justifyContent,opacity,transform' });
-        g.set(steps, { clearProps: 'padding' });
-        g.set(nums, { clearProps: 'color' });
+        g.set(steps, { clearProps: 'padding,transform,backgroundColor' });
+        g.set(nums, { clearProps: 'color,transform' });
         g.set(heads, { clearProps: 'opacity' });
+        g.set(paras, { clearProps: 'opacity' });
       };
     };
 
