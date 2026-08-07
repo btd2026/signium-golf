@@ -1253,10 +1253,24 @@ function buildMotion(g, ST) {
       if (!img) return;
       g.to(img, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
     });
-    // Returning to the top replays the opening — the page greets you again.
+    // Returning to the top replays the opening in mirror: the choreography runs
+    // bottom-up — marquee and frames first, headline after, eyebrow last.
     ST.create({
       trigger: hero, start: 'top 90%', end: 'bottom 25%',
-      onEnterBack: function () { tl.restart(); }
+      onEnterBack: function () {
+        var rtl = g.timeline({ defaults: { ease: M.ease } });
+        if (els.length) {
+          g.set(els, { opacity: 0, y: M.dist.lg, filter: 'blur(7px)' });
+          rtl.to(els, {
+            opacity: 1, y: 0, filter: 'blur(0px)', duration: M.dur.base,
+            stagger: { each: M.stag, from: 'end' }, clearProps: 'filter,transform'
+          }, 0);
+        }
+        if (mask) {
+          rtl.fromTo(mask, { yPercent: 108 }, { yPercent: 0, duration: M.dur.base },
+            els.length ? M.stag * (els.length - 1) : 0);
+        }
+      }
     });
   }
 
