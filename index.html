@@ -17,7 +17,7 @@ img{display:block;max-width:100%}
 a{color:#9C7B41;text-decoration:none}
 a:hover{color:#26382E}
 ::selection{background:#DDD3BE}
-.gold-sweep{background-image:linear-gradient(to right,#9C7B41 0%,#9C7B41 46%,#2A362E 54%,#2A362E 100%);background-size:220% 100%;background-position:0% 0;-webkit-background-clip:text;background-clip:text;color:transparent}
+.gold-sweep{background-image:linear-gradient(to right,#9C7B41 0%,#9C7B41 38%,#B08A4C 46%,#2A362E 62%,#2A362E 100%);background-size:220% 100%;background-position:0% 0;-webkit-background-clip:text;background-clip:text;color:transparent}
 @keyframes sigCaret{0%,45%{opacity:1}55%,100%{opacity:0}}
 @keyframes sigMarqA{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @keyframes sigMarqB{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
@@ -1360,13 +1360,16 @@ initMotion(0);
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!g || !ST || still) return; /* stays gold without motion */
   g.set(els, { backgroundPosition: '100% 0' });
-  ST.create({
-    trigger: els[0].closest('section'),
-    start: 'top 62%',
-    once: true,
-    onEnter: function () {
-      g.to(els, { backgroundPosition: '0% 0', duration: 1.15, ease: 'power2.inOut', stagger: .45 });
+  var tl = g.timeline({
+    scrollTrigger: {
+      trigger: els[0].closest('p'),
+      start: 'top 78%',
+      end: 'bottom 32%',
+      scrub: .6
     }
+  });
+  els.forEach(function (el) {
+    tl.to(el, { backgroundPosition: '0% 0', ease: 'none', duration: 1 });
   });
 })();
 
