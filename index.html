@@ -1320,6 +1320,9 @@ function buildMotion(g, ST) {
       var heads = steps.map(function (li) { return li.querySelector('h3'); });
       var paras = steps.map(function (li) { return li.querySelector('p'); });
       var DIM = 'rgba(216,191,127,.34)';
+      // Let the highlight band breathe: pad the row and pull it back with margin
+      // so the wash extends past the numerals without moving the text.
+      g.set(steps, { paddingLeft: 18, paddingRight: 18, marginLeft: -18, marginRight: -18 });
       g.set(nums, { color: DIM, transformOrigin: 'left center' });
       g.set(heads, { opacity: .38 });
       g.set(paras, { opacity: .3 });
@@ -1367,7 +1370,7 @@ function buildMotion(g, ST) {
       return function () {
         setActive(-1);
         g.set([story, grid, media, col], { clearProps: 'height,padding,justifyContent,opacity,transform' });
-        g.set(steps, { clearProps: 'padding,transform,backgroundColor' });
+        g.set(steps, { clearProps: 'padding,margin,transform,backgroundColor' });
         g.set(nums, { clearProps: 'color,transform' });
         g.set(heads, { clearProps: 'opacity' });
         g.set(paras, { clearProps: 'opacity' });
