@@ -1332,7 +1332,8 @@ function buildMotion(g, ST) {
         paras.forEach(function (p, k) { g.to(p, { opacity: k === i ? 1 : (k < i ? .45 : .3), duration: .34, ease: 'power2.out' }); });
         steps.forEach(function (li, k) {
           g.to(li, {
-            x: k === i ? 12 : 0,
+            scale: k === i ? 1.025 : 1,
+            transformOrigin: 'left center',
             backgroundColor: k === i ? 'rgba(216,191,127,.06)' : 'rgba(216,191,127,0)',
             duration: .4, ease: 'power2.out'
           });
