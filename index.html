@@ -1218,8 +1218,9 @@ function buildMotion(g, ST) {
     var from = { opacity: 0, y: o.y, x: o.x };
     var to = {
       opacity: 1, y: 0, x: 0, duration: M.dur.base, ease: M.ease, stagger: o.stagger,
-      clearProps: 'clipPath,transform',
-      scrollTrigger: { trigger: o.trigger, start: o.start, once: true }
+      // Replayable: restart when a section re-enters from above, reverse out when
+      // scrolled back past its start — the page performs every visit, not just the first.
+      scrollTrigger: { trigger: o.trigger, start: o.start, toggleActions: 'restart none none reverse' }
     };
     if (o.clip) { from.clipPath = 'inset(0% 0% 100% 0%)'; to.clipPath = 'inset(0% 0% 0% 0%)'; }
     g.set(els, from);
@@ -1251,6 +1252,11 @@ function buildMotion(g, ST) {
     mm.add(DESKTOP, function () {
       if (!img) return;
       g.to(img, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+    });
+    // Returning to the top replays the opening — the page greets you again.
+    ST.create({
+      trigger: hero, start: 'top 90%', end: 'bottom 25%',
+      onEnterBack: function () { tl.restart(); }
     });
   }
 
