@@ -28,7 +28,15 @@ a:hover{color:#26382E}
 [data-hero-frames]:hover figure img{filter:brightness(.72) saturate(.85)}
 [data-hero-frames] figure:hover{z-index:4}
 [data-hero-frames] figure:hover img{filter:none;transform:scale(1.07);box-shadow:0 40px 74px -22px rgba(0,0,0,.86)}
-@media (prefers-reduced-motion:reduce){.sig-marq,[data-hero-frames] figure{animation:none !important}}
+@media (prefers-reduced-motion:reduce){html:not(.motion-on) .sig-marq,html:not(.motion-on) [data-hero-frames] figure{animation:none !important}}
+/* ---- Still Edition: designed static compositions, driven by html.still ---- */
+html.still{scroll-behavior:auto}
+html.still *{animation-duration:.01ms!important;animation-iteration-count:1!important}
+html.still .sig-marq{animation:none !important;width:auto !important;flex-wrap:wrap;justify-content:center;row-gap:8px;padding:0 clamp(16px,4vw,40px)}
+html.still .sig-marq > span:nth-child(n+8){display:none}
+html.still [data-hero-frames] figure{animation:none !important}
+html.still h1 #hero-type + span{display:none !important}
+html.still [data-m="track-fill"]{transform:scaleY(1) !important}
 @keyframes sigRise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes sigFade{from{opacity:0}to{opacity:1}}
 @keyframes sigLine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -36,8 +44,8 @@ a:hover{color:#26382E}
 @keyframes sigMaskUp{from{clip-path:inset(100% 0 0 0);transform:translateY(26px)}to{clip-path:inset(0 0 0 0);transform:none}}
 :focus-visible{outline:2px solid #9C7B41;outline-offset:3px}
 @media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *{animation-duration:.01ms!important;animation-iteration-count:1!important}
+  html:not(.motion-on){scroll-behavior:auto}
+  html:not(.motion-on) *{animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 
 /* ---- responsive focal points for the full-bleed photography ----
@@ -790,6 +798,7 @@ a:hover{color:#26382E}
     </div>
     <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(216,191,127,.15);margin-top:clamp(40px,5vw,60px);padding-top:26px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957">
       <span>© 2026 Signum</span>
+      <button id="motionToggle" type="button" style="background:transparent;border:0;cursor:pointer;padding:0;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35)">Motion: On</button>
       <span>Drawn by hand · Made for one</span>
     </div>
   </div>
@@ -803,6 +812,13 @@ a:hover{color:#26382E}
 <script>
 (function () {
 'use strict';
+// Motion preference: explicit choice (localStorage) wins, else the OS setting.
+var SIG_STILL = (function () {
+  try { var v = localStorage.getItem('sig-motion'); if (v) return v === 'off'; } catch (e) {}
+  return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+})();
+window.SIG_STILL = SIG_STILL;
+document.documentElement.classList.add(SIG_STILL ? 'still' : 'motion-on');
 var $ = function (s, c) { return (c || document).querySelector(s); };
 var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
@@ -1128,6 +1144,17 @@ $('#numInput').addEventListener('input', function () {
 syncControls();
 renderMarks();
 
+/* ================= motion toggle ================= */
+var mt = $('#motionToggle');
+if (mt) {
+  mt.textContent = 'Motion: ' + (SIG_STILL ? 'Off' : 'On');
+  mt.setAttribute('aria-pressed', SIG_STILL ? 'true' : 'false');
+  mt.addEventListener('click', function () {
+    try { localStorage.setItem('sig-motion', SIG_STILL ? 'on' : 'off'); } catch (e) {}
+    location.reload();
+  });
+}
+
 /* ================= proof spec -> enquiry ================= */
 function specText() {
   var piece = { polo: 'Shirt', headcover: 'Headcover set', bag: 'Stand bag', towel: 'Towel' }[state.garment];
@@ -1172,7 +1199,7 @@ function initMotion(tries) {
     return;
   }
   // Reduce Motion softens rather than silences: fades stay, movement goes.
-  var STILL = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var STILL = SIG_STILL;
   g.registerPlugin(ST);
   ST.config({ ignoreMobileResize: true });
   if (!STILL) initSmooth(g, ST);
@@ -1425,7 +1452,7 @@ initMotion(0);
   var els = Array.prototype.slice.call(document.querySelectorAll('.gold-sweep'));
   if (!els.length) return;
   var g = window.gsap, ST = window.ScrollTrigger;
-  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var still = SIG_STILL;
   if (!g || !ST || still) return; /* stays gold without motion */
   g.set(els, { backgroundPosition: '100% 0' });
   var tl = g.timeline({
@@ -1444,7 +1471,7 @@ initMotion(0);
 /* ---- hero typewriter ---- */
 (function () {
   var el = document.getElementById('hero-type');
-  if (!el || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  if (!el || SIG_STILL) return;
   var phrases = ['to be carried.', 'to be inherited.', 'to outlast us.', 'to be commissioned.'];
   var i = 0, n = phrases[0].length, del = false;
   var tick = function () {
@@ -1469,7 +1496,7 @@ initMotion(0);
   var bar = root.querySelector('[data-col-progress]');
   var NUM = ['I', 'II', 'III', 'IV', 'V', 'VI'];
   var DWELL = 5200;
-  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var still = SIG_STILL;
   var idx = 0, paused = false, colTimer;
 
   var show = function (n) {
