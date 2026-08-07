@@ -3,740 +3,228 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SIGNUM — Commissioned Golf Goods</title>
-<meta name="description" content="Signum is a commissioning house for golf. One personal mark, one colorway, carried across every piece — designed with you, made for you alone.">
+<title>SIGNUM — A Commissioning House for Golf</title>
+<meta name="description" content="SIGNUM brings bespoke golf craftsmanship to every golfer who values personal identity — not just those with access to a private club.">
+<link rel="preload" href="assets/img/standard-first-light.webp" as="image" fetchpriority="high">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%2326382E'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-size='36' fill='%23E8DDBE'%3ES%3C/text%3E%3C/svg%3E">
 <style>
-/* ============ FONTS ============ */
-@font-face{
-  font-family:'Cormorant Garamond';
-  font-style:normal;
-  font-weight:300 700;
-  font-display:swap;
-  src:url(assets/fonts/cormorant-var.woff2) format('woff2');
-}
-@font-face{
-  font-family:'Cormorant Garamond';
-  font-style:italic;
-  font-weight:300 700;
-  font-display:swap;
-  src:url(assets/fonts/cormorant-var-italic.woff2) format('woff2');
-}
-
-/* ============ TOKENS ============ */
-:root{
-  --ivory:#F6F1E7;
-  --parchment:#EFE8D8;
-  --cream:#FBF8F1;
-  --stone:#DDD3BE;
-  --hairline:#D8CDB6;
-  --ink:#2A362E;
-  --body:#57544A;
-  --faint:#8A8474;
-  --green:#26382E;
-  --green-deep:#1F2D25;
-  --navy:#25314B;
-  --espresso:#463729;
-  --gold:#B8902E;
-  --gold-deep:#A17C21;
-  --brass:#9C7B41;
-  --burgundy:#6E2F36;
-  --camel:#C4A87E;
-  --saddle:#8A6A47;
-  --serif:'Cormorant Garamond',Didot,'Times New Roman',serif;
-  --mono:'SF Mono',ui-monospace,Menlo,Consolas,'Liberation Mono',monospace;
-}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300 700;font-display:swap;src:url('assets/fonts/cormorant-var.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 700;font-display:swap;src:url('assets/fonts/cormorant-var-italic.woff2') format('woff2')}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  background:var(--ivory);
-  color:var(--body);
-  font-family:var(--serif);
-  font-size:19px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-::selection{background:var(--gold);color:#fff}
-img,svg{max-width:100%;display:block}
-a{color:inherit}
-
-/* ============ TYPE ============ */
-.eyebrow{
-  font-family:var(--mono);
-  font-size:10.5px;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  color:var(--brass);
-  display:flex;
-  align-items:center;
-  gap:14px;
-  font-weight:500;
-}
-.eyebrow::before{content:"";width:34px;height:1px;background:var(--brass);flex:none}
-.eyebrow.center{justify-content:center}
-.eyebrow.center::after{content:"";width:34px;height:1px;background:var(--brass);flex:none}
-h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.08;letter-spacing:-.005em}
-h1{font-size:clamp(46px,6.2vw,88px)}
-h2{font-size:clamp(34px,4vw,56px)}
-h3{font-size:clamp(23px,2.2vw,29px);line-height:1.2}
-.lede{font-size:clamp(19px,1.5vw,22px);color:var(--body);max-width:56ch}
-em,.it{font-style:italic}
-
-/* ============ LAYOUT ============ */
-.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,72px)}
-section{position:relative}
-.section-pad{padding:clamp(84px,10vw,150px) 0}
-
-/* vertical rail */
-.rail{
-  position:absolute;top:0;bottom:0;left:0;width:52px;
-  background:var(--green);
-  display:flex;flex-direction:column;justify-content:space-between;align-items:center;
-  padding:26px 0;z-index:2;
-}
-.rail span{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;
-  color:#CBBE93;writing-mode:vertical-rl;
-}
-.rail .num{transform:rotate(180deg)}
-@media(max-width:860px){.rail{display:none}}
-
-/* ============ NAV ============ */
-header{
-  position:fixed;inset:0 0 auto 0;z-index:50;
-  transition:background .35s,box-shadow .35s;
-}
-header.scrolled{background:rgba(246,241,231,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--hairline)}
-.nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px clamp(22px,4vw,54px);
-}
-.brand{display:flex;align-items:center;gap:16px;text-decoration:none}
-.roundel{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--green);color:#E8DDBE;
-  display:grid;place-items:center;
-  font-family:var(--serif);font-size:17px;font-weight:600;
-}
-.wordmark{
-  font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:.42em;
-  color:var(--ink);text-transform:uppercase;
-}
-.nav-links{display:flex;gap:38px;list-style:none}
-.nav-links a{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
-  text-decoration:none;color:var(--ink);padding:6px 0;position:relative;
-}
-.nav-links a::after{
-  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .3s;
-}
-.nav-links a:hover::after{width:100%}
-@media(max-width:900px){.nav-links{display:none}}
-
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-  text-decoration:none;cursor:pointer;border:0;
-  padding:15px 26px;border-radius:2px;
-  transition:background .25s,color .25s,border-color .25s,transform .25s;
-}
-.btn-gold{background:var(--gold);color:#241D0F}
-.btn-gold:hover{background:var(--gold-deep);color:#FFF8E8}
-.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--faint);border-radius:999px}
-.btn-outline:hover{border-color:var(--ink)}
-.btn-ivory{background:var(--ivory);color:var(--ink)}
-.btn-ivory:hover{background:#fff}
-.nav .btn{padding:12px 22px}
-
-/* text links */
-.tlink{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--brass);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:3px;
-  transition:border-color .25s,color .25s;
-}
-.tlink:hover{border-color:var(--brass)}
-
-/* ============ HERO ============ */
-.hero{min-height:100vh;display:flex;align-items:stretch}
-.hero-inner{
-  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,4vw,70px);
-  align-items:center;width:100%;
-  padding:120px 0 70px;
-}
-.hero-copy .eyebrow{margin-bottom:30px}
-.hero-copy h1{margin-bottom:30px}
-.hero-copy .lede{margin-bottom:42px;max-width:46ch}
-.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.hero-visual{position:relative}
-@media(max-width:860px){
-  .hero-inner{grid-template-columns:1fr;padding-top:110px}
-  .hero-visual{max-width:520px}
-}
-.hero-foot{
-  border-top:1px solid var(--hairline);
-  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  padding:20px 0 26px;
-}
-.hero-foot span{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
-
-/* ============ MANIFESTO ============ */
-.manifesto{background:var(--parchment)}
-.manifesto .statement{
-  font-size:clamp(30px,3.6vw,52px);line-height:1.22;color:var(--ink);font-weight:500;
-  max-width:22ch;margin:34px 0 0;
-}
-.manifesto .statement em{color:var(--saddle)}
-.pillars{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px);
-  margin-top:clamp(56px,7vw,96px);padding-top:clamp(40px,5vw,60px);
-  border-top:1px solid var(--hairline);
-}
-.pillar .pnum{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--brass)}
-.pillar h3{margin:14px 0 12px}
-.pillar p{font-size:17.5px}
-@media(max-width:760px){.pillars{grid-template-columns:1fr}}
-
-/* ============ MARK BUILDER ============ */
-.mark{background:var(--ivory)}
-.mark-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,84px);
-  align-items:center;margin-top:clamp(44px,5vw,70px);
-}
-@media(max-width:900px){.mark-grid{grid-template-columns:1fr}}
-.controls .ctl{margin-bottom:30px}
-.ctl-label{
-  font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--faint);display:block;margin-bottom:12px;
-}
-.fields{display:flex;gap:14px}
-input[type=text],input[type=email],select,textarea{
-  font-family:var(--serif);font-size:19px;color:var(--ink);
-  background:var(--cream);border:1px solid var(--hairline);border-radius:2px;
-  padding:13px 16px;width:100%;outline:none;
-  transition:border-color .25s;
-}
-input:focus,select:focus,textarea:focus{border-color:var(--brass)}
-.fields .initials{max-width:200px;text-transform:uppercase;letter-spacing:.2em;font-weight:600}
-.fields .clubnum{max-width:120px}
-.seg{display:flex;border:1px solid var(--hairline);border-radius:2px;overflow:hidden;width:max-content}
-.seg button{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  background:transparent;border:0;color:var(--body);padding:12px 20px;cursor:pointer;
-  transition:background .25s,color .25s;
-}
-.seg button+button{border-left:1px solid var(--hairline)}
-.seg button.on{background:var(--green);color:#EBDFC0}
-.swatches{display:flex;gap:12px;flex-wrap:wrap}
-.swatch{
-  width:44px;height:44px;border-radius:50%;cursor:pointer;border:1px solid rgba(0,0,0,.12);
-  outline:2px solid transparent;outline-offset:3px;transition:outline-color .25s;padding:0;
-}
-.swatch.on{outline-color:var(--gold)}
-.swatch-name{
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);
-  margin-top:14px;min-height:14px;
-}
-.mark-note{font-size:16.5px;color:var(--faint);font-style:italic;margin-top:8px}
-.preview{position:relative}
-.preview svg{width:100%;height:auto;border-radius:3px;box-shadow:0 30px 60px -30px rgba(42,54,46,.35)}
-.carried{
-  display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;
-}
-.carried span{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--faint);border:1px solid var(--hairline);border-radius:999px;padding:7px 14px;
+body{background:#F6F1E7;color:#57544A;font-family:'Cormorant Garamond',Didot,serif;font-size:19px;line-height:1.62;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+img{display:block;max-width:100%}
+a{color:#9C7B41;text-decoration:none}
+a:hover{color:#26382E}
+::selection{background:#DDD3BE}
+@keyframes sigRise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes sigFade{from{opacity:0}to{opacity:1}}
+@keyframes sigLine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes sigDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes sigMaskUp{from{clip-path:inset(100% 0 0 0);transform:translateY(26px)}to{clip-path:inset(0 0 0 0);transform:none}}
+:focus-visible{outline:2px solid #9C7B41;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 
-/* ============ COMMISSIONS ============ */
-.commissions{background:var(--parchment)}
-.card-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,34px);
-  margin-top:clamp(44px,5vw,70px);
-}
-@media(max-width:900px){.card-grid{grid-template-columns:1fr}}
-.ccard{background:var(--cream);border:1px solid var(--hairline);border-radius:3px;overflow:hidden;display:flex;flex-direction:column}
-.ccard-tile{aspect-ratio:4/3;position:relative;display:grid;place-items:center;overflow:hidden}
-.ccard-tile .cnum{
-  position:absolute;top:16px;left:18px;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
-  text-transform:uppercase;opacity:.75;
-}
-.ccard-body{padding:28px 28px 30px;display:flex;flex-direction:column;gap:12px;flex:1}
-.ccard-body h3{font-size:24px}
-.ccard-body p{font-size:16.5px;flex:1}
-.ccard-body .meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
-
-/* ============ COLLECTION ============ */
-.collection{background:var(--ivory)}
-.col-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,34px);
-  margin-top:clamp(44px,5vw,70px);
-}
-@media(max-width:980px){.col-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.col-grid{grid-template-columns:1fr}}
-.pcard{
-  background:var(--cream);border:1px solid var(--hairline);border-radius:3px;
-  padding:0;display:flex;flex-direction:column;overflow:hidden;
-  transition:transform .35s,box-shadow .35s;
-}
-.pcard:hover{transform:translateY(-4px);box-shadow:0 26px 46px -28px rgba(42,54,46,.3)}
-.pcard-tile{aspect-ratio:16/10;position:relative;overflow:hidden}
-.pcard-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:11px;flex:1}
-.pcard .peyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-.pcard h3{font-size:25px}
-.pcard p{font-size:16.5px;flex:1}
-
-/* ============ HER / JUNIOR ============ */
-.duo{background:var(--parchment)}
-.duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.5vw,34px)}
-@media(max-width:860px){.duo-grid{grid-template-columns:1fr}}
-.duo-card{border-radius:3px;padding:clamp(36px,4vw,58px);position:relative;overflow:hidden}
-.duo-card.her{background:var(--green-deep)}
-.duo-card.her h3,.duo-card.her .duo-big{color:#F1EADA}
-.duo-card.her p{color:#C9C2AE}
-.duo-card.jr{background:var(--cream);border:1px solid var(--hairline)}
-.duo-big{font-size:clamp(28px,2.6vw,38px);color:var(--ink);font-weight:500;line-height:1.15;margin:16px 0 18px}
-.duo-card p{font-size:17px;max-width:44ch}
-.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
-.chips span{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
-  border:1px solid rgba(138,132,116,.55);border-radius:999px;padding:7px 14px;color:var(--body);
-}
-.her .chips span{border-color:rgba(214,201,166,.4);color:#CDC3A6}
-.duo-card .tlink{display:inline-block;margin-top:30px}
-.her .tlink{color:#D8BF7F}
-
-/* ============ PROGRAMS ============ */
-.programs{background:var(--ivory)}
-.prog-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,34px);
-  margin-top:clamp(44px,5vw,70px);
-}
-@media(max-width:900px){.prog-grid{grid-template-columns:1fr}}
-.prog{
-  border:1px solid var(--hairline);border-radius:3px;background:var(--cream);
-  padding:clamp(30px,3vw,42px);display:flex;flex-direction:column;gap:14px;
-}
-.prog .glyph{
-  width:52px;height:52px;border-radius:50%;border:1px solid var(--brass);
-  display:grid;place-items:center;color:var(--brass);margin-bottom:8px;
-  font-family:var(--serif);font-size:20px;font-style:italic;
-}
-.prog p{font-size:16.5px;flex:1}
-.prog .tlink{margin-top:10px}
-
-/* ============ PROCESS ============ */
-.process{background:var(--ivory)}
-.steps{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2vw,30px);
-  margin-top:clamp(44px,5vw,70px);
-}
-@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.steps{grid-template-columns:1fr}}
-.step{background:var(--cream);border:1px solid var(--hairline);border-radius:3px;padding:30px 26px 32px}
-.step .rn{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--gold)}
-.step h3{font-size:24px;margin:12px 0 10px}
-.step p{font-size:16px}
-.process-quote{
-  text-align:center;max-width:32ch;margin:clamp(60px,7vw,90px) auto 0;
-  font-size:clamp(24px,2.6vw,34px);line-height:1.3;color:var(--ink);font-style:italic;font-weight:500;
-}
-.process-quote::before{content:"“"}
-.process-quote::after{content:"”"}
-
-/* ============ WORDS ============ */
-.words{background:var(--parchment)}
-.quotes{
-  display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);
-  margin-top:clamp(44px,5vw,70px);
-}
-@media(max-width:860px){.quotes{grid-template-columns:1fr}}
-.quote{
-  border-top:2px solid var(--green);padding-top:26px;
-}
-.quote p{font-size:clamp(20px,1.8vw,24px);line-height:1.45;color:var(--ink);font-style:italic}
-.quote footer{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-top:18px}
-
-/* journal strip */
-.journal{border-top:1px solid var(--hairline);margin-top:clamp(70px,8vw,110px);padding-top:clamp(40px,5vw,60px)}
-.jgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,40px);margin-top:34px}
-@media(max-width:860px){.jgrid{grid-template-columns:1fr}}
-.jitem{border-top:1px solid var(--hairline);padding-top:18px;text-decoration:none;display:block}
-.jitem .jn{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--brass);text-transform:uppercase}
-.jitem h3{font-size:23px;margin-top:10px;transition:color .25s}
-.jitem:hover h3{color:var(--saddle)}
-.jitem p{font-size:15.5px;color:var(--faint);margin-top:8px}
-
-/* ============ BEGIN / FORM ============ */
-.begin{background:var(--green-deep);color:#C9C2AE}
-.begin-grid{
-  display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,5vw,90px);align-items:start;
-}
-@media(max-width:900px){.begin-grid{grid-template-columns:1fr}}
-.begin .eyebrow{color:#D8BF7F}
-.begin .eyebrow::before{background:#D8BF7F}
-.begin h2{color:#F1EADA;margin:26px 0 22px}
-.begin .lede{color:#C9C2AE;font-size:19px}
-.begin-points{list-style:none;margin-top:36px;display:grid;gap:16px}
-.begin-points li{display:flex;gap:14px;font-size:17px;align-items:baseline}
-.begin-points li::before{content:"—";color:#D8BF7F;flex:none}
-.form-card{
-  background:var(--ivory);border-radius:3px;padding:clamp(30px,3.4vw,48px);
-  box-shadow:0 40px 80px -40px rgba(0,0,0,.5);
-}
-.form-card h3{font-size:27px;margin-bottom:26px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-@media(max-width:560px){.frow{grid-template-columns:1fr}}
-.fgroup{margin-bottom:16px}
-.fgroup label,.frow label{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--faint);display:block;margin-bottom:8px;
-}
-textarea{min-height:120px;resize:vertical}
-.form-card .btn{width:100%;justify-content:center;margin-top:8px;padding:17px}
-.form-note{font-size:14.5px;color:var(--faint);font-style:italic;margin-top:16px;text-align:center}
-.form-done{text-align:center;padding:60px 10px}
-.form-done h3{font-size:30px;margin-bottom:14px}
-.form-done p{color:var(--body)}
-
-/* ============ FOOTER ============ */
-footer.site{
-  background:var(--green-deep);color:#A9A28D;border-top:1px solid rgba(216,191,127,.18);
-  padding:clamp(56px,6vw,80px) 0 40px;
-}
-.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:clamp(28px,4vw,60px)}
-@media(max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
-.fbrand .wordmark{color:#F1EADA}
-.fbrand p{font-size:15.5px;margin-top:18px;max-width:30ch;font-style:italic}
-.fcol h4{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;
-  color:#D8BF7F;margin-bottom:18px;font-weight:500;
-}
-.fcol ul{list-style:none;display:grid;gap:10px}
-.fcol a{font-size:15.5px;text-decoration:none;color:#A9A28D;transition:color .25s;font-family:var(--serif)}
-.fcol a:hover{color:#F1EADA}
-.flist p{font-size:15.5px;margin-bottom:16px}
-.flist form{display:flex;border-bottom:1px solid rgba(216,191,127,.4)}
-.flist input{
-  background:transparent;border:0;color:#F1EADA;padding:10px 0;font-size:16px;flex:1;
-}
-.flist input::placeholder{color:#7E7864}
-.flist button{
-  background:transparent;border:0;color:#D8BF7F;cursor:pointer;
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;
-}
-.fbottom{
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  border-top:1px solid rgba(216,191,127,.15);margin-top:clamp(40px,5vw,60px);padding-top:26px;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957;
+/* ---- responsive focal points for the full-bleed photography ----
+   Landscape frames lose ~2/3 of their width when covering a portrait
+   viewport, so each subject gets its own crop centre on narrow screens:
+   the woman on the terrace sits at ~73% left, the junior at ~25%. */
+.pos-hero{object-position:50% 42%}
+.pos-identity{object-position:60% 40%}
+.pos-legacy{object-position:50% 40%}
+@media (max-aspect-ratio: 1/1){
+  .pos-hero{object-position:45% 42%}
+  .pos-identity{object-position:74% 40%}
+  .pos-legacy{object-position:26% 40%}
 }
 
-/* ============ IMAGERY ============ */
-.img-cover{width:100%;height:100%;object-fit:cover;display:block}
-.hero-visual img{width:100%;height:auto;border-radius:6px;box-shadow:0 40px 90px -40px rgba(42,54,46,.5)}
-.manifesto-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,4vw,72px);align-items:center}
-.m-img{border-radius:4px;overflow:hidden;box-shadow:0 30px 70px -35px rgba(42,54,46,.45)}
-.m-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;display:block}
-@media(max-width:860px){.manifesto-grid{grid-template-columns:1fr}.m-img img{aspect-ratio:3/2}}
-.cnum.on-photo{color:#F6F1E7;text-shadow:0 1px 8px rgba(0,0,0,.5)}
-.duo-card.jr,.duo-card.her{padding:0}
-.duo-card .duo-body{padding:clamp(28px,3vw,44px) clamp(36px,4vw,58px) clamp(36px,4vw,58px)}
-.duo-media{aspect-ratio:16/10;overflow:hidden}
-.prog-media{aspect-ratio:16/10;overflow:hidden;border-radius:2px;margin-bottom:14px}
-.process-craft{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:center;margin-top:clamp(60px,7vw,90px)}
-.pc-img{border-radius:4px;overflow:hidden;box-shadow:0 30px 70px -35px rgba(42,54,46,.4)}
-.pc-img img{width:100%;height:auto;display:block}
-.process-craft .process-quote{margin:0;text-align:left;max-width:none;font-size:clamp(22px,2.2vw,30px)}
-@media(max-width:860px){.process-craft{grid-template-columns:1fr}}
+/* ---- hover states (the design authors these per-element; inline styles would
+   beat plain :hover rules, hence the !important) ---- */
+.hov-parch:hover{background:#EBD9A8!important}
+.hov-dark:hover{background:#1F2D25!important}
+.hov-ivory:hover{color:#FBF8F1!important;border-color:#FBF8F1!important}
+.hov-ink:hover{color:#26382E!important;border-color:#26382E!important}
+.hov-zoom:hover{transform:scale(1.03)}
+.hov-saddle:hover{color:#8A6A47!important}
+.hov-cream:hover{color:#F1EADA!important}
 
-/* ============ REVAMP ============ */
-.hero-visual img{max-height:74vh;object-fit:cover}
-.m-img.landscape img{aspect-ratio:3/2}
-.why-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,72px);align-items:center;
-  margin-top:clamp(56px,7vw,96px);padding-top:clamp(40px,5vw,60px);border-top:1px solid var(--hairline);
-}
-@media(max-width:860px){.why-grid{grid-template-columns:1fr}}
-.prog-grid.two{grid-template-columns:repeat(2,1fr)}
-@media(max-width:900px){.prog-grid.two{grid-template-columns:1fr}}
-.corporate{background:var(--parchment)}
-.corp-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,84px);align-items:center}
-@media(max-width:900px){.corp-grid{grid-template-columns:1fr}}
-.corp-points{margin-top:30px}
-.corp-points li::before{color:var(--brass)}
-.steps.five{grid-template-columns:repeat(5,1fr)}
-@media(max-width:1100px){.steps.five{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:760px){.steps.five{grid-template-columns:1fr}}
-.quotes.three{grid-template-columns:repeat(3,1fr)}
-@media(max-width:860px){.quotes.three{grid-template-columns:1fr}}
-.qphoto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px;display:block}
-.qphoto figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-top:14px}
+/* ---- full-screen menu ---- */
+#menu{display:none;position:fixed;inset:0;z-index:80;background:#1F2D25;animation:sigFade .4s ease both;overflow-y:auto}
+#menu.open{display:block}
 
+/* ---- chapter rail ---- */
+#rail{position:fixed;right:clamp(14px,2vw,26px);top:50%;transform:translateY(-50%);z-index:40;display:grid;gap:2px;mix-blend-mode:normal;padding:14px 14px 14px 22px;opacity:1;transition:opacity .3s ease}
+#rail.hidden{opacity:0;pointer-events:none}
+#rail a{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:10px;text-decoration:none;padding:5px 0}
+#rail .plate{position:absolute;inset:-2px -10px -2px -16px;z-index:-1;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .45s ease}
+#rail a.on .plate{opacity:1;backdrop-filter:blur(9px) saturate(1.04);-webkit-backdrop-filter:blur(9px) saturate(1.04)}
+#rail .lab{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7B41;opacity:0;transform:translateX(6px);transition:opacity .45s ease,transform .45s ease;white-space:nowrap}
+#rail a.on .lab{opacity:1;transform:none}
+#rail .num{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:8.5px;letter-spacing:.14em;color:#B3A98F;transition:color .45s ease;min-width:18px;text-align:right}
+#rail a.on .num{color:#26382E}
+#rail .tick{display:block;height:1px;width:11px;background:#C9BB9C;transition:width .45s ease,background .45s ease}
+#rail a.on .tick{width:26px;background:#9C7B41}
 
-/* ============ DESIGN CANVAS: HERO + COLLECTION ============ */
-@keyframes sigHero{from{opacity:0;transform:translateY(34px);filter:blur(7px)}to{opacity:1;transform:none;filter:blur(0)}}
-@keyframes sigHeroZoom{from{opacity:0;transform:scale(1.085)}to{opacity:1;transform:none}}
-@keyframes sigMaskUp{from{transform:translateY(120%)}to{transform:none}}
-@keyframes sigCaret{0%,45%{opacity:1}55%,100%{opacity:0}}
-@keyframes sigMarqA{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-@keyframes sigMarqB{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
-@keyframes sigFloat{0%,100%{transform:translateY(0) rotate(-2.2deg)}50%{transform:translateY(-14px) rotate(-1deg)}}
-@keyframes sigFloat2{0%,100%{transform:translateY(0) rotate(2.6deg)}50%{transform:translateY(-10px) rotate(1.4deg)}}
-[data-hero-frames]{display:none}
-@media (min-width:900px){[data-hero-frames]{display:block}[data-hero-grid]{padding-right:214px}}
-[data-hero-frames]:hover figure img{filter:brightness(.72) saturate(.85)}
-[data-hero-frames] figure:hover{z-index:4}
-[data-hero-frames] figure:hover img{filter:none;transform:scale(1.07);box-shadow:0 40px 74px -22px rgba(0,0,0,.86)}
-.hero-cta:hover{background:#EBD9A8 !important;color:#1F2D25 !important}
-.col-enq:hover{color:#26382E !important;border-color:#26382E !important}
-header:not(.scrolled) .wordmark{color:#F1EADA}
-header:not(.scrolled) .nav-links a{color:#F1EADA}
-@media (prefers-reduced-motion:reduce){
-  [data-hero-frames] figure,.sig-marq{animation:none !important}
-}
-
-/* ============ REVEAL ============ */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-
-.section-head{max-width:760px}
-.section-head h2{margin:26px 0 18px}
-.section-head.center{margin:0 auto;text-align:center}
+/* ---- customizer segmented controls & swatches ---- */
+.seg{display:flex;border:1px solid #D8CDB6;border-radius:2px;overflow:hidden;width:max-content;max-width:100%;flex-wrap:wrap}
+.seg button{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:transparent;color:#57544A;border:0;padding:12px 20px;cursor:pointer;transition:background .25s,color .25s}
+.seg button.on{background:#26382E;color:#F1EADA}
+.swatch{width:40px;height:40px;border-radius:50%;cursor:pointer;padding:0;outline:1px solid transparent;outline-offset:3px;transition:outline-color .25s}
+.swatch.on{outline-color:#B8902E}
 </style>
 </head>
 <body>
 
-<!-- shared SVG defs -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
-      <feColorMatrix in="n" type="saturate" values="0"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>
-      <feComposite operator="over" in2="SourceGraphic"/>
-    </filter>
-    <filter id="deboss" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="1.4" stdDeviation="0.6" flood-color="#ffffff" flood-opacity="0.35"/>
-    </filter>
-    <radialGradient id="tileLight" cx="35%" cy="25%" r="90%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
-      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.18"/>
-    </radialGradient>
-    <linearGradient id="brassGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#E4C98A"/>
-      <stop offset="45%" stop-color="#B8934D"/>
-      <stop offset="100%" stop-color="#8A6A33"/>
-    </linearGradient>
-  </defs>
-</svg>
+<div style="background:#F6F1E7;overflow-x:hidden">
 
-<header id="hdr">
-  <nav class="nav" aria-label="Primary">
-    <a class="brand" href="#top">
-      <span class="roundel">S</span>
-      <span class="wordmark">Signum</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#identity">Your Identity</a></li>
-      <li><a href="#collection">The Collection</a></li>
-      <li><a href="#legacy">Family Legacy</a></li>
-      <li><a href="#clubs">Clubs &amp; Tournaments</a></li>
-      <li><a href="#corporate">Corporate</a></li>
-    </ul>
-    <a class="btn btn-gold" href="#begin">Commission &rarr;</a>
-  </nav>
+<header style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px clamp(20px,4vw,54px);mix-blend-mode:normal">
+  <a href="#top" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:14px;letter-spacing:.44em;text-transform:uppercase;color:#FBF8F1;text-shadow:0 1px 24px rgba(20,26,20,.55);font-weight:500">Signum</a>
+  <div style="display:flex;align-items:center;gap:clamp(14px,2.4vw,30px)">
+    <a href="#enquire" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#EFE8D8;text-shadow:0 1px 20px rgba(20,26,20,.6)">Enquire</a>
+    <button type="button" id="menuBtn" style="display:flex;align-items:center;gap:11px;background:transparent;border:0;cursor:pointer;padding:6px 0;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#FBF8F1;text-shadow:0 1px 20px rgba(20,26,20,.6)">
+      <span style="display:grid;gap:4px;width:20px">
+        <span style="display:block;height:1px;background:#EFE8D8"></span>
+        <span style="display:block;height:1px;background:#EFE8D8"></span>
+      </span>
+      Menu
+    </button>
+  </div>
 </header>
 
-<!-- ============ 01 HERO ============ -->
-<main id="top">
-<section id="hero" style="position:relative;min-height:100svh;overflow:hidden;background:#1F2D25;display:flex;flex-direction:column;justify-content:flex-end">
-  <img src="assets/img/standard-first-light.jpg" alt="A golfer walking the fairway at first light, leather bag on the shoulder" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;will-change:transform;animation:sigHeroZoom 2.3s cubic-bezier(.22,1,.36,1) both">
+<div id="menu">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,4vw,54px)">
+    <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:14px;letter-spacing:.44em;text-transform:uppercase;color:#EFE8D8;font-weight:500">Signum</span>
+    <button type="button" id="menuClose" style="background:transparent;border:0;cursor:pointer;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#D8BF7F">Close</button>
+  </div>
+  <nav style="padding:clamp(28px,6vh,80px) clamp(20px,4vw,54px) 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,44px);max-width:1500px;margin:0 auto">
+    <a href="#identity" style="display:block;text-decoration:none">
+      <div style="overflow:hidden;border-radius:2px"><img src="assets/img/her-terrace.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.94)"></div>
+      <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter I</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Your Identity</h3>
+    </a>
+    <a href="#collection" style="display:block;text-decoration:none">
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
+      <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter II</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">The Collection</h3>
+    </a>
+    <a href="#commission" style="display:block;text-decoration:none">
+      <div style="overflow:hidden;border-radius:2px"><img src="assets/img/craft-atelier.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>
+      <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter III</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Commission Your Mark</h3>
+    </a>
+    <a href="#clubs" style="display:block;text-decoration:none">
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/program-member-guest.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
+      <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter IV</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Clubs &amp; Tournaments</h3>
+    </a>
+    <a href="#corporate" style="display:block;text-decoration:none">
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/program-corporate.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.8) contrast(1.03)"></div>
+      <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter V</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Corporate Collections</h3>
+    </a>
+    <a href="#legacy" style="display:block;text-decoration:none">
+      <div style="overflow:hidden;border-radius:2px"><img loading="lazy" decoding="async" src="assets/img/junior-first-tee.webp" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>
+      <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#8E8567;margin-top:16px">Chapter VI</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:400;color:#F1EADA;margin-top:6px;line-height:1.1">Family Legacy</h3>
+    </a>
+  </nav>
+</div>
+
+<nav aria-label="Chapters" id="rail" class="hidden">
+  <a href="#identity" class="on"><span aria-hidden="true" class="plate"></span><span class="lab">Your Identity</span><span class="num">I</span><span class="tick"></span></a>
+  <a href="#collection"><span aria-hidden="true" class="plate"></span><span class="lab">The Collection</span><span class="num">II</span><span class="tick"></span></a>
+  <a href="#commission"><span aria-hidden="true" class="plate"></span><span class="lab">Commission</span><span class="num">III</span><span class="tick"></span></a>
+  <a href="#clubs"><span aria-hidden="true" class="plate"></span><span class="lab">Clubs</span><span class="num">IV</span><span class="tick"></span></a>
+  <a href="#corporate"><span aria-hidden="true" class="plate"></span><span class="lab">Corporate</span><span class="num">V</span><span class="tick"></span></a>
+  <a href="#legacy"><span aria-hidden="true" class="plate"></span><span class="lab">Legacy</span><span class="num">VI</span><span class="tick"></span></a>
+</nav>
+
+<!-- ============ I. THE OPENING FRAME ============ -->
+<section id="top" data-screen-label="Hero" style="position:relative;height:100svh;min-height:660px;overflow:hidden;background:#1F2D25">
+  <img data-m="zoom" src="assets/img/standard-first-light.webp" fetchpriority="high" decoding="async" alt="A golfer walking the fairway at first light, leather bag on the shoulder" class="pos-hero" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform">
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,30,24,.44) 0%,rgba(24,30,24,.08) 32%,rgba(24,30,24,.16) 62%,rgba(22,28,22,.72) 100%)"></div>
-  <div style="position:relative;flex:1 1 auto;display:flex;align-items:flex-end;padding:clamp(74px,12vh,120px) clamp(20px,4vw,54px) clamp(26px,3.4vh,44px)">
-    <div style="max-width:1500px;margin:0 auto;width:100%">
-      <p style="overflow:hidden;padding-bottom:2px"><span style="display:block;animation:sigMaskUp 1.02s cubic-bezier(.16,1,.3,1) .28s both;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#E4D6A9">A Commissioning House for Golf &mdash; Est. 2026</span></p>
-      <div data-hero-grid style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,3vw,44px);align-items:end">
-      <div>
-      <h1 style="animation:sigHero 1.02s cubic-bezier(.16,1,.3,1) 0.42s both;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,6.2vw,104px);line-height:.98;letter-spacing:-.018em;color:#FBF8F1;margin-top:clamp(14px,2vh,26px);text-wrap:nowrap">Some names deserve<br><em style="font-style:italic;color:#EBD9A8"><span id="hero-type">to be carried.</span><span style="display:inline-block;width:3px;height:.72em;margin-left:6px;background:#EBD9A8;animation:sigCaret 1.05s steps(1,end) infinite"></span></em></h1>
-      <div style="animation:sigHero 1.02s cubic-bezier(.16,1,.3,1) 0.53s both;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-top:clamp(22px,3.4vh,40px)">
-        <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#E8E1CE;max-width:44ch">We draw the mark, set it by hand, and put it on the pieces they take out every week &mdash; until the leather is soft and the name has outlived the gift.</p>
-        <a class="hero-cta" href="#begin" style="display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;color:#1F2D25;background:#F1EADA;padding:17px 30px;border-radius:2px;transition:background .3s ease,color .3s ease">Commission your mark <span style="font-size:13px">&rarr;</span></a>
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,54px) clamp(38px,6vh,74px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <p style="overflow:hidden;padding-bottom:2px"><span data-m="heromask" style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#E4D6A9">A Commissioning House for Golf — Est. 2026</span></p>
+      <h1 data-m="hero" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(46px,7.6vw,124px);line-height:.98;letter-spacing:-.018em;color:#FBF8F1;margin-top:clamp(14px,2vh,26px);max-width:17ch">Some things are carried, <em style="font-style:italic;color:#EBD9A8">not bought.</em></h1>
+      <div data-m="hero" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-top:clamp(22px,3.4vh,40px)">
+        <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#E8E1CE;max-width:44ch">Bespoke craftsmanship for golfers who value personal identity — not only those with a private club.</p>
+        <a data-m="cta" href="#commission" class="hov-parch" style="display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#1F2D25;background:#F1EADA;padding:17px 30px;border-radius:2px;transition:background .3s ease,color .3s ease">Commission your mark <span data-m="arrow" style="font-size:13px">→</span></a>
       </div>
-      <div style="animation:sigHero 1.02s cubic-bezier(.16,1,.3,1) 0.64s both;display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(241,234,218,.22);margin-top:clamp(22px,3.4vh,38px);padding-top:22px">
-        <span style="padding:11px 18px;border-radius:999px;border:1px solid rgba(241,234,218,.32);font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#EFE8D8">For a parent</span>
-        <span style="padding:11px 18px;border-radius:999px;border:1px solid rgba(241,234,218,.32);font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#EFE8D8">For a partner</span>
-        <span style="padding:11px 18px;border-radius:999px;border:1px solid rgba(241,234,218,.32);font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#EFE8D8">For a first tee</span>
-      </div>
-      </div>
-      <div data-hero-frames style="animation:sigHero 1.02s cubic-bezier(.16,1,.3,1) 0.75s both;position:relative;width:clamp(220px,20vw,290px);height:clamp(300px,34vh,392px)">
-        <figure style="position:absolute;right:0;top:0;width:56%;margin:0;animation:sigFloat 7.4s ease-in-out infinite;cursor:pointer"><img loading="lazy" src="assets/img/collection-headcovers.jpg" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;box-shadow:0 26px 50px -22px rgba(0,0,0,.72);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease,filter .5s ease"><figcaption style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#C6BF9F;margin-top:10px">A mark, set by hand</figcaption></figure>
-        <figure style="position:absolute;left:0;bottom:0;width:40%;margin:0;animation:sigFloat2 8.6s ease-in-out infinite;cursor:pointer"><img loading="lazy" src="assets/img/collection-stand-bag.jpg" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;box-shadow:0 26px 50px -22px rgba(0,0,0,.72);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease,filter .5s ease"><figcaption style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#C6BF9F;margin-top:10px">Carried, then handed on</figcaption></figure>
-      </div>
-      </div>
-    </div>
-  </div>
-  <div style="animation:sigHero 1.02s cubic-bezier(.16,1,.3,1) 0.86s both;position:relative;flex:0 0 auto">
-    <div style="overflow:hidden;padding:15px 0;background:rgba(12,18,14,.44);border-top:1px solid rgba(241,234,218,.16);border-bottom:1px solid rgba(241,234,218,.16)">
-      <div class="sig-marq" style="display:flex;width:max-content;animation:sigMarqA 36s linear infinite"><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span></div>
-    </div>
-    <div style="overflow:hidden;padding:15px 0 17px;background:rgba(201,167,106,.12)">
-      <div class="sig-marq" style="display:flex;width:max-content;animation:sigMarqB 46s linear infinite"><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 02 THE STANDARD ============ -->
-<section class="manifesto section-pad" id="identity">
-  <div class="rail"><span>Your Identity</span><span class="num">02 // 10</span></div>
-  <div class="wrap">
-    <p class="eyebrow reveal">Your Identity</p>
-    <p class="statement reveal">Most golf gear looks the same. Most golfers arrive looking the same. <em>Signum celebrates people, not products.</em></p>
-    <div class="pillars">
-      <div class="pillar reveal">
-        <span class="pnum">I</span>
-        <h3>The Mark</h3>
-        <p>A name, a number, an emblem — designed one-on-one with our studio and carried across every piece you commission. Not a logo you rent. A mark you own.</p>
-      </div>
-      <div class="pillar reveal">
-        <span class="pnum">II</span>
-        <h3>The Craft</h3>
-        <p>Full-grain leathers, tournament-weight cloth, polished hardware. Materials chosen to take a patina and hold a memory — made to outlast the season, and the next.</p>
-      </div>
-      <div class="pillar reveal">
-        <span class="pnum">III</span>
-        <h3>The Meaning</h3>
-        <p>Signum brings bespoke golf craftsmanship to every golfer who values personal identity — not just those with access to a private club.</p>
-      </div>
-    </div>
-    <div class="why-grid">
-      <div class="m-img landscape reveal">
-        <img src="assets/img/hero-commission-set.jpg" alt="A commissioned set of taupe leather headcovers with a debossed personal mark and antique-brass numeral, beside an olive branch" width="1536" height="1024">
-      </div>
-      <div class="reveal">
-        <p class="eyebrow">Why Signum Exists</p>
-        <h3 style="margin:18px 0 16px">The mark used to mean access. Now it means you.</h3>
-        <p style="font-size:17.5px">For a century, a personal mark on golf gear meant one thing: a locker at the right club, a name on the right list. The craft was real — the door was closed. Signum was founded to change the terms, not the standard. The same full-grain leather, the same hand-finishing, the same one-of-one design — commissioned directly, by any golfer who values what a mark says about the person carrying it.</p>
+      <div data-m="hero" style="display:flex;gap:clamp(18px,3vw,46px);flex-wrap:wrap;border-top:1px solid rgba(241,234,218,.22);margin-top:clamp(22px,3.4vh,38px);padding-top:20px">
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Men</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Women</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Juniors</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Couples</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Corporate</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Private Clubs</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 03 THE MARK SYSTEM ============ -->
-<section class="mark section-pad" id="mark">
-  <div class="rail"><span>The Mark System</span><span class="num">03 // 10</span></div>
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow reveal">The Mark System</p>
-      <h2 class="reveal">One Mark. Every Piece.</h2>
-      <p class="lede reveal">Headcovers, bag, towel, polo, shoes, glove. Every piece carries the same personal mark and the same colorway — commissioned as a single work rather than purchased as separate products.</p>
+<!-- ============ WHY SIGNUM EXISTS ============ -->
+<section data-screen-label="Why Signum" style="background:#F6F1E7;padding:clamp(76px,13vh,168px) clamp(20px,4vw,54px)">
+  <div data-m="head" style="max-width:1180px;margin:0 auto">
+    <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Why Signum Exists <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4.1vw,60px);line-height:1.14;letter-spacing:-.012em;color:#2A362E;margin-top:clamp(22px,3vw,38px);max-width:30ch">Signum brings bespoke golf craftsmanship to every golfer who values personal identity — not just those with access to a private club.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(26px,4vw,68px);margin-top:clamp(38px,5vw,66px);padding-top:clamp(28px,3vw,40px);border-top:1px solid #D8CDB6">
+      <p style="font-size:18px;line-height:1.62">For a century a personal mark meant one thing: a locker at the right club. The craft was real. The door was closed.</p>
+      <p style="font-size:18px;line-height:1.62">We kept the craft and removed the door. Every commission is drawn one-on-one, proofed before it is made, and produced for one person only.</p>
+      <p style="font-size:18px;line-height:1.62;font-style:italic;color:#463729">Championship course or municipal nine — your identity is worth drawing properly.<span style="display:block;font-style:normal;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-top:16px">— The Founder</span></p>
     </div>
-    <div class="mark-grid">
-      <div class="controls reveal">
-        <div class="ctl">
-          <span class="ctl-label">Your initials &amp; number</span>
-          <div class="fields">
-            <input class="initials" id="mkInitials" type="text" maxlength="3" value="SG" aria-label="Initials" autocomplete="off">
-            <input class="clubnum" id="mkNumber" type="text" maxlength="2" value="3" aria-label="Number" autocomplete="off">
+  </div>
+</section>
+
+<!-- ============ I. YOUR IDENTITY ============ -->
+<section id="identity" data-screen-label="Your Identity" style="position:relative;background:#1F2D25">
+  <div style="position:relative">
+    <div style="position:relative;height:100vh;overflow:hidden">
+      <img data-m="idpar" src="assets/img/her-terrace.webp" alt="A woman on the clubhouse terrace at golden hour, monogrammed headcover on the table" class="pos-identity" style="width:100%;height:100%;object-fit:cover;will-change:transform">
+      <div data-m="scrim" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(24,30,24,.82) 0%,rgba(24,30,24,.42) 42%,rgba(24,30,24,0) 66%)"></div>
+      <div data-m="hold" style="position:absolute;inset:0;display:flex;align-items:center;padding:0 clamp(20px,4vw,54px)">
+        <div style="max-width:1500px;margin:0 auto;width:100%">
+          <div data-m="head" style="max-width:26ch">
+            <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#D8BF7F">Chapter I — Your Identity</p>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(36px,5.2vw,80px);line-height:1.02;letter-spacing:-.014em;color:#FBF8F1;margin-top:20px">Before it is an object, it is a <em style="font-style:italic;color:#EBD9A8">signature.</em></h2>
+            <p style="font-size:19px;line-height:1.55;color:#E4DECB;margin-top:24px">Your initials, your number, the year your daughter first broke a hundred. One mark, carried across everything you play with.</p>
+            <a href="#commission" class="hov-ivory" style="display:inline-flex;align-items:center;gap:10px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#EBD9A8;border-bottom:1px solid rgba(235,217,168,.4);padding-bottom:4px;margin-top:30px;transition:color .3s ease,border-color .3s ease">Draw your mark</a>
           </div>
         </div>
-        <div class="ctl">
-          <span class="ctl-label">Mark style</span>
-          <div class="seg" id="mkStyle" role="group" aria-label="Mark style">
-            <button type="button" class="on" data-style="interlocked">Interlocked</button>
-            <button type="button" data-style="roundel">Roundel</button>
-            <button type="button" data-style="signature">Signature</button>
-          </div>
-        </div>
-        <div class="ctl">
-          <span class="ctl-label">Colorway</span>
-          <div class="swatches" id="mkColors" role="group" aria-label="Colorway"></div>
-          <div class="swatch-name" id="mkColorName"></div>
-        </div>
-        <p class="mark-note">A sketch, not the proof — every commission is drawn by hand before a single stitch is made.</p>
       </div>
-      <div class="preview reveal">
-        <svg id="mkPreview" viewBox="0 0 640 560" role="img" aria-label="Live preview of your personal mark on leather">
-          <g filter="url(#grain)">
-            <rect id="pvLeather" x="8" y="8" width="624" height="544" rx="12" fill="#BCA37E"/>
-            <rect x="8" y="8" width="624" height="544" rx="12" fill="url(#tileLight)"/>
-          </g>
-          <rect id="pvStitch" x="30" y="30" width="580" height="500" rx="8" fill="none" stroke="#8A7250" stroke-opacity=".55" stroke-dasharray="3 6" stroke-width="1.6"/>
-          <g id="pvMark"></g>
-          <g id="pvMedal" transform="translate(552,86)">
-            <circle r="30" fill="url(#brassGrad)"/>
-            <circle r="23.5" fill="none" stroke="#6E5426" stroke-width="1.1"/>
-            <text id="pvMedalNum" y="9" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="26" font-weight="600" fill="#4E3B17">3</text>
-          </g>
-          <text id="pvCaption" x="320" y="514" text-anchor="middle" font-family="SF Mono,Menlo,monospace" font-size="10" letter-spacing="4" fill="#7E6844">PARCHMENT &amp; SADDLE · ONE OF ONE</text>
-        </svg>
-        <div class="carried" aria-label="Carried across every piece">
-          <span>Headcovers</span><span>Bag</span><span>Towel</span><span>Polo</span><span>Shoes</span><span>Glove</span>
-        </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(216,205,182,.16)">
+      <div data-m="rise" style="background:#1F2D25;padding:clamp(30px,3.4vw,48px) clamp(22px,2.6vw,38px)">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;color:#9C7B41">01</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F1EADA;margin:14px 0 12px;line-height:1.16">No templates</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">Drawn from scratch. Nothing pulled from a font menu.</p>
+      </div>
+      <div data-m="rise" style="background:#1F2D25;padding:clamp(30px,3.4vw,48px) clamp(22px,2.6vw,38px)">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;color:#9C7B41">02</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F1EADA;margin:14px 0 12px;line-height:1.16">Proof before production</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">A proof on the material itself. Nothing is cut until you say so.</p>
+      </div>
+      <div data-m="rise" style="background:#1F2D25;padding:clamp(30px,3.4vw,48px) clamp(22px,2.6vw,38px)">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;color:#9C7B41">03</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F1EADA;margin:14px 0 12px;line-height:1.16">One colorway, carried</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">Leather, thread and edge paint held consistent across every piece.</p>
+      </div>
+      <div data-m="rise" style="background:#1F2D25;padding:clamp(30px,3.4vw,48px) clamp(22px,2.6vw,38px)">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.26em;color:#9C7B41">04</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F1EADA;margin:14px 0 12px;line-height:1.16">Kept on file</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">Add a piece in ten years and it will still match.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 COMMISSIONS ============ -->
-<section class="commissions section-pad" id="commissions">
-  <div class="rail"><span>Commissions</span><span class="num">04 // 10</span></div>
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow reveal">Recent Commissions</p>
-      <h2 class="reveal">From the atelier’s ledger.</h2>
-      <p class="lede reveal">Every Signum piece begins as an entry in the commission book — a name, a story, and a mark that has never existed before.</p>
-    </div>
-    <div class="card-grid">
-      <article class="ccard reveal">
-        <div class="ccard-tile" style="background:#BCA37E">
-          <span class="cnum" style="color:#5E4A2E">Commission Nº 014</span>
-          <svg viewBox="0 0 200 150" style="width:70%" aria-hidden="true">
-            <g filter="url(#deboss)" fill="#82683F">
-              <text x="88" y="95" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="72" font-weight="600">M</text>
-              <text x="122" y="112" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="72" font-weight="500" font-style="italic" opacity=".85">G</text>
-            </g>
-          </svg>
-        </div>
-        <div class="ccard-body">
-          <h3>The Montgomerie Set</h3>
-          <p>A full-bag commission in taupe calf — driver through putter, brass numerals, one interlocked mark repeated from headcover to towel clip.</p>
-          <span class="meta">Full Commission · Taupe &amp; Brass</span>
-        </div>
-      </article>
-      <article class="ccard reveal">
-        <div class="ccard-tile">
-          <span class="cnum on-photo">Commission Nº 019</span>
-          <img class="img-cover" src="assets/img/commission-ninth-birthday.jpg" alt="A young girl at the first tee holding a navy leather headcover embroidered with her initials" width="1448" height="1086">
-        </div>
-        <div class="ccard-body">
-          <h3>A Ninth Birthday</h3>
-          <p>A three-piece junior set in navy and champagne, stitched with a single initial and the number she chose herself — ready for her first tournament season.</p>
-          <span class="meta">Junior Set · Navy &amp; Champagne</span>
-        </div>
-      </article>
-      <article class="ccard reveal">
-        <div class="ccard-tile">
-          <span class="cnum on-photo">Commission Nº 022</span>
-          <img class="img-cover" src="assets/img/commission-member-guest.jpg" alt="Twenty-four matching racing-green leather headcovers with gold marks arranged on white linen before a trophy cabinet" width="1448" height="1086">
-        </div>
-        <div class="ccard-body">
-          <h3>The Member-Guest Gift</h3>
-          <p>Twenty-four towel-and-headcover sets for an invitational field — each pair carrying its own team mark, delivered sorted by pairing, ready for the first tee.</p>
-          <span class="meta">Event Program · Racing Green &amp; Gold</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 05 COLLECTION ============ -->
-<section id="collection" style="background:#F6F1E7;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
+<!-- ============ II. THE COLLECTION ============ -->
+<section id="collection" data-screen-label="The Collection" style="background:#F6F1E7;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
   <div style="max-width:1500px;margin:0 auto">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap">
+    <div data-m="head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap">
       <div style="max-width:22ch">
         <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Chapter II <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
         <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:-.014em;color:#2A362E;margin-top:20px">The Collection</h2>
@@ -744,601 +232,1045 @@ header:not(.scrolled) .nav-links a{color:#F1EADA}
       <p style="font-size:18.5px;line-height:1.58;max-width:44ch">Six pieces, one mark. A single commission or the full set.</p>
     </div>
 
-    <div data-collection style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1px;background:#D8CDB6;border:1px solid #D8CDB6;border-radius:3px;overflow:hidden;margin-top:clamp(34px,4.6vw,64px)">
-      <div style="position:relative;background:#26382E;align-self:stretch;min-height:clamp(300px,42vw,460px);overflow:hidden">
-        <img loading="lazy" decoding="async" data-col-img="0" src="assets/img/collection-headcovers.jpg" alt="Commissioned leather headcovers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:1;transform:scale(1);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
-        <img loading="lazy" decoding="async" data-col-img="1" src="assets/img/collection-stand-bag.jpg" alt="Commissioned stand bag" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
-        <img loading="lazy" decoding="async" data-col-img="2" src="assets/img/collection-polo.jpg" alt="Commissioned shirt with monogram" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
-        <img loading="lazy" decoding="async" data-col-img="3" src="assets/img/collection-towel.jpg" alt="Commissioned towel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
-        <img loading="lazy" decoding="async" data-col-img="4" src="assets/img/collection-footwear.jpg" alt="Commissioned footwear" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
-        <img loading="lazy" decoding="async" data-col-img="5" src="assets/img/collection-full-commission.jpg" alt="The full commission, laid out" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
-        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,28,22,0) 52%,rgba(22,28,22,.62) 100%)"></span>
-        <span data-col-caption style="position:absolute;left:26px;bottom:24px;font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.6vw,64px);line-height:1;color:rgba(241,234,218,.92)">I</span>
-        <span style="position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(241,234,218,.16)"><span data-col-progress style="display:block;height:100%;width:0;background:#D8BF7F;transform-origin:left"></span></span>
-      </div>
-      <div style="background:#F1EADA;display:flex;flex-direction:column;justify-content:center">
-        <button type="button" data-col-row="0" aria-pressed="true" style="position:relative;display:block;width:100%;text-align:left;background:#FBF8F1;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
-          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(1);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
-          <span style="display:flex;align-items:baseline;gap:16px">
-            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">I</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">The set of four</span>
-            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Headcovers</span>
-          </span>
-          <span data-col-body style="display:grid;grid-template-rows:1fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:1">
-            <span style="overflow:hidden;min-height:0">
-              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
-                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Vegetable-tanned leather, hand-stamped, numbered interiors. Driver through hybrid.</span>
-                <a class="col-enq" href="#begin" data-type="The Headcover Set" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
-              </span>
-            </span>
-          </span>
-        </button>
-        <button type="button" data-col-row="1" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
-          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
-          <span style="display:flex;align-items:baseline;gap:16px">
-            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">II</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">The carry</span>
-            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Stand Bag</span>
-          </span>
-          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
-            <span style="overflow:hidden;min-height:0">
-              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
-                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Waxed canvas and saddle leather. Mark at the ball pocket, initials at the strap.</span>
-                <a class="col-enq" href="#begin" data-type="The Stand Bag" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
-              </span>
-            </span>
-          </span>
-        </button>
-        <button type="button" data-col-row="2" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
-          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
-          <span style="display:flex;align-items:baseline;gap:16px">
-            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">III</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Chest, shoulder, or both</span>
-            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Shirt</span>
-          </span>
-          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
-            <span style="overflow:hidden;min-height:0">
-              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
-                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Mercerised cotton piqu&eacute;. Mark at the chest, the shoulder, or both.</span>
-                <a class="col-enq" href="#begin" data-type="The Signature Polo" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Place the mark</a>
-              </span>
-            </span>
-          </span>
-        </button>
-        <button type="button" data-col-row="3" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
-          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
-          <span style="display:flex;align-items:baseline;gap:16px">
-            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">IV</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Woven, not printed</span>
-            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Towel</span>
-          </span>
-          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
-            <span style="overflow:hidden;min-height:0">
-              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
-                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Turkish cotton, woven mark, leather-tab carabiner. The piece most often noticed.</span>
-                <a class="col-enq" href="#begin" data-type="The Clubhouse Towel" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
-              </span>
-            </span>
-          </span>
-        </button>
-        <button type="button" data-col-row="4" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
-          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
-          <span style="display:flex;align-items:baseline;gap:16px">
-            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">V</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Marked at the heel</span>
-            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Footwear</span>
-          </span>
-          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
-            <span style="overflow:hidden;min-height:0">
-              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
-                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">A debossed mark at the heel counter, initials on the tongue lining.</span>
-                <a class="col-enq" href="#begin" data-type="Custom Footwear" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
-              </span>
-            </span>
-          </span>
-        </button>
-        <button type="button" data-col-row="5" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
-          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
-          <span style="display:flex;align-items:baseline;gap:16px">
-            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">VI</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Everything, as one work</span>
-            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">The Full Commission</span>
-          </span>
-          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
-            <span style="overflow:hidden;min-height:0">
-              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
-                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Every piece drawn together in one colorway, presented as a set.</span>
-                <a class="col-enq" href="#begin" data-type="The Full Commission" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
-              </span>
-            </span>
-          </span>
-        </button>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:1px;background:#D8CDB6;border:1px solid #D8CDB6;border-radius:3px;overflow:hidden;margin-top:clamp(34px,4.6vw,64px)">
+      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="Commissioned leather headcovers" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">I — Headcovers</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">The set of four</h3>
+          <p style="font-size:16.5px;flex:1;line-height:1.58">Vegetable-tanned leather, hand-stamped, numbered interiors. Driver through hybrid.</p>
+          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
         </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 06 HER / JUNIOR ============ -->
-<section class="duo section-pad" id="legacy">
-  <div class="rail"><span>Family Legacy</span><span class="num">06 // 10</span></div>
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow reveal">Family Legacy</p>
-      <h2 class="reveal">One mark. Passed down.</h2>
-      <p class="lede reveal">Couples who play together, juniors finding their game, families with a standing Sunday tee time — a Signum mark is made to be shared, and one day, handed on.</p>
-    </div>
-    <div class="duo-grid" style="margin-top:clamp(44px,5vw,70px)">
-      <div class="duo-card her reveal">
-        <div class="duo-media">
-          <img class="img-cover" src="assets/img/her-terrace.jpg" alt="A woman golfer in cream cashmere laughing on a clubhouse terrace at golden hour, a monogrammed cream headcover beside her espresso" width="1672" height="941">
-        </div>
-        <div class="duo-body">
-          <p class="eyebrow" style="color:#D8BF7F">For Her</p>
-          <p class="duo-big">Not a women’s line. <em>Her line.</em></p>
-          <p>Cream leather, champagne thread, navy with rose gold — designed one-on-one and held to the same standard as every other commission.</p>
-          <div class="chips"><span>Cream</span><span>Champagne</span><span>Rose Gold</span><span>Blush</span><span>Silver</span></div>
-          <a class="tlink" href="#begin" data-type="For Her">Begin her commission &rarr;</a>
-        </div>
-      </div>
-      <div class="duo-card jr reveal">
-        <div class="duo-media">
-          <img class="img-cover" src="assets/img/junior-first-tee.jpg" alt="A young golfer walking off the green carrying his own bag with a navy number-seven headcover, parents applauding behind" width="1536" height="1024">
-        </div>
-        <div class="duo-body">
-          <p class="eyebrow">For Junior</p>
-          <p class="duo-big">Stand out from the first tee.</p>
-          <p>Every serious junior athlete has gear that signals identity. In golf, that usually disappears. Signum gives juniors a number, initials, or a mark that is entirely theirs.</p>
-          <div class="chips"><span>$185 Set Starts</span><span>3-Pc Headcover Set</span><span>Made for Them</span></div>
-          <a class="tlink" href="#begin" data-type="For Junior">Begin their commission &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 07 PROGRAMS ============ -->
-<section class="programs section-pad" id="clubs">
-  <div class="rail"><span>Clubs &amp; Tournaments</span><span class="num">07 // 10</span></div>
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow reveal">Clubs &amp; Tournaments</p>
-      <h2 class="reveal">The tee gift they keep.</h2>
-      <p class="lede reveal">One conversation with the atelier can outfit an invitational field or an entire membership — every player with a mark of their own.</p>
-    </div>
-    <div class="prog-grid two">
-      <article class="prog reveal">
-        <div class="prog-media">
-          <img class="img-cover" src="assets/img/program-member-guest.jpg" alt="A row of golf carts at dawn outside a clubhouse, each seat holding an identical boxed gift set" width="1672" height="941">
-        </div>
-        <span class="glyph">i</span>
-        <h3>Member-Guest &amp; Invitationals</h3>
-        <p>Per-team marks, event numerals, and tournament colorways — delivered sorted by pairing, ready to set on the cart seat before the field arrives.</p>
-        <a class="tlink" href="#begin" data-type="Member-Guest & Invitationals">Enquire &rarr;</a>
       </article>
-      <article class="prog reveal">
-        <div class="prog-media">
-          <img class="img-cover" src="assets/img/program-private-clubs.jpg" alt="A trunk-show table in a club library with leather swatches, brass stamps, sample headcovers and a commission ledger" width="1448" height="1086">
+      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-stand-bag.webp" alt="Commissioned stand bag" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">II — Stand Bag</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">The carry</h3>
+          <p style="font-size:16.5px;flex:1;line-height:1.58">Waxed canvas and saddle leather. Mark at the ball pocket, initials at the strap.</p>
+          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
         </div>
-        <span class="glyph">ii</span>
-        <h3>Private Clubs &amp; Resorts</h3>
-        <p>A commissioning program under your own roof — trunk-show fittings for members, guest-of-honor gifts, and house colorways reserved to your club alone.</p>
-        <a class="tlink" href="#begin" data-type="Private Clubs & Resorts">Enquire &rarr;</a>
+      </article>
+      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-polo.webp" alt="Commissioned shirt with monogram" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">III — Shirt</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Chest, shoulder, or both</h3>
+          <p style="font-size:16.5px;flex:1;line-height:1.58">Mercerised cotton piqué. Mark at the chest, the shoulder, or both.</p>
+          <a href="#commission" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Place the mark</a>
+        </div>
+      </article>
+      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-towel.webp" alt="Commissioned towel" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">IV — Towel</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Woven, not printed</h3>
+          <p style="font-size:16.5px;flex:1;line-height:1.58">Turkish cotton, woven mark, leather-tab carabiner. The piece most often noticed.</p>
+          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
+        </div>
+      </article>
+      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-footwear.webp" alt="Commissioned footwear" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
+        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">V — Footwear</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Marked at the heel</h3>
+          <p style="font-size:16.5px;flex:1;line-height:1.58">A debossed mark at the heel counter, initials on the tongue lining.</p>
+          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
+        </div>
+      </article>
+      <article data-m="mask" style="background:#26382E;display:flex;flex-direction:column">
+        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-full-commission.webp" alt="The full commission, laid out" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.05) brightness(.94);transition:transform .8s ease"></div>
+        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#D8BF7F">VI — The Full Commission</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Everything, as one work</h3>
+          <p style="font-size:16.5px;flex:1;line-height:1.58;color:#A9A28D">Every piece drawn together in one colorway, presented as a set.</p>
+          <a href="#enquire" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#D8BF7F;border-bottom:1px solid rgba(216,191,127,.35);padding-bottom:3px;align-self:flex-start">Enquire</a>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ 08 CORPORATE ============ -->
-<section class="corporate section-pad" id="corporate">
-  <div class="rail"><span>Corporate Collections</span><span class="num">08 // 10</span></div>
-  <div class="wrap">
-    <div class="corp-grid">
-      <div class="m-img landscape reveal">
-        <img src="assets/img/program-corporate.jpg" alt="An ivory gift box on an executive desk holding a forest-green leather headcover with gold initials, tissue paper and a note card" width="1448" height="1086">
+<!-- ============ III. COMMISSION YOUR MARK — the atelier table ============ -->
+<section id="commission" data-screen-label="Commission Your Mark" style="background:#EFE8D8;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
+  <div style="max-width:1500px;margin:0 auto">
+    <div data-m="head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap">
+      <div style="max-width:24ch">
+        <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Chapter III <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:-.014em;color:#2A362E;margin-top:20px">Commission Your Mark</h2>
+      </div>
+      <p style="font-size:18.5px;line-height:1.58;max-width:46ch">Choose the piece, place the mark where you want it seen, settle the colorway. Then we draw it by hand and send a proof.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(24px,3.4vw,62px);align-items:start;margin-top:clamp(36px,5vw,72px)">
+
+      <div style="background:#FBF8F1;border:1px solid #D8CDB6;border-radius:3px;padding:clamp(22px,2.6vw,40px);position:relative">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B3A98F">Proof — one of one</p>
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7B41">Simulated · not to scale</p>
+        </div>
+
+        <div id="stage" style="position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:2px;background:#EFE8D8;container-type:inline-size;touch-action:none">
+          <img id="stage-polo" loading="lazy" decoding="async" src="assets/img/collection-polo.webp" alt="Your mark shown on the commissioned shirt" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <img id="stage-headcover" loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="Your mark shown on the commissioned headcovers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
+          <img id="stage-bag" loading="lazy" decoding="async" src="assets/img/collection-stand-bag.webp" alt="Your mark shown on the commissioned stand bag" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
+
+          <div id="zone" style="display:none"><span id="zoneLabel" style="position:absolute;left:0;top:-18px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#FBF8F1;text-shadow:0 1px 6px rgba(20,26,20,.8);white-space:nowrap"></span></div>
+
+          <div id="slots" style="position:absolute;inset:0;pointer-events:none"></div>
+          <div id="hotspots" style="position:absolute;inset:0;pointer-events:none"></div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:18px">
+          <p id="proofCaption" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#8A7C5C"></p>
+          <button type="button" id="resetBtn" style="background:transparent;border:0;cursor:pointer;padding:0;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#9C7B41;border-bottom:1px solid rgba(156,123,65,.35)">Reset position</button>
+        </div>
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#B3A98F;margin-top:8px">Drag the mark to position it within the zone</p>
+      </div>
+
+      <div>
+        <div style="margin-bottom:30px">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A8474;margin-bottom:12px">The piece</span>
+          <div class="seg" id="garmentSeg">
+            <button type="button" data-g="polo" class="on">Shirt</button>
+            <button type="button" data-g="headcover">Headcover</button>
+            <button type="button" data-g="bag">Stand Bag</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom:30px" id="placementCtl">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A8474;margin-bottom:12px">Placement</span>
+          <div class="seg" id="placementSeg">
+            <button type="button" data-p="chest" class="on">Chest</button>
+            <button type="button" data-p="shoulder">Shoulder</button>
+            <button type="button" data-p="both">Both</button>
+          </div>
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#B3A98F;margin-top:11px">Or tap the marked points on the proof</p>
+        </div>
+
+        <div style="margin-bottom:30px">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A8474;margin-bottom:12px">The mark</span>
+          <div class="seg" id="styleSeg">
+            <button type="button" data-s="initials" class="on">Initials</button>
+            <button type="button" data-s="medallion">Medallion</button>
+            <button type="button" data-s="signature">Signature</button>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;margin-bottom:30px;flex-wrap:wrap">
+          <label style="flex:1;min-width:150px">
+            <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A8474;margin-bottom:12px">Initials</span>
+            <input type="text" id="iniInput" maxlength="3" value="MG" placeholder="MG" style="font-family:'Cormorant Garamond',serif;font-size:19px;color:#2A362E;background:#FBF8F1;border:1px solid #D8CDB6;border-radius:2px;padding:13px 16px;width:100%;outline:none;letter-spacing:.14em;text-transform:uppercase">
+          </label>
+          <label style="width:118px">
+            <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A8474;margin-bottom:12px">Number</span>
+            <input type="text" id="numInput" maxlength="2" value="3" placeholder="3" style="font-family:'Cormorant Garamond',serif;font-size:19px;color:#2A362E;background:#FBF8F1;border:1px solid #D8CDB6;border-radius:2px;padding:13px 16px;width:100%;outline:none">
+          </label>
+        </div>
+
+        <div style="margin-bottom:30px">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A8474;margin-bottom:12px">Colorway</span>
+          <div id="swatches" style="display:flex;gap:12px;flex-wrap:wrap">
+            <button type="button" class="swatch on" title="Parchment &amp; Saddle" aria-label="Parchment &amp; Saddle" style="border:1px solid #C9BB9C;background:linear-gradient(135deg,#EFE8D8 0 52%,#8A6A47 52% 100%)"></button>
+            <button type="button" class="swatch" title="Deep Green &amp; Brass" aria-label="Deep Green &amp; Brass" style="border:1px solid #1A281F;background:linear-gradient(135deg,#26382E 0 52%,#C9A961 52% 100%)"></button>
+            <button type="button" class="swatch" title="Navy &amp; Rose Gold" aria-label="Navy &amp; Rose Gold" style="border:1px solid #1A2336;background:linear-gradient(135deg,#25314B 0 52%,#D9A88C 52% 100%)"></button>
+            <button type="button" class="swatch" title="Burgundy &amp; Gold" aria-label="Burgundy &amp; Gold" style="border:1px solid #4E2027;background:linear-gradient(135deg,#6E2F36 0 52%,#D2B36A 52% 100%)"></button>
+            <button type="button" class="swatch" title="Espresso &amp; Camel" aria-label="Espresso &amp; Camel" style="border:1px solid #31261C;background:linear-gradient(135deg,#463729 0 52%,#C4A87E 52% 100%)"></button>
+          </div>
+          <p id="cwName" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9C7B41;margin-top:14px;min-height:14px"></p>
+        </div>
+
+        <div style="border-top:1px solid #D8CDB6;padding-top:24px">
+          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#8A8474;margin-bottom:14px">Carried across</p>
+          <div style="display:flex;gap:9px;flex-wrap:wrap">
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#57544A;border:1px solid #D8CDB6;border-radius:999px;padding:7px 14px">Headcovers</span>
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#57544A;border:1px solid #D8CDB6;border-radius:999px;padding:7px 14px">Stand bag</span>
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#57544A;border:1px solid #D8CDB6;border-radius:999px;padding:7px 14px">Shirt</span>
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#57544A;border:1px solid #D8CDB6;border-radius:999px;padding:7px 14px">Towel</span>
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#57544A;border:1px solid #D8CDB6;border-radius:999px;padding:7px 14px">Glove</span>
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#57544A;border:1px solid #D8CDB6;border-radius:999px;padding:7px 14px">Footwear</span>
+          </div>
+          <a data-m="cta" href="#enquire" class="hov-dark" style="display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#F1EADA;background:#26382E;padding:17px 30px;border-radius:2px;margin-top:28px;transition:background .3s ease">Begin a conversation <span data-m="arrow" style="font-size:13px">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PROCESS ============ -->
+<section data-m="story" data-screen-label="The Process" style="background:#26382E">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
+    <div data-m="media" style="min-height:420px;position:relative;align-self:stretch;overflow:hidden;background:#1F2D25">
+      <img data-m="frame" src="assets/img/craft-atelier.webp" alt="A brass hand-stamp pressing a monogram into vegetable-tanned leather" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;will-change:transform,opacity">
+      <img data-m="frame" loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;will-change:transform,opacity">
+      <img data-m="frame" loading="lazy" decoding="async" src="assets/img/collection-full-commission.webp" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;will-change:transform,opacity">
+    </div>
+    <div data-m="story-col" style="padding:clamp(52px,7vw,110px) clamp(24px,4vw,80px);display:flex;flex-direction:column;justify-content:center">
+      <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#D8BF7F">The Commission <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(32px,3.9vw,56px);line-height:1.06;letter-spacing:-.012em;color:#FBF8F1;margin:20px 0 16px">Five conversations, not a checkout.</h2>
+      <p style="font-size:18px;color:#A9A28D;line-height:1.58;max-width:44ch">Four to six weeks from first sketch to delivery. Nothing is produced without your word.</p>
+      <div style="position:relative;margin-top:clamp(30px,4vw,52px)">
+      <div aria-hidden="true" style="position:absolute;left:-20px;top:0;bottom:0;width:1px;background:rgba(216,191,127,.16)"></div>
+      <div data-m="track-fill" aria-hidden="true" style="position:absolute;left:-20px;top:0;height:100%;width:1px;background:#D8BF7F;transform:scaleY(0);transform-origin:top center"></div>
+      <ol style="list-style:none;display:grid;gap:0">
+        <li data-m="step" style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(216,191,127,.2)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#D8BF7F;line-height:1.2">I</span>
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Discover</h3>
+            <p style="font-size:16.5px;color:#A9A28D;margin-top:8px;line-height:1.58">How you play, who you play with, and what the mark should stand for.</p>
+          </div>
+        </li>
+        <li data-m="step" style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(216,191,127,.2)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#D8BF7F;line-height:1.2">II</span>
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Design Consultation</h3>
+            <p style="font-size:16.5px;color:#A9A28D;margin-top:8px;line-height:1.58">Two or three directions for your mark, colorway set with leather in hand.</p>
+          </div>
+        </li>
+        <li data-m="step" style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(216,191,127,.2)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#D8BF7F;line-height:1.2">III</span>
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Concept Review</h3>
+            <p style="font-size:16.5px;color:#A9A28D;margin-top:8px;line-height:1.58">Actual material, actual size, placement shown on every piece. Revise freely.</p>
+          </div>
+        </li>
+        <li data-m="step" style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(216,191,127,.2)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#D8BF7F;line-height:1.2">IV</span>
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Craftsmanship</h3>
+            <p style="font-size:16.5px;color:#A9A28D;margin-top:8px;line-height:1.58">Cut, stamped and stitched by one maker, who signs the interior.</p>
+          </div>
+        </li>
+        <li data-m="step" style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(216,191,127,.2);border-bottom:1px solid rgba(216,191,127,.2)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#D8BF7F;line-height:1.2">V</span>
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Delivery</h3>
+            <p style="font-size:16.5px;color:#A9A28D;margin-top:8px;line-height:1.58">Presented with the original drawing and entered into the commission book.</p>
+          </div>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IV. CLUBS & TOURNAMENTS ============ -->
+<section id="clubs" data-screen-label="Clubs and Tournaments" style="background:#EFE8D8;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
+  <div style="max-width:1500px;margin:0 auto">
+    <div data-m="head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap">
+      <div style="max-width:24ch">
+        <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Chapter IV <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:-.014em;color:#2A362E;margin-top:20px">Clubs &amp; Tournaments</h2>
+      </div>
+      <p style="font-size:18.5px;line-height:1.58;max-width:44ch">One conversation can outfit an invitational field or an entire membership.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,2.6vw,34px);margin-top:clamp(34px,4.6vw,64px)">
+      <article data-m="mask">
+        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/program-member-guest.webp" alt="Member-guest tee gifts" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#2A362E;margin:20px 0 10px;line-height:1.14">Member-Guest</h3>
+        <p style="font-size:16.5px;line-height:1.6">Each guest's own initials rather than the tournament logo.</p>
+      </article>
+      <article data-m="mask">
+        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/program-private-clubs.webp" alt="Trunk show at a private club" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#2A362E;margin:20px 0 10px;line-height:1.14">Club Trunk Shows</h3>
+        <p style="font-size:16.5px;line-height:1.6">We bring the leather, stamps and drawing table to your clubhouse for a weekend.</p>
+      </article>
+      <article data-m="mask">
+        <div style="overflow:hidden;border-radius:3px;aspect-ratio:4/3"><img loading="lazy" decoding="async" src="assets/img/commission-member-guest.webp" alt="Tournament field commission" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)"></div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#2A362E;margin:20px 0 10px;line-height:1.14">Full Fields</h3>
+        <p style="font-size:16.5px;line-height:1.6">Individually marked pieces for a field of a hundred and forty, boxed and named.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V. CORPORATE COLLECTIONS ============ -->
+<section id="corporate" data-screen-label="Corporate Collections" style="background:#F6F1E7;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
+  <div style="max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,72px);align-items:center">
+    <div data-m="head">
+      <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Chapter V <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:-.014em;color:#2A362E;margin:20px 0 18px">Retire the logoed pullover.</h2>
+      <p style="font-size:18.5px;line-height:1.58;max-width:46ch">Each recipient's own initials, drawn by our studio. Your company's name appears once, discreetly, inside.</p>
+      <ul style="list-style:none;display:grid;gap:14px;margin-top:30px">
+        <li data-m="step" style="display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:17px;line-height:1.5;border-top:1px solid #D8CDB6;padding-top:14px"><span style="color:#9C7B41;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;padding-top:5px">01</span>Recipient lists handled privately, every mark drawn individually</li>
+        <li data-m="step" style="display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:17px;line-height:1.5;border-top:1px solid #D8CDB6;padding-top:14px"><span style="color:#9C7B41;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;padding-top:5px">02</span>Client, partner and executive gifting from twelve pieces</li>
+        <li style="display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:17px;line-height:1.5;border-top:1px solid #D8CDB6;padding-top:14px;border-bottom:1px solid #D8CDB6;padding-bottom:14px"><span style="color:#9C7B41;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;padding-top:5px">03</span>Boxed and named, ready to hand over</li>
+      </ul>
+      <a data-m="cta" href="#enquire" class="hov-dark" style="display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#F1EADA;background:#26382E;padding:17px 30px;border-radius:2px;margin-top:30px;transition:background .3s ease">Speak to the atelier <span data-m="arrow" style="font-size:13px">→</span></a>
+    </div>
+    <div>
+      <div style="overflow:hidden;border-radius:3px"><img data-m="par" data-d=".1" loading="lazy" decoding="async" src="assets/img/program-corporate.webp" alt="Corporate commission presentation" style="width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.82) contrast(1.04);will-change:transform"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VI. FAMILY LEGACY ============ -->
+<section id="legacy" data-screen-label="Family Legacy" style="background:#F6F1E7;padding:clamp(76px,12vh,150px) 0 0">
+  <div style="max-width:1500px;margin:0 auto;padding:0 clamp(20px,4vw,54px)">
+    <div data-m="head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap">
+      <div style="max-width:22ch">
+        <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Chapter VI <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:-.014em;color:#2A362E;margin-top:20px">Family Legacy</h2>
+      </div>
+      <p style="font-size:18.5px;line-height:1.58;max-width:44ch">Couples who play together. A junior finding her game. A mark is made to be shared, and one day handed on.</p>
+    </div>
+  </div>
+  <div style="position:relative;margin-top:clamp(34px,4.6vw,60px);height:clamp(480px,80vh,780px);overflow:hidden">
+    <img data-m="par" data-d=".18" src="assets/img/junior-first-tee.webp" alt="A junior golfer walking off the green, parents applauding behind" class="pos-legacy" style="width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,28,22,.8) 0%,rgba(22,28,22,.12) 52%,rgba(22,28,22,0) 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,54px) clamp(38px,5vw,70px)">
+      <div data-m="head" style="max-width:1500px;margin:0 auto">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(30px,4.2vw,64px);line-height:1.04;color:#FBF8F1;max-width:24ch">The number on that headcover will mean something in thirty years.</h3>
+        <p style="font-size:18px;color:#E4DECB;margin-top:18px;max-width:52ch;line-height:1.55">Junior commissions are held to the same standard as every other. A mark that is entirely theirs.</p>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1500px;margin:0 auto;padding:0 clamp(20px,4vw,54px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:#D8CDB6;border-left:1px solid #D8CDB6;border-right:1px solid #D8CDB6;border-bottom:1px solid #D8CDB6">
+      <div data-m="rise" style="background:#FBF8F1;padding:clamp(28px,3vw,42px)">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">For Her</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;color:#2A362E;margin:14px 0 12px;line-height:1.14">Not a women's line. <em style="font-style:italic">Her line.</em></h3>
+        <p style="font-size:16.5px;line-height:1.6">Cream leather and champagne thread, navy with rose gold — drawn one-on-one, held to the same standard.</p>
+      </div>
+      <div data-m="rise" style="background:#FBF8F1;padding:clamp(28px,3vw,42px)">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">For Two</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;color:#2A362E;margin:14px 0 12px;line-height:1.14">A pair of marks, one colorway.</h3>
+        <p style="font-size:16.5px;line-height:1.6">Two distinct marks in a shared palette. Recognisable together, individual in the hand.</p>
+      </div>
+      <div data-m="rise" style="background:#FBF8F1;padding:clamp(28px,3vw,42px)">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">For Junior</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;color:#2A362E;margin:14px 0 12px;line-height:1.14">Their own from the start.</h3>
+        <p style="font-size:16.5px;line-height:1.6">Every serious junior athlete has gear that signals identity. In golf it disappears. We give it back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE LEDGER ============ -->
+<section data-screen-label="Recent Commissions" style="background:#1F2D25;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
+  <div style="max-width:1500px;margin:0 auto">
+    <div data-m="head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap">
+      <div style="max-width:22ch">
+        <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#D8BF7F">Recent Commissions <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(32px,4.1vw,58px);line-height:1.04;color:#FBF8F1;margin-top:20px">From the ledger.</h2>
+      </div>
+      <p style="font-size:18px;line-height:1.58;max-width:44ch;color:#A9A28D">Every piece begins as an entry in the commission book — a name, a story, a mark that never existed before.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,34px);margin-top:clamp(34px,4.6vw,60px)">
+      <article data-m="rise" style="border-top:1px solid rgba(216,191,127,.28);padding-top:22px">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">No. 0117</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;margin:12px 0 10px;line-height:1.16">Two marks, one Sunday game</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">Thirty years of Sunday golf. Interlocking initials carried across two full sets.</p>
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957;margin-top:14px">Espresso &amp; Camel — Full commission</p>
+      </article>
+      <article data-m="rise" style="border-top:1px solid rgba(216,191,127,.28);padding-top:22px">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">No. 0142</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;margin:12px 0 10px;line-height:1.16">A ninth birthday</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">Her number as a brass medallion. The first thing she unpacks at every event.</p>
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957;margin-top:14px">Navy &amp; Rose Gold — Headcovers</p>
+      </article>
+      <article data-m="rise" style="border-top:1px solid rgba(216,191,127,.28);padding-top:22px">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">No. 0163</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;margin:12px 0 10px;line-height:1.16">A municipal nine, taken seriously</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">No club, no locker, thirty-two years of Thursday twilight.</p>
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957;margin-top:14px">Deep Green &amp; Brass — Bag &amp; shirts</p>
+      </article>
+      <article data-m="rise" style="border-top:1px solid rgba(216,191,127,.28);padding-top:22px">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">No. 0188</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;margin:12px 0 10px;line-height:1.16">One hundred and forty guests</h3>
+        <p style="font-size:16.5px;color:#A9A28D;line-height:1.6">An invitational field, each player's own initials. Not one logo in the boxing.</p>
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957;margin-top:14px">Burgundy &amp; Gold — Tournament</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IN THEIR WORDS ============ -->
+<section data-screen-label="In Their Words" style="background:#F6F1E7;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
+  <div style="max-width:1500px;margin:0 auto">
+    <div data-m="head" style="max-width:24ch">
+      <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">In Their Words <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(32px,4.1vw,58px);line-height:1.04;color:#2A362E;margin-top:20px">The question every piece gets asked.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,2.6vw,34px);margin-top:clamp(34px,4.6vw,60px)">
+      <figure data-m="rise" style="background:#FBF8F1;border:1px solid #D8CDB6;border-radius:3px;padding:clamp(26px,3vw,40px)">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.7vw,23px);line-height:1.44;color:#2A362E;font-style:italic">Three people asked where I got it before the second tee. Nobody asks that about golf gear.</p>
+        <figcaption style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-top:18px">Commission No. 0163</figcaption>
+      </figure>
+      <figure data-m="rise" style="background:#FBF8F1;border:1px solid #D8CDB6;border-radius:3px;padding:clamp(26px,3vw,40px)">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.7vw,23px);line-height:1.44;color:#2A362E;font-style:italic">She keeps the headcover on her nightstand before a tournament. That is what we actually bought.</p>
+        <figcaption style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-top:18px">Commission No. 0142</figcaption>
+      </figure>
+      <figure data-m="rise" style="background:#FBF8F1;border:1px solid #D8CDB6;border-radius:3px;padding:clamp(26px,3vw,40px)">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.7vw,23px);line-height:1.44;color:#2A362E;font-style:italic">I don't belong to a club. I have never cared less about that than I do carrying this bag.</p>
+        <figcaption style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-top:18px">Commission No. 0129</figcaption>
+      </figure>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(20px,2.6vw,40px);margin-top:clamp(50px,7vw,96px)">
+      <a data-m="rise" href="#enquire" style="display:block;border-top:1px solid #D8CDB6;padding-top:18px;text-decoration:none">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#9C7B41">Journal 01</p>
+        <h3 class="hov-saddle" style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:#2A362E;margin-top:10px;line-height:1.18;transition:color .3s ease">Why a mark beats a logo</h3>
+      </a>
+      <a data-m="rise" href="#enquire" style="display:block;border-top:1px solid #D8CDB6;padding-top:18px;text-decoration:none">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#9C7B41">Journal 02</p>
+        <h3 class="hov-saddle" style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:#2A362E;margin-top:10px;line-height:1.18;transition:color .3s ease">On vegetable-tanned leather</h3>
+      </a>
+      <a data-m="rise" href="#enquire" style="display:block;border-top:1px solid #D8CDB6;padding-top:18px;text-decoration:none">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#9C7B41">Journal 03</p>
+        <h3 class="hov-saddle" style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:#2A362E;margin-top:10px;line-height:1.18;transition:color .3s ease">Drawing a monogram that ages well</h3>
+      </a>
+      <a data-m="rise" href="#enquire" style="display:block;border-top:1px solid #D8CDB6;padding-top:18px;text-decoration:none">
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#9C7B41">Journal 04</p>
+        <h3 class="hov-saddle" style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:#2A362E;margin-top:10px;line-height:1.18;transition:color .3s ease">The case against the tournament logo</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENQUIRE ============ -->
+<section id="enquire" data-screen-label="Enquire" style="background:#EFE8D8;padding:clamp(76px,12vh,150px) clamp(20px,4vw,54px)">
+  <div style="max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,72px);align-items:start">
+    <div data-m="head">
+      <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Commission Your Mark <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:-.014em;color:#2A362E;margin:20px 0 18px">A conversation.<br>Not a checkout.</h2>
+      <p style="font-size:18.5px;line-height:1.58;max-width:44ch">Tell us what the mark should say. We reply within two business days with sketches, materials and a quote.</p>
+      <div style="display:flex;gap:clamp(18px,3vw,44px);flex-wrap:wrap;border-top:1px solid #D8CDB6;margin-top:32px;padding-top:22px">
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474">Individuals</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474">Couples</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474">Juniors</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474">Clubs</span>
+        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474">Corporate</span>
+      </div>
+    </div>
+    <form data-m="rise" id="enquireForm" style="background:#FBF8F1;border:1px solid #D8CDB6;border-radius:3px;padding:clamp(24px,3vw,42px)">
+      <div style="display:grid;gap:18px">
+        <label style="display:block">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-bottom:8px">Name</span>
+          <input type="text" name="name" style="font-family:'Cormorant Garamond',serif;font-size:19px;color:#2A362E;background:#F6F1E7;border:1px solid #D8CDB6;border-radius:2px;padding:13px 16px;width:100%;outline:none">
+        </label>
+        <label style="display:block">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-bottom:8px">Email</span>
+          <input type="email" name="email" style="font-family:'Cormorant Garamond',serif;font-size:19px;color:#2A362E;background:#F6F1E7;border:1px solid #D8CDB6;border-radius:2px;padding:13px 16px;width:100%;outline:none">
+        </label>
+        <label style="display:block">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-bottom:8px">The commission</span>
+          <select name="kind" style="font-family:'Cormorant Garamond',serif;font-size:19px;color:#2A362E;background:#F6F1E7;border:1px solid #D8CDB6;border-radius:2px;padding:13px 16px;width:100%;outline:none">
+            <option>A single piece</option>
+            <option>The full commission</option>
+            <option>Two marks — a couple</option>
+            <option>A junior commission</option>
+            <option>Club or tournament</option>
+            <option>Corporate gifting</option>
+          </select>
+        </label>
+        <label style="display:block">
+          <span style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8A8474;margin-bottom:8px">What should the mark say?</span>
+          <textarea name="notes" rows="4" style="font-family:'Cormorant Garamond',serif;font-size:19px;color:#2A362E;background:#F6F1E7;border:1px solid #D8CDB6;border-radius:2px;padding:13px 16px;width:100%;outline:none;resize:vertical"></textarea>
+        </label>
+        <button type="submit" class="hov-dark" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#F1EADA;background:#26382E;border:0;border-radius:2px;padding:17px 30px;cursor:pointer;justify-self:start;transition:background .3s ease">Send enquiry</button>
+        <p id="sentMsg" style="display:none;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9C7B41">Received — the atelier will be in touch.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer style="background:#1F2D25;padding:clamp(56px,8vw,100px) clamp(20px,4vw,54px) 34px">
+  <div style="max-width:1500px;margin:0 auto">
+    <div data-m="head" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(28px,4vw,60px)">
+      <div>
+        <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:14px;letter-spacing:.44em;text-transform:uppercase;color:#F1EADA;font-weight:500">Signum</p>
+        <p style="font-size:15.5px;margin-top:18px;max-width:30ch;font-style:italic;color:#A9A28D;line-height:1.6">One mark, one colorway, carried across every piece.</p>
       </div>
       <div>
-        <p class="eyebrow reveal">Corporate Collections</p>
-        <h2 class="reveal" style="margin:24px 0 20px">Retire the logoed pullover.</h2>
-        <p class="lede reveal">The gift that says you know exactly who it’s for. Each recipient’s own initials, drawn by our studio and presented in Signum packaging.</p>
-        <ul class="begin-points corp-points">
-          <li class="reveal">Closing gifts and client thank-yous, drop-shipped or delivered as one.</li>
-          <li class="reveal">Executive retreats and board gifts with a single house colorway.</li>
-          <li class="reveal">Programs quoted to scope — from four recipients to four hundred.</li>
+        <h4 style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#D8BF7F;margin-bottom:18px;font-weight:500">Chapters</h4>
+        <ul style="list-style:none;display:grid;gap:10px">
+          <li><a href="#identity" class="hov-cream" style="font-size:15.5px;color:#A9A28D;transition:color .3s ease">Your Identity</a></li>
+          <li><a href="#collection" class="hov-cream" style="font-size:15.5px;color:#A9A28D;transition:color .3s ease">The Collection</a></li>
+          <li><a href="#commission" class="hov-cream" style="font-size:15.5px;color:#A9A28D;transition:color .3s ease">Commission Your Mark</a></li>
         </ul>
-        <a class="tlink reveal" style="display:inline-block;margin-top:30px" href="#begin" data-type="Corporate & Executive Gifting">Enquire &rarr;</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 08 PROCESS ============ -->
-<section class="process section-pad" id="process">
-  <div class="rail"><span>The Process</span><span class="num">09 // 10</span></div>
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="eyebrow center reveal">The Commission</p>
-      <h2 class="reveal">Designed with you. Made for you alone.</h2>
-    </div>
-    <div class="steps five">
-      <div class="step reveal">
-        <span class="rn">I.</span>
-        <h3>Discover</h3>
-        <p>One piece, or the complete set — for him, for her, for junior, for the whole family.</p>
-      </div>
-      <div class="step reveal">
-        <span class="rn">II.</span>
-        <h3>Design Consultation</h3>
-        <p>One-on-one with our studio: your name, number, emblem, and colorway.</p>
-      </div>
-      <div class="step reveal">
-        <span class="rn">III.</span>
-        <h3>Concept Review</h3>
-        <p>A full proof before a single stitch is made. Nothing proceeds without your word.</p>
-      </div>
-      <div class="step reveal">
-        <span class="rn">IV.</span>
-        <h3>Craftsmanship</h3>
-        <p>Full-grain leather, tournament cloth, brass — hand-finished over three to four weeks.</p>
-      </div>
-      <div class="step reveal">
-        <span class="rn">V.</span>
-        <h3>Delivery</h3>
-        <p>Presented as it deserves to be — and made to be asked about.</p>
-      </div>
-    </div>
-    <div class="process-craft">
-      <div class="pc-img reveal">
-        <img src="assets/img/craft-atelier.jpg" alt="An artisan pressing a heated brass monogram stamp into full-grain leather at the workbench" width="1448" height="1086">
-      </div>
-      <p class="process-quote reveal">Signum is for the golfer who refuses to look like everyone else — at any age, at any level, at any course in the world.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WORDS + JOURNAL ============ -->
-<section class="words section-pad" id="words">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow reveal">In Their Words</p>
-      <h2 class="reveal">The question every piece gets asked.</h2>
-    </div>
-    <div class="quotes">
-      <blockquote class="quote reveal">
-        <p>The first time a playing partner asked where my bag was from, I realized nothing else I own gets that question.</p>
-        <footer>R.M. — Commission Nº 007, Scottsdale</footer>
-      </blockquote>
-      <blockquote class="quote reveal">
-        <p>My daughter carried her own initials into her first junior event. She walked to the tee differently. That was the whole point.</p>
-        <footer>A.T. — Commission Nº 019, Charleston</footer>
-      </blockquote>
-    </div>
-    <div class="journal">
-      <p class="eyebrow reveal">Notes from the Atelier</p>
-      <div class="jgrid">
-        <a class="jitem reveal" href="#begin">
-          <span class="jn">Nº 01 — Essay</span>
-          <h3>Why golf forgot the monogram</h3>
-          <p>The game that invented personal style spent forty years in a logoed uniform. A short history, and a correction.</p>
-        </a>
-        <a class="jitem reveal" href="#begin">
-          <span class="jn">Nº 02 — Essay</span>
-          <h3>The case for one colorway</h3>
-          <p>Why a bag assembled piece-by-piece never looks finished — and what changes when everything is commissioned as one work.</p>
-        </a>
-        <a class="jitem reveal" href="#begin">
-          <span class="jn">Nº 03 — Essay</span>
-          <h3>A gift that outlasts the season</h3>
-          <p>On tee gifts, closing gifts, and the difference between something given and something kept.</p>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 09 BEGIN ============ -->
-<section class="begin section-pad" id="begin">
-  <div class="wrap">
-    <div class="begin-grid">
       <div>
-        <p class="eyebrow reveal">Commission Your Mark</p>
-        <h2 class="reveal">A Conversation.<br>Not a Checkout.</h2>
-        <p class="lede reveal">We design your mark, present a proof, and begin production only when you say so.</p>
-        <ul class="begin-points">
-          <li class="reveal">No payment is taken online. Ever.</li>
-          <li class="reveal">Your designer replies within two business days.</li>
-          <li class="reveal">Individual commissions from $185. Event &amp; corporate programs quoted to scope.</li>
+        <h4 style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#D8BF7F;margin-bottom:18px;font-weight:500">Programmes</h4>
+        <ul style="list-style:none;display:grid;gap:10px">
+          <li><a href="#clubs" class="hov-cream" style="font-size:15.5px;color:#A9A28D;transition:color .3s ease">Clubs &amp; Tournaments</a></li>
+          <li><a href="#corporate" class="hov-cream" style="font-size:15.5px;color:#A9A28D;transition:color .3s ease">Corporate Collections</a></li>
+          <li><a href="#legacy" class="hov-cream" style="font-size:15.5px;color:#A9A28D;transition:color .3s ease">Family Legacy</a></li>
         </ul>
       </div>
-      <div class="form-card reveal" id="formCard">
-        <h3>Tell Us About the Golfer</h3>
-        <form id="commissionForm" novalidate>
-          <div class="frow">
-            <div>
-              <label for="fFirst">First name</label>
-              <input id="fFirst" type="text" autocomplete="given-name" required>
-            </div>
-            <div>
-              <label for="fLast">Last name</label>
-              <input id="fLast" type="text" autocomplete="family-name" required>
-            </div>
-          </div>
-          <div class="fgroup">
-            <label for="fEmail">Email</label>
-            <input id="fEmail" type="email" autocomplete="email" required>
-          </div>
-          <div class="fgroup">
-            <label for="fType">Commission type</label>
-            <select id="fType" required>
-              <option value="" selected>Select a starting point</option>
-              <option>The Headcover Set</option>
-              <option>The Stand Bag</option>
-              <option>The Clubhouse Towel</option>
-              <option>The Signature Polo</option>
-              <option>Custom Footwear</option>
-              <option>The Full Commission</option>
-              <option>For Her</option>
-              <option>For Junior</option>
-              <option>Corporate &amp; Executive Gifting</option>
-              <option>Member-Guest &amp; Invitationals</option>
-              <option>Private Clubs &amp; Resorts</option>
-            </select>
-          </div>
-          <div class="fgroup">
-            <label for="fVision">Your vision</label>
-            <textarea id="fVision" placeholder="Initials, a number, a story — anything that should live in the mark."></textarea>
-          </div>
-          <button class="btn btn-gold" type="submit">Begin the Commission &rarr;</button>
-          <p class="form-note">A conversation, not an obligation. We reply personally.</p>
-        </form>
+      <div>
+        <h4 style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#D8BF7F;margin-bottom:18px;font-weight:500">The Atelier</h4>
+        <p style="font-size:15.5px;color:#A9A28D;line-height:1.6">By appointment.<br>Answered within two business days.</p>
+        <a href="#enquire" style="display:inline-block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#D8BF7F;margin-top:16px;border-bottom:1px solid rgba(216,191,127,.4);padding-bottom:3px">Begin</a>
       </div>
     </div>
-  </div>
-</section>
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="site">
-  <div class="wrap">
-    <div class="fgrid">
-      <div class="fbrand">
-        <a class="brand" href="#top" style="text-decoration:none">
-          <span class="roundel" style="background:#D8BF7F;color:#26382E">S</span>
-          <span class="wordmark">Signum</span>
-        </a>
-        <p>Commissioned golf goods. One mark, one colorway, every piece — made for you alone.</p>
-      </div>
-      <div class="fcol">
-        <h4>Collection</h4>
-        <ul>
-          <li><a href="#collection">The Headcover Set</a></li>
-          <li><a href="#collection">The Stand Bag</a></li>
-          <li><a href="#collection">The Signature Polo</a></li>
-          <li><a href="#collection">The Full Commission</a></li>
-        </ul>
-      </div>
-      <div class="fcol">
-        <h4>House</h4>
-        <ul>
-          <li><a href="#identity">Your Identity</a></li>
-          <li><a href="#process">The Commission</a></li>
-          <li><a href="#clubs">Clubs &amp; Tournaments</a></li>
-          <li><a href="#corporate">Corporate Collections</a></li>
-          <li><a href="#begin">Begin a Commission</a></li>
-        </ul>
-      </div>
-      <div class="flist">
-        <h4>The List</h4>
-        <p>First proofs, new colorways, and commission openings. Quietly, monthly.</p>
-        <form id="listForm">
-          <input type="email" placeholder="Your email" aria-label="Email address" required>
-          <button type="submit">Join &rarr;</button>
-        </form>
-      </div>
-    </div>
-    <div class="fbottom">
-      <span>© 2026 Signum · Commissioned Golf Goods</span>
-      <span>Made to be asked about.</span>
+    <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(216,191,127,.15);margin-top:clamp(40px,5vw,60px);padding-top:26px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6F6957">
+      <span>© 2026 Signum</span>
+      <span>Drawn by hand · Made for one</span>
     </div>
   </div>
 </footer>
 
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
-/* nav scroll state */
-const hdr=document.getElementById('hdr');
-addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>24),{passive:true});
+(function () {
+'use strict';
+var $ = function (s, c) { return (c || document).querySelector(s); };
+var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-/* reveal on scroll */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ================= state ================= */
+var state = {
+  menuOpen: false,
+  garment: 'polo',
+  placement: 'chest',
+  markStyle: 'initials',
+  initials: 'MG',
+  number: '3',
+  cw: 0,
+  pos: {},
+  dragKey: null,
+  chapter: 0
+};
 
-/* ============ MARK BUILDER ============ */
-const COLORWAYS=[
-  {name:'Parchment & Saddle', leather:'#BCA37E', mark:'#82683F', stitch:'#8A7250', caption:'#7E6844'},
-  {name:'Racing Green & Brass', leather:'#26382E', mark:'#C6A45C', stitch:'#5A6E58', caption:'#9BAF96'},
-  {name:'Navy & Champagne', leather:'#25314B', mark:'#D8C49A', stitch:'#54638A', caption:'#9FB0CE'},
-  {name:'Cream & Rose Gold', leather:'#EFE6D6', mark:'#BE8A66', stitch:'#CBB89A', caption:'#A8926E'},
-  {name:'Espresso & Gold', leather:'#4A392C', mark:'#C9A24B', stitch:'#6E5A44', caption:'#A98F69'}
+var CW = [
+  { name: 'Parchment & Saddle', fill: '#EFE8D8', stroke: '#C9BB9C', mark: '#8A6A47', dot: '#EFE8D8', dot2: '#8A6A47' },
+  { name: 'Deep Green & Brass', fill: '#26382E', stroke: '#1A281F', mark: '#C9A961', dot: '#26382E', dot2: '#C9A961' },
+  { name: 'Navy & Rose Gold', fill: '#25314B', stroke: '#1A2336', mark: '#D9A88C', dot: '#25314B', dot2: '#D9A88C' },
+  { name: 'Burgundy & Gold', fill: '#6E2F36', stroke: '#4E2027', mark: '#D2B36A', dot: '#6E2F36', dot2: '#D2B36A' },
+  { name: 'Espresso & Camel', fill: '#463729', stroke: '#31261C', mark: '#C4A87E', dot: '#463729', dot2: '#C4A87E' }
 ];
-let state={initials:'SG',number:'3',style:'interlocked',color:0};
 
-const swWrap=document.getElementById('mkColors');
-COLORWAYS.forEach((c,i)=>{
-  const b=document.createElement('button');
-  b.type='button';b.className='swatch'+(i===0?' on':'');
-  b.style.background=`linear-gradient(135deg, ${c.leather} 55%, ${c.mark} 55%)`;
-  b.setAttribute('aria-label',c.name);
-  b.addEventListener('click',()=>{state.color=i;
-    swWrap.querySelectorAll('.swatch').forEach(s=>s.classList.remove('on'));
-    b.classList.add('on');render();});
-  swWrap.appendChild(b);
-});
+// Anchor points measured against the 16:9 product photographs.
+// x/y are % of the frame; em is the mark's type size in container-width units.
+// warp tilts the mark onto the curve of the body or the piece it sits on.
+var ANCHOR = {
+  chest:     { x: 41.0, y: 19.0, size: 4.6, em: 3.9, rot: 3,   cover: '#DCE1D1', warp: 'perspective(46cqw) rotateY(-15deg) rotateX(4deg)' },
+  shoulder:  { x: 76.0, y: 15.0, size: 4.0, em: 3.2, rot: -9,  cover: null,      warp: 'perspective(46cqw) rotateY(24deg) rotateX(9deg)' },
+  headcover: { x: 17.5, y: 30.0, size: 4.8, em: 4.3, rot: -7,  cover: '#C08A55', warp: 'perspective(46cqw) rotateY(-11deg) rotateX(5deg)' },
+  bag:       { x: 53.0, y: 65.0, size: 4.0, em: 3.6, rot: -2,  cover: '#8A5A34', warp: 'perspective(46cqw) rotateY(9deg)', onDark: true }
+};
 
-document.getElementById('mkStyle').addEventListener('click',e=>{
-  const b=e.target.closest('button');if(!b)return;
-  state.style=b.dataset.style;
-  document.querySelectorAll('#mkStyle button').forEach(x=>x.classList.toggle('on',x===b));
-  render();
-});
-document.getElementById('mkInitials').addEventListener('input',e=>{
-  state.initials=e.target.value.replace(/[^a-zA-Z]/g,'').toUpperCase().slice(0,3);
-  e.target.value=state.initials;render();
-});
-document.getElementById('mkNumber').addEventListener('input',e=>{
-  state.number=e.target.value.replace(/[^0-9]/g,'').slice(0,2);
-  e.target.value=state.number;render();
-});
+// Movement range for each placement, in % of the frame.
+var ZONE = {
+  chest:     { x1: 35.5, x2: 46.5, y1: 12, y2: 27, label: 'Chest' },
+  shoulder:  { x1: 70.0, x2: 83.0, y1: 8,  y2: 24, label: 'Shoulder' },
+  headcover: { x1: 11.0, x2: 26.0, y1: 20, y2: 42, label: 'Crown' },
+  bag:       { x1: 47.5, x2: 59.5, y1: 57, y2: 74, label: 'Ball pocket' }
+};
 
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-function render(){
-  const c=COLORWAYS[state.color];
-  const ini=state.initials||'SG';
-  document.getElementById('pvLeather').setAttribute('fill',c.leather);
-  document.getElementById('pvStitch').setAttribute('stroke',c.stitch);
-  const cap=document.getElementById('pvCaption');
-  cap.setAttribute('fill',c.caption);
-  cap.textContent=c.name.toUpperCase().replace('&','&')+' · ONE OF ONE';
-  document.getElementById('mkColorName').textContent=c.name;
-  const medal=document.getElementById('pvMedal');
-  medal.style.display=state.number?'':'none';
-  document.getElementById('pvMedalNum').textContent=state.number;
+var lenis = null;
 
-  const g=document.getElementById('pvMark');
-  const F='Cormorant Garamond,serif';
-  let inner='';
-  if(state.style==='interlocked'){
-    const n=ini.length,size=n===3?170:210;
-    let x=320-(n-1)*38;
-    inner=ini.split('').map((ch,i)=>{
-      const it=i%2?` font-style="italic" opacity=".85"`:'';
-      const t=`<text x="${x}" y="${318+i*34}" text-anchor="middle" font-family="${F}" font-size="${size}" font-weight="${i%2?500:600}"${it}>${esc(ch)}</text>`;
-      x+=n===3?66:82;return t;
-    }).join('');
-  }else if(state.style==='roundel'){
-    const disp=ini.split('').join('·');
-    const fs=ini.length===3?74:96;
-    inner=`<circle cx="320" cy="272" r="128" fill="none" stroke="${c.mark}" stroke-width="2.4"/>
-           <circle cx="320" cy="272" r="112" fill="none" stroke="${c.mark}" stroke-width="1" opacity=".6"/>
-           <text x="320" y="${272+fs*0.34}" text-anchor="middle" font-family="${F}" font-size="${fs}" font-weight="600" letter-spacing="4">${esc(disp)}</text>`;
-  }else{
-    const disp=ini.split('').join('');
-    inner=`<text x="320" y="290" text-anchor="middle" font-family="${F}" font-size="150" font-weight="500" font-style="italic" letter-spacing="6">${esc(disp)}</text>
-           <path d="M170 348 C240 332 400 332 470 348" fill="none" stroke="${c.mark}" stroke-width="2.2"/>
-           <path d="M430 356 C446 350 462 350 474 355" fill="none" stroke="${c.mark}" stroke-width="1.4"/>`;
-  }
-  g.innerHTML=inner;
-  g.setAttribute('fill',c.mark);
-  g.setAttribute('filter','url(#deboss)');
-  g.setAttribute('opacity','.92');
+/* ================= menu ================= */
+var menu = $('#menu'), rail = $('#rail');
+function openMenu() {
+  state.menuOpen = true;
+  menu.classList.add('open');
+  updateRail();
+  if (lenis) lenis.stop();
 }
-render();
+function closeMenu() {
+  state.menuOpen = false;
+  menu.classList.remove('open');
+  updateRail();
+  if (lenis) lenis.start();
+}
+$('#menuBtn').addEventListener('click', openMenu);
+$('#menuClose').addEventListener('click', closeMenu);
+$$('#menu nav a').forEach(function (a) { a.addEventListener('click', closeMenu); });
 
-/* preselect commission type from CTA links */
-document.querySelectorAll('a[data-type]').forEach(a=>{
-  a.addEventListener('click',()=>{
-    const sel=document.getElementById('fType');
-    const opt=[...sel.options].find(o=>o.text.replace(/\s+/g,' ')===a.dataset.type.replace(/&amp;/g,'&'));
-    if(opt)sel.value=opt.value||opt.text;
-  });
-});
+/* ================= chapter rail ================= */
+// The rail stays hidden over the opening frames and fades in once Chapter I
+// reaches the activation band (55% of the viewport — the same line the
+// chapter observer uses), fading back out above it.
+var railVisible = false;
+function updateRail() {
+  rail.classList.toggle('hidden', state.menuOpen || !railVisible);
+}
+var idSection = document.getElementById('identity');
+function checkRail() {
+  if (!idSection) return;
+  var vis = idSection.getBoundingClientRect().top <= window.innerHeight * .55;
+  if (vis !== railVisible) { railVisible = vis; updateRail(); }
+}
+window.addEventListener('scroll', checkRail, { passive: true });
+window.addEventListener('resize', checkRail, { passive: true });
+checkRail();
 
-/* commission form */
-document.getElementById('commissionForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  const first=document.getElementById('fFirst').value.trim()||'there';
-  document.getElementById('formCard').innerHTML=
-    `<div class="form-done">
-       <p class="eyebrow center" style="justify-content:center">Received</p>
-       <h3>Thank you, ${first.replace(/</g,'&lt;')}.</h3>
-       <p>Your commission request is in the ledger. A Signum designer will reply personally within two business days to begin your mark.</p>
-     </div>`;
-});
-
-/* footer list form */
-document.getElementById('listForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  e.target.innerHTML='<p style="color:#D8BF7F;font-style:italic;font-size:16px;padding:10px 0">Welcome to the List. Quietly, monthly.</p>';
-});
-
-/* ============ HERO TYPEWRITER ============ */
-(function(){
-  const el=document.getElementById('hero-type');
-  if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const phrases=['to be carried.','to be inherited.','to outlast us.','to be commissioned.'];
-  let i=0,n=phrases[0].length,del=false;
-  const tick=()=>{
-    const p=phrases[i];
-    let wait=del?34:62;
-    if(!del&&n>=p.length){del=true;wait=2100}
-    else if(del&&n<=0){del=false;i=(i+1)%phrases.length;wait=320}
-    else n+=del?-1:1;
-    el.textContent=phrases[i].slice(0,Math.max(0,Math.min(n,phrases[i].length)));
-    setTimeout(tick,wait);
-  };
-  setTimeout(tick,2600);
-})();
-
-/* ============ COLLECTION ROTATOR ============ */
-(function(){
-  const root=document.querySelector('[data-collection]');
-  if(!root)return;
-  const rows=[...root.querySelectorAll('[data-col-row]')];
-  const imgs=[...root.querySelectorAll('[data-col-img]')];
-  const cap=root.querySelector('[data-col-caption]');
-  const bar=root.querySelector('[data-col-progress]');
-  const NUM=['I','II','III','IV','V','VI'];
-  const DWELL=5200;
-  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let idx=0,paused=false,colTimer;
-
-  const show=(n)=>{
-    idx=(n+rows.length)%rows.length;
-    rows.forEach((r,k)=>{
-      const on=k===idx;
-      r.setAttribute('aria-pressed',on?'true':'false');
-      r.style.background=on?'#FBF8F1':'transparent';
-      r.querySelector('[data-col-bar]').style.transform='scaleY('+(on?1:0)+')';
-      const body=r.querySelector('[data-col-body]');
-      body.style.gridTemplateRows=on?'1fr':'0fr';
-      body.style.opacity=on?'1':'0';
+// CHAPTERS order matches document order — rail numerals run I–VI down the page.
+var CHAPTERS = ['identity', 'collection', 'commission', 'clubs', 'corporate', 'legacy'];
+var railLinks = $$('#rail a');
+function setChapter(i) {
+  if (i === state.chapter) return;
+  state.chapter = i;
+  railLinks.forEach(function (a, k) { a.classList.toggle('on', k === i); });
+}
+if (typeof IntersectionObserver !== 'undefined') {
+  var nodes = CHAPTERS.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var i = CHAPTERS.indexOf(en.target.id);
+      if (i > -1) setChapter(i);
     });
-    imgs.forEach((im,k)=>{
-      const on=k===idx;
-      im.style.opacity=on?'1':'0';
-      im.style.transform=on?'scale(1.045)':'scale(1)';
-    });
-    if(cap)cap.textContent=NUM[idx];
-  };
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  nodes.forEach(function (n) { io.observe(n); });
+}
 
-  const sweep=()=>{
-    if(!bar)return;
-    bar.style.transition='none';
-    bar.style.width='0';
-    void bar.offsetWidth;
-    bar.style.transition='width '+DWELL+'ms linear';
-    bar.style.width='100%';
-  };
+/* ================= customizer ================= */
+var stage = $('#stage'), slotsBox = $('#slots'), hsBox = $('#hotspots');
+var zoneBox = $('#zone'), zoneLabel = $('#zoneLabel');
+var slotEls = {};
 
-  const queue=()=>{
-    clearTimeout(colTimer);
-    if(still||paused)return;
-    sweep();
-    colTimer=setTimeout(()=>{show(idx+1);queue();},DWELL);
-  };
+function clampv(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+function at(key) { return state.pos[key] || { x: ANCHOR[key].x, y: ANCHOR[key].y }; }
+function markText() { return (state.initials || 'MG').toUpperCase().slice(0, 3); }
+function numberText() { return (state.number || '3').replace(/[^0-9]/g, '').slice(0, 2) || '3'; }
 
-  rows.forEach((r,k)=>r.addEventListener('click',(e)=>{if(e.target.closest('a'))return;show(k);queue();}));
-  root.addEventListener('pointerenter',()=>{
-    paused=true;clearTimeout(colTimer);
-    if(bar){const w=getComputedStyle(bar).width;bar.style.transition='none';bar.style.width=w;}
-  });
-  root.addEventListener('pointerleave',()=>{paused=false;queue();});
+function slotKeys() {
+  var g = state.garment;
+  if (g === 'headcover') return ['headcover'];
+  if (g === 'bag') return ['bag'];
+  var p = state.placement;
+  return p === 'both' ? ['chest', 'shoulder'] : [p];
+}
 
-  show(0);
-  if(!still){
-    const io=new IntersectionObserver((es)=>{
-      es.forEach((e)=>{paused=!e.isIntersecting;e.isIntersecting?queue():clearTimeout(colTimer);});
-    },{threshold:.25});
-    io.observe(root);
+function buildSlot(key) {
+  var a = ANCHOR[key], p = at(key);
+  // On dark leather the thread reads light — lift the mark toward the cream tone.
+  var mark = a.onDark
+    ? 'color-mix(in oklab, ' + CW[state.cw].mark + ' 34%, #F4EDDD)'
+    : CW[state.cw].mark;
+  // Thread relief: light catches the top-left of each stitch, shadow pools bottom-right.
+  var emboss = a.onDark
+    ? '-0.035cqw -0.035cqw 0 rgba(255,255,255,.34), 0.05cqw 0.06cqw 0.07cqw rgba(0,0,0,.62)'
+    : '-0.035cqw -0.035cqw 0 rgba(255,255,255,.6), 0.05cqw 0.06cqw 0.07cqw rgba(0,0,0,.42)';
+  // Multiply sinks dark thread into pale fabric; screen lifts cream thread off dark leather.
+  var blend = a.onDark ? 'screen' : 'multiply';
+
+  var wrap = document.createElement('div');
+  wrap.style.cssText =
+    'position:absolute;left:' + p.x + '%;top:' + p.y + '%;' +
+    'width:' + a.size + '%;height:' + (a.size * 16 / 9) + '%;' +
+    'transform:translate(-50%,-50%) rotate(' + a.rot + 'deg) ' + (a.warp || '') + ';' +
+    'transform-style:preserve-3d;display:grid;place-items:center;' +
+    'mix-blend-mode:' + blend + ';' +
+    // A hair of softness so the mark shares the photograph's focus, not sits above it.
+    'filter:blur(0.018cqw);opacity:.93;' +
+    'cursor:' + (state.dragKey === key ? 'grabbing' : 'grab') + ';touch-action:none;pointer-events:auto';
+
+  var patch = document.createElement('div');
+  patch.style.cssText = a.cover
+    ? 'position:absolute;inset:-26%;border-radius:50%;background:radial-gradient(circle,' + a.cover + ' 0 34%, rgba(0,0,0,0) 76%);filter:blur(4px);opacity:.3'
+    : 'display:none';
+  wrap.appendChild(patch);
+
+  if (state.markStyle === 'initials') {
+    var glyph = document.createElement('div');
+    glyph.style.cssText =
+      "position:relative;font-family:'Cormorant Garamond',serif;font-size:" + a.em + 'cqw;' +
+      'font-weight:600;line-height:1;letter-spacing:.03em;color:' + mark + ';white-space:nowrap;text-shadow:' + emboss;
+    glyph.textContent = markText();
+    wrap.appendChild(glyph);
+  } else if (state.markStyle === 'medallion') {
+    var ring = document.createElement('div');
+    ring.style.cssText =
+      'position:relative;width:' + (a.em * 1.5) + 'cqw;height:' + (a.em * 1.5) + 'cqw;' +
+      'border-radius:50%;border:0.24cqw solid ' + mark + ';' +
+      'box-shadow:inset 0 0 0 0.09cqw rgba(255,255,255,.3), ' + emboss + ';' +
+      'display:grid;place-items:center';
+    var rn = document.createElement('span');
+    rn.style.cssText =
+      "font-family:'Cormorant Garamond',serif;font-size:" + (a.em * .82) + 'cqw;' +
+      'font-weight:600;line-height:1;color:' + mark + ';text-shadow:' + emboss;
+    rn.textContent = numberText();
+    ring.appendChild(rn);
+    wrap.appendChild(ring);
+  } else {
+    var script = document.createElement('div');
+    script.style.cssText = 'position:relative;display:grid;justify-items:center;gap:0.15cqw';
+    var st = document.createElement('span');
+    st.style.cssText =
+      "font-family:'Cormorant Garamond',serif;font-style:italic;font-size:" + (a.em * 1.08) + 'cqw;' +
+      'font-weight:500;line-height:1;letter-spacing:.06em;color:' + mark + ';white-space:nowrap;text-shadow:' + emboss;
+    st.textContent = markText();
+    script.appendChild(st);
+    var NS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 100 14');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.cssText = 'width:' + (a.em * 1.9) + 'cqw;height:' + (a.em * .3) + 'cqw;overflow:visible';
+    var path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', 'M2 10 C24 2 74 2 98 10');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke', mark);
+    path.setAttribute('stroke-width', '2.4');
+    path.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(path);
+    script.appendChild(svg);
+    wrap.appendChild(script);
   }
+
+  wrap.addEventListener('pointerdown', startDrag(key));
+  return wrap;
+}
+
+function startDrag(key) {
+  return function (e) {
+    e.preventDefault();
+    var z = ZONE[key];
+    state.dragKey = key;
+    if (slotEls[key]) slotEls[key].style.cursor = 'grabbing';
+    zoneBox.style.cssText =
+      'display:block;position:absolute;left:' + z.x1 + '%;top:' + z.y1 + '%;' +
+      'width:' + (z.x2 - z.x1) + '%;height:' + (z.y2 - z.y1) + '%;' +
+      'border:1px dashed rgba(251,248,241,.85);background:rgba(31,45,37,.12);' +
+      'border-radius:2px;pointer-events:none';
+    zoneLabel.textContent = z.label + ' — placement range';
+    var move = function (ev) {
+      var r = stage.getBoundingClientRect();
+      if (!r.width) return;
+      var x = clampv(((ev.clientX - r.left) / r.width) * 100, z.x1, z.x2);
+      var y = clampv(((ev.clientY - r.top) / r.height) * 100, z.y1, z.y2);
+      state.pos[key] = { x: x, y: y };
+      var w = slotEls[key];
+      if (w) { w.style.left = x + '%'; w.style.top = y + '%'; }
+    };
+    var up = function () {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      state.dragKey = null;
+      zoneBox.style.cssText = 'display:none';
+      renderMarks();
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+    move(e);
+  };
+}
+
+function renderMarks() {
+  slotsBox.innerHTML = '';
+  slotEls = {};
+  slotKeys().forEach(function (key) {
+    var el = buildSlot(key);
+    slotEls[key] = el;
+    slotsBox.appendChild(el);
+  });
+  renderHotspots();
+  renderCaption();
+}
+
+function renderHotspots() {
+  hsBox.innerHTML = '';
+  if (state.garment !== 'polo' || state.placement === 'both') return;
+  ['chest', 'shoulder'].forEach(function (key) {
+    if (state.placement === key) return;
+    var p = at(key);
+    var label = key === 'chest' ? 'Chest' : 'Shoulder';
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', label);
+    b.textContent = label;
+    b.style.cssText =
+      'position:absolute;left:' + p.x + '%;top:' + p.y + '%;transform:translate(-50%,-50%);' +
+      'width:58px;height:58px;border-radius:50%;border:1px dashed rgba(251,248,241,.8);' +
+      'background:rgba(31,45,37,.24);backdrop-filter:blur(2px);color:#FBF8F1;cursor:pointer;' +
+      "font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;" +
+      'transition:background .25s,border-color .25s;pointer-events:auto';
+    b.addEventListener('click', function () {
+      state.placement = 'both';
+      syncControls();
+      renderMarks();
+    });
+    hsBox.appendChild(b);
+  });
+}
+
+function renderCaption() {
+  var isPolo = state.garment === 'polo';
+  var where = isPolo
+    ? (state.placement === 'both' ? 'CHEST & SHOULDER' : state.placement.toUpperCase())
+    : (state.garment === 'bag' ? 'BALL POCKET' : 'CROWN');
+  $('#proofCaption').textContent = CW[state.cw].name.toUpperCase() + ' · ' + where;
+  $('#cwName').textContent = CW[state.cw].name + ' · One of one';
+}
+
+function syncControls() {
+  $$('#garmentSeg button').forEach(function (b) { b.classList.toggle('on', b.dataset.g === state.garment); });
+  $$('#placementSeg button').forEach(function (b) { b.classList.toggle('on', b.dataset.p === state.placement); });
+  $$('#styleSeg button').forEach(function (b) { b.classList.toggle('on', b.dataset.s === state.markStyle); });
+  $$('#swatches .swatch').forEach(function (b, i) { b.classList.toggle('on', i === state.cw); });
+  $('#placementCtl').style.display = state.garment === 'polo' ? '' : 'none';
+  ['polo', 'headcover', 'bag'].forEach(function (g) {
+    $('#stage-' + g).style.display = g === state.garment ? '' : 'none';
+  });
+}
+
+$$('#garmentSeg button').forEach(function (b) {
+  b.addEventListener('click', function () { state.garment = b.dataset.g; syncControls(); renderMarks(); });
+});
+$$('#placementSeg button').forEach(function (b) {
+  b.addEventListener('click', function () { state.placement = b.dataset.p; syncControls(); renderMarks(); });
+});
+$$('#styleSeg button').forEach(function (b) {
+  b.addEventListener('click', function () { state.markStyle = b.dataset.s; syncControls(); renderMarks(); });
+});
+$$('#swatches .swatch').forEach(function (b, i) {
+  b.addEventListener('click', function () { state.cw = i; syncControls(); renderMarks(); });
+});
+$('#resetBtn').addEventListener('click', function () { state.pos = {}; renderMarks(); });
+
+$('#iniInput').addEventListener('input', function () {
+  var v = this.value.replace(/[^A-Za-z]/g, '');
+  if (v !== this.value) this.value = v;
+  state.initials = v;
+  renderMarks();
+});
+$('#numInput').addEventListener('input', function () {
+  var v = this.value.replace(/[^0-9]/g, '');
+  if (v !== this.value) this.value = v;
+  state.number = v;
+  renderMarks();
+});
+
+syncControls();
+renderMarks();
+
+/* ================= enquiry form ================= */
+$('#enquireForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  $('#sentMsg').style.display = 'block';
+});
+
+/* ================= motion system ================= */
+// One place for every duration, ease, distance and stagger.
+var M = {
+  dur: { sm: .7, base: 1.02, lg: 1.4 },
+  ease: 'power3.out',
+  dist: { sm: 16, md: 26, lg: 34 },
+  stag: .11
+};
+
+function initMotion(tries) {
+  var g = window.gsap, ST = window.ScrollTrigger;
+  if (!g || !ST) {
+    if (tries > 80) return;
+    setTimeout(function () { initMotion(tries + 1); }, 50);
+    return;
+  }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  g.registerPlugin(ST);
+  ST.config({ ignoreMobileResize: true });
+  initSmooth(g, ST);
+  buildMotion(g, ST);
+  // Media can settle after mount (or after `load` already fired) — recompute either way.
+  var onLoad = function () { ST.refresh(); };
+  if (document.readyState === 'complete') requestAnimationFrame(onLoad);
+  else window.addEventListener('load', onLoad);
+  Array.prototype.slice.call(document.images).filter(function (im) { return !im.complete; }).forEach(function (im) {
+    im.addEventListener('load', onLoad, { once: true });
+    im.addEventListener('error', onLoad, { once: true });
+  });
+}
+
+function initSmooth(g, ST) {
+  var coarse = window.matchMedia('(pointer: coarse)').matches;
+  if (coarse || !window.Lenis) return;
+  lenis = new window.Lenis({ duration: 1.05, smoothWheel: true, syncTouch: false });
+  document.documentElement.style.scrollBehavior = 'auto';
+  lenis.on('scroll', ST.update);
+  var raf = function (t) { lenis.raf(t * 1000); };
+  g.ticker.add(raf);
+  g.ticker.lagSmoothing(0);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    var el = href.length > 1 && document.getElementById(href.slice(1));
+    if (!el) return;
+    e.preventDefault();
+    lenis.scrollTo(el, { duration: 1.15 });
+    history.replaceState(null, '', href);
+  });
+}
+
+function buildMotion(g, ST) {
+  var mm = g.matchMedia();
+  var DESKTOP = '(min-width: 761px)';
+
+  // ---- reusable reveal ----
+  var reveal = function (els, o) {
+    if (!els || !els.length) return;
+    o = Object.assign({ trigger: els[0], y: M.dist.md, x: 0, clip: false, stagger: M.stag, start: 'top 84%' }, o);
+    var from = { opacity: 0, y: o.y, x: o.x };
+    var to = {
+      opacity: 1, y: 0, x: 0, duration: M.dur.base, ease: M.ease, stagger: o.stagger,
+      clearProps: 'clipPath,transform',
+      scrollTrigger: { trigger: o.trigger, start: o.start, once: true }
+    };
+    if (o.clip) { from.clipPath = 'inset(0% 0% 100% 0%)'; to.clipPath = 'inset(0% 0% 0% 0%)'; }
+    g.set(els, from);
+    g.to(els, to);
+  };
+  var groups = function (sel) {
+    var m = new Map();
+    g.utils.toArray(sel).forEach(function (el) {
+      var p = el.parentElement;
+      if (!m.has(p)) m.set(p, []);
+      m.get(p).push(el);
+    });
+    return Array.from(m.values());
+  };
+
+  // ---- 1. hero ----
+  var hero = document.getElementById('top');
+  if (hero) {
+    var img = hero.querySelector('[data-m="zoom"]');
+    var mask = hero.querySelector('[data-m="heromask"]');
+    var els = g.utils.toArray('[data-m="hero"]', hero);
+    var tl = g.timeline({ defaults: { ease: M.ease } });
+    if (img) tl.fromTo(img, { scale: 1.085, opacity: 0 }, { scale: 1, opacity: 1, duration: 2.3, ease: 'power2.out' }, 0);
+    if (mask) tl.fromTo(mask, { yPercent: 108 }, { yPercent: 0, duration: M.dur.base }, .28);
+    if (els.length) {
+      g.set(els, { opacity: 0, y: M.dist.lg, filter: 'blur(7px)' });
+      tl.to(els, { opacity: 1, y: 0, filter: 'blur(0px)', duration: M.dur.base, stagger: M.stag, clearProps: 'filter,transform' }, .42);
+    }
+    mm.add(DESKTOP, function () {
+      if (!img) return;
+      g.to(img, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+    });
+  }
+
+  // ---- 2. section reveals ----
+  g.utils.toArray('[data-m="head"]').forEach(function (h) {
+    var kids = Array.from(h.children).filter(function (k) { return !k.hasAttribute('data-m') && !k.querySelector('[data-m]'); });
+    reveal(kids, { trigger: h, stagger: .12 });
+  });
+  groups('[data-m="rise"]').forEach(function (els) { reveal(els, { stagger: .09, start: 'top 86%' }); });
+  groups('[data-m="mask"]').forEach(function (els) { reveal(els, { y: M.dist.sm, clip: true, stagger: .1, start: 'top 88%' }); });
+  groups('[data-m="step"]').forEach(function (els) { reveal(els, { x: -18, y: 0, stagger: .08, start: 'top 88%' }); });
+
+  // ---- 3. depth: parallax on large media (desktop only) ----
+  mm.add(DESKTOP, function () {
+    g.utils.toArray('[data-m="par"]').forEach(function (img) {
+      var d = parseFloat(img.getAttribute('data-d') || '.14');
+      var amt = d * 22;
+      g.set(img, { scale: 1 + amt / 46 });
+      g.fromTo(img, { yPercent: -amt }, {
+        yPercent: amt, ease: 'none',
+        scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: .6 }
+      });
+    });
+  });
+
+  // ---- 4. chapter I — sticky frame, scrubbed ----
+  var idSec = document.getElementById('identity');
+  if (idSec) {
+    var wrap = idSec.firstElementChild;
+    var idImg = idSec.querySelector('[data-m="idpar"]');
+    var scrim = idSec.querySelector('[data-m="scrim"]');
+    var hold = idSec.querySelector('[data-m="hold"]');
+    mm.add(DESKTOP, function () {
+      g.set(idImg, { scale: 1.12 });
+      var tl = g.timeline({ scrollTrigger: { trigger: wrap, start: 'top top', end: 'bottom bottom', scrub: .55 } });
+      // No pin here, so the headline must not fade — it would vanish while still on screen.
+      tl.fromTo(idImg, { yPercent: -3.5 }, { yPercent: 3.5, ease: 'none', duration: 1 }, 0)
+        .fromTo(scrim, { opacity: .88 }, { opacity: 1, ease: 'none', duration: 1 }, 0);
+      g.set(hold, { clearProps: 'opacity,transform' });
+    });
+  }
+
+  // ---- 5. signature sequence — the commission, sticky visual against five states ----
+  var story = document.querySelector('[data-m="story"]');
+  if (story) {
+    var media = story.querySelector('[data-m="media"]');
+    var frames = g.utils.toArray('[data-m="frame"]', story);
+    var fill = story.querySelector('[data-m="track-fill"]');
+    var steps = g.utils.toArray('[data-m="step"]', story);
+    var grid = story.firstElementChild;
+    var col = story.querySelector('[data-m="story-col"]');
+    // The pin only earns its keep when all five steps fit one screen. The column's content has
+    // a hard floor (heading + intro + 5 steps, all px type), so gate on measured height rather
+    // than assuming it — short laptops fall back to a normal scroll-through, never clipped.
+    var FLOOR = 860;
+
+    // Both variants share the same states; only the scroll mechanism differs.
+    var buildStory = function (pinned) {
+      if (pinned) {
+        g.set(story, { height: '100vh' });
+        g.set(grid, { height: '100%' });
+        g.set(media, { height: '100%' });
+        g.set(col, { height: '100%', paddingTop: '4vh', paddingBottom: '4vh', justifyContent: 'center' });
+        g.set(steps, { paddingTop: '1.25vh', paddingBottom: '1.25vh' });
+      }
+      var nums = steps.map(function (li) { return li.firstElementChild; });
+      var heads = steps.map(function (li) { return li.querySelector('h3'); });
+      var DIM = 'rgba(216,191,127,.34)';
+      g.set(nums, { color: DIM });
+      g.set(heads, { opacity: .42 });
+      var active = -1;
+      var setActive = function (i) {
+        if (i === active) return;
+        active = i;
+        nums.forEach(function (n, k) { g.to(n, { color: k <= i ? '#D8BF7F' : DIM, duration: .34, ease: 'power2.out' }); });
+        heads.forEach(function (h, k) { g.to(h, { opacity: k === i ? 1 : (k < i ? .72 : .42), duration: .34, ease: 'power2.out' }); });
+      };
+      var st = pinned
+        // scrub 1 lets the timeline ease toward the scroll position instead of tracking it
+        // rigidly, which is most of what makes a pin feel like a snap.
+        ? { trigger: story, start: 'top top', end: '+=1600', scrub: 1,
+            pin: true, pinSpacing: true, anticipatePin: 1, invalidateOnRefresh: true }
+        // Unpinned: run from entry to exit so the states still progress slowly, uncompressed.
+        : { trigger: story, start: 'top 88%', end: 'bottom 12%', scrub: 1, invalidateOnRefresh: true };
+      st.onUpdate = function (self) { setActive(Math.min(steps.length - 1, Math.floor(self.progress * steps.length))); };
+      var tl = g.timeline({ scrollTrigger: st });
+      if (pinned) {
+        // Soft close: the column settles in as the pin takes hold and lifts away as it
+        // releases, so the section is entered and left rather than cut to.
+        tl.fromTo(col, { opacity: .35, y: 30 }, { opacity: 1, y: 0, ease: 'power2.out', duration: .1 }, 0)
+          .to(col, { opacity: .3, y: -26, ease: 'power2.in', duration: .1 }, .9);
+        tl.fromTo(media, { opacity: .55 }, { opacity: 1, ease: 'power2.out', duration: .1 }, 0)
+          .to(media, { opacity: .6, ease: 'power2.in', duration: .1 }, .9);
+      }
+      if (fill) tl.fromTo(fill, { scaleY: 0 }, { scaleY: 1, ease: 'none', duration: 1 }, 0);
+      tl.fromTo(frames, { scale: 1.07 }, { scale: 1, ease: 'none', duration: 1 }, 0);
+      if (frames.length > 2) {
+        tl.to(frames[0], { opacity: 0, ease: 'none', duration: .13 }, .32)
+          .to(frames[1], { opacity: 1, ease: 'none', duration: .13 }, .32)
+          .to(frames[1], { opacity: 0, ease: 'none', duration: .13 }, .66)
+          .to(frames[2], { opacity: 1, ease: 'none', duration: .13 }, .66);
+      }
+      return function () {
+        setActive(-1);
+        g.set([story, grid, media, col], { clearProps: 'height,padding,justifyContent,opacity,transform' });
+        g.set(steps, { clearProps: 'padding' });
+        g.set(nums, { clearProps: 'color' });
+        g.set(heads, { clearProps: 'opacity' });
+      };
+    };
+
+    mm.add('(min-width: 900px) and (min-height: ' + FLOOR + 'px)', function () { return buildStory(true); });
+    mm.add('(min-width: 900px) and (max-height: ' + (FLOOR - 1) + 'px)', function () { return buildStory(false); });
+  }
+
+  // ---- 6. micro-interactions ----
+  g.utils.toArray('[data-m="cta"]').forEach(function (el) {
+    var arrow = el.querySelector('[data-m="arrow"]');
+    if (!arrow) return;
+    var to = function (x) { g.to(arrow, { x: x, duration: .34, ease: 'power2.out' }); };
+    el.addEventListener('pointerenter', function () { to(5); });
+    el.addEventListener('focus', function () { to(5); });
+    el.addEventListener('pointerleave', function () { to(0); });
+    el.addEventListener('blur', function () { to(0); });
+  });
+}
+
+initMotion(0);
 })();
 </script>
 </body>
