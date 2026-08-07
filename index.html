@@ -17,6 +17,7 @@ img{display:block;max-width:100%}
 a{color:#9C7B41;text-decoration:none}
 a:hover{color:#26382E}
 ::selection{background:#DDD3BE}
+.gold-sweep{background-image:linear-gradient(to right,#9C7B41 0%,#9C7B41 46%,#2A362E 54%,#2A362E 100%);background-size:220% 100%;background-position:0% 0;-webkit-background-clip:text;background-clip:text;color:transparent}
 @keyframes sigCaret{0%,45%{opacity:1}55%,100%{opacity:0}}
 @keyframes sigMarqA{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @keyframes sigMarqB{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
@@ -194,7 +195,7 @@ a:hover{color:#26382E}
 <section data-screen-label="Why Signum" style="background:#F6F1E7;padding:clamp(76px,13vh,168px) clamp(20px,4vw,54px)">
   <div data-m="head" style="max-width:1180px;margin:0 auto">
     <p style="display:flex;align-items:center;gap:14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9C7B41">Why Signum Exists <span style="display:block;width:34px;height:1px;background:#9C7B41"></span></p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4.1vw,60px);line-height:1.14;letter-spacing:-.012em;color:#2A362E;margin-top:clamp(22px,3vw,38px);max-width:30ch">Signum brings bespoke golf craftsmanship to every golfer who values personal identity — not just those with access to a private club.</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4.1vw,60px);line-height:1.14;letter-spacing:-.012em;color:#2A362E;margin-top:clamp(22px,3vw,38px);max-width:30ch">Signum brings bespoke golf craftsmanship to <span class="gold-sweep">every golfer</span> who values <span class="gold-sweep">personal identity</span> — not just those with access to a private club.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(26px,4vw,68px);margin-top:clamp(38px,5vw,66px);padding-top:clamp(28px,3vw,40px);border-top:1px solid #D8CDB6">
       <p style="font-size:18px;line-height:1.62">For a century a personal mark meant one thing: a locker at the right club. The craft was real. The door was closed.</p>
       <p style="font-size:18px;line-height:1.62">We kept the craft and removed the door. Every commission is drawn one-on-one, proofed before it is made, and produced for one person only.</p>
@@ -1351,6 +1352,24 @@ function buildMotion(g, ST) {
 
 initMotion(0);
 })();
+/* ---- gold sweep on "Why Signum Exists" ---- */
+(function () {
+  var els = Array.prototype.slice.call(document.querySelectorAll('.gold-sweep'));
+  if (!els.length) return;
+  var g = window.gsap, ST = window.ScrollTrigger;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!g || !ST || still) return; /* stays gold without motion */
+  g.set(els, { backgroundPosition: '100% 0' });
+  ST.create({
+    trigger: els[0].closest('section'),
+    start: 'top 62%',
+    once: true,
+    onEnter: function () {
+      g.to(els, { backgroundPosition: '0% 0', duration: 1.15, ease: 'power2.inOut', stagger: .45 });
+    }
+  });
+})();
+
 /* ---- hero typewriter ---- */
 (function () {
   var el = document.getElementById('hero-type');
