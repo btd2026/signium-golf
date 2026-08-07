@@ -32,8 +32,13 @@ a:hover{color:#26382E}
 /* ---- Still Edition: designed static compositions, driven by html.still ---- */
 html.still{scroll-behavior:auto}
 html.still *{animation-duration:.01ms!important;animation-iteration-count:1!important}
-html.still .sig-marq{animation:none !important;width:auto !important;flex-wrap:wrap;justify-content:center;row-gap:8px;padding:0 clamp(16px,4vw,40px)}
-html.still .sig-marq > span:nth-child(n+8){display:none}
+html.still .sig-marq{animation:none !important;width:auto !important;justify-content:center;padding:0 clamp(16px,4vw,40px)}
+html.still .sig-marq > span:nth-child(n+5){display:none !important}
+html.still .sig-marq > span:nth-child(4) > span{visibility:hidden}
+@media (max-width:680px){
+  html.still .sig-marq > span:nth-child(n+2){display:none !important}
+  html.still .sig-marq > span:nth-child(1) > span{visibility:hidden}
+}
 html.still [data-hero-frames] figure{animation:none !important}
 html.still h1 #hero-type + span{display:none !important}
 html.still [data-m="track-fill"]{transform:scaleY(1) !important}
