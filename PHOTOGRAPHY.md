@@ -171,3 +171,16 @@ Match each essay title; keep them people-first (archival country-club photograph
 2. **The Full Commission flat-lay** (slot 05f) — proves the one-mark-every-piece concept visually.
 3. **One human lifestyle frame** (slot 02 or 06) — the brief demands 60% lifestyle; one great
    human image changes the emotional temperature of the entire site.
+
+---
+
+## Reshoot brief (from the Claude Design revision)
+
+Current collection images are placeholders. Shoot each piece **in use, on a person**, in bright
+natural light — a hand pulling the headcover, a towel over a shoulder mid-round, the shirt
+shoulder turning through a swing. No seamless backdrops, no flat lays, no rendered surfaces.
+
+**Casting:** the six frames should not read as one demographic. Across the collection grid and
+chapter openers, cast Black, Latino, South Asian and East Asian players alongside white ones,
+a range of ages from junior to seventy, and both women and men — the positioning is golfers
+beyond the private club, and the photography has to say that before the copy does.
