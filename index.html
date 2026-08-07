@@ -17,6 +17,17 @@ img{display:block;max-width:100%}
 a{color:#9C7B41;text-decoration:none}
 a:hover{color:#26382E}
 ::selection{background:#DDD3BE}
+@keyframes sigCaret{0%,45%{opacity:1}55%,100%{opacity:0}}
+@keyframes sigMarqA{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@keyframes sigMarqB{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
+@keyframes sigFloat{0%,100%{transform:translateY(0) rotate(-2.2deg)}50%{transform:translateY(-14px) rotate(-1deg)}}
+@keyframes sigFloat2{0%,100%{transform:translateY(0) rotate(2.6deg)}50%{transform:translateY(-10px) rotate(1.4deg)}}
+[data-hero-frames]{display:none}
+@media (min-width:900px){[data-hero-frames]{display:block}[data-hero-grid]{padding-right:214px}}
+[data-hero-frames]:hover figure img{filter:brightness(.72) saturate(.85)}
+[data-hero-frames] figure:hover{z-index:4}
+[data-hero-frames] figure:hover img{filter:none;transform:scale(1.07);box-shadow:0 40px 74px -22px rgba(0,0,0,.86)}
+@media (prefers-reduced-motion:reduce){.sig-marq,[data-hero-frames] figure{animation:none !important}}
 @keyframes sigRise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes sigFade{from{opacity:0}to{opacity:1}}
 @keyframes sigLine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -143,25 +154,38 @@ a:hover{color:#26382E}
 </nav>
 
 <!-- ============ I. THE OPENING FRAME ============ -->
-<section id="top" data-screen-label="Hero" style="position:relative;height:100svh;min-height:660px;overflow:hidden;background:#1F2D25">
-  <img data-m="zoom" src="assets/img/standard-first-light.webp" fetchpriority="high" decoding="async" alt="A golfer walking the fairway at first light, leather bag on the shoulder" class="pos-hero" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform">
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:100svh;overflow:hidden;background:#1F2D25;display:flex;flex-direction:column;justify-content:flex-end">
+  <img data-m="zoom" src="assets/img/standard-first-light.webp" fetchpriority="high" decoding="async" alt="A golfer walking the fairway at first light, leather bag on the shoulder" class="pos-hero" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;will-change:transform">
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,30,24,.44) 0%,rgba(24,30,24,.08) 32%,rgba(24,30,24,.16) 62%,rgba(22,28,22,.72) 100%)"></div>
-  <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,54px) clamp(38px,6vh,74px)">
-    <div style="max-width:1500px;margin:0 auto">
-      <p style="overflow:hidden;padding-bottom:2px"><span data-m="heromask" style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#E4D6A9">A Commissioning House for Golf — Est. 2026</span></p>
-      <h1 data-m="hero" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(46px,7.6vw,124px);line-height:.98;letter-spacing:-.018em;color:#FBF8F1;margin-top:clamp(14px,2vh,26px);max-width:17ch">Some things are carried, <em style="font-style:italic;color:#EBD9A8">not bought.</em></h1>
+  <div style="position:relative;flex:1 1 auto;display:flex;align-items:flex-end;padding:clamp(74px,12vh,120px) clamp(20px,4vw,54px) clamp(26px,3.4vh,44px)">
+    <div style="max-width:1500px;margin:0 auto;width:100%">
+      <p style="overflow:hidden;padding-bottom:2px"><span data-m="heromask" style="display:block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#E4D6A9">A Commissioning House for Golf &mdash; Est. 2026</span></p>
+      <div data-hero-grid style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,3vw,44px);align-items:end">
+      <div>
+      <h1 data-m="hero" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,6.2vw,104px);line-height:.98;letter-spacing:-.018em;color:#FBF8F1;margin-top:clamp(14px,2vh,26px);text-wrap:nowrap">Some names deserve<br><em style="font-style:italic;color:#EBD9A8"><span id="hero-type">to be carried.</span><span style="display:inline-block;width:3px;height:.72em;margin-left:6px;background:#EBD9A8;animation:sigCaret 1.05s steps(1,end) infinite"></span></em></h1>
       <div data-m="hero" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-top:clamp(22px,3.4vh,40px)">
-        <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#E8E1CE;max-width:44ch">Bespoke craftsmanship for golfers who value personal identity — not only those with a private club.</p>
-        <a data-m="cta" href="#commission" class="hov-parch" style="display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#1F2D25;background:#F1EADA;padding:17px 30px;border-radius:2px;transition:background .3s ease,color .3s ease">Commission your mark <span data-m="arrow" style="font-size:13px">→</span></a>
+        <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#E8E1CE;max-width:44ch">We draw the mark, set it by hand, and put it on the pieces they take out every week &mdash; until the leather is soft and the name has outlived the gift.</p>
+        <a data-m="cta" href="#commission" class="hov-parch" style="display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#1F2D25;background:#F1EADA;padding:17px 30px;border-radius:2px;transition:background .3s ease,color .3s ease">Commission your mark <span data-m="arrow" style="font-size:13px">&rarr;</span></a>
       </div>
-      <div data-m="hero" style="display:flex;gap:clamp(18px,3vw,46px);flex-wrap:wrap;border-top:1px solid rgba(241,234,218,.22);margin-top:clamp(22px,3.4vh,38px);padding-top:20px">
-        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Men</span>
-        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Women</span>
-        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Juniors</span>
-        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Couples</span>
-        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Corporate</span>
-        <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#B9B49A">Private Clubs</span>
+      <div data-m="hero" style="display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(241,234,218,.22);margin-top:clamp(22px,3.4vh,38px);padding-top:22px">
+        <span style="padding:11px 18px;border-radius:999px;border:1px solid rgba(241,234,218,.32);font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#EFE8D8">For a parent</span>
+        <span style="padding:11px 18px;border-radius:999px;border:1px solid rgba(241,234,218,.32);font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#EFE8D8">For a partner</span>
+        <span style="padding:11px 18px;border-radius:999px;border:1px solid rgba(241,234,218,.32);font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#EFE8D8">For a first tee</span>
       </div>
+      </div>
+      <div data-hero-frames data-m="hero" style="position:relative;width:clamp(220px,20vw,290px);height:clamp(300px,34vh,392px)">
+        <figure style="position:absolute;right:0;top:0;width:56%;margin:0;animation:sigFloat 7.4s ease-in-out infinite;cursor:pointer"><img loading="lazy" src="assets/img/collection-headcovers.webp" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;box-shadow:0 26px 50px -22px rgba(0,0,0,.72);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease,filter .5s ease"><figcaption style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#C6BF9F;margin-top:10px">A mark, set by hand</figcaption></figure>
+        <figure style="position:absolute;left:0;bottom:0;width:40%;margin:0;animation:sigFloat2 8.6s ease-in-out infinite;cursor:pointer"><img loading="lazy" src="assets/img/collection-stand-bag.webp" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;box-shadow:0 26px 50px -22px rgba(0,0,0,.72);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease,filter .5s ease"><figcaption style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#C6BF9F;margin-top:10px">Carried, then handed on</figcaption></figure>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div data-m="hero" style="position:relative;flex:0 0 auto">
+    <div style="overflow:hidden;padding:15px 0;background:rgba(12,18,14,.44);border-top:1px solid rgba(241,234,218,.16);border-bottom:1px solid rgba(241,234,218,.16)">
+      <div class="sig-marq" style="display:flex;width:max-content;animation:sigMarqA 36s linear infinite"><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#DCD5C0;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span></div>
+    </div>
+    <div style="overflow:hidden;padding:15px 0 17px;background:rgba(201,167,106,.12)">
+      <div class="sig-marq" style="display:flex;width:max-content;animation:sigMarqB 46s linear infinite"><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Thirty years married <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Father of the bride <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">A first tee, age nine <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Tenth anniversary <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Her first set <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">Retirement, after 38 years <span style="opacity:.5">&#10022;</span></span><span style="display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#E4D6A9;white-space:nowrap">His sixtieth <span style="opacity:.5">&#10022;</span></span></div>
     </div>
   </div>
 </section>
@@ -232,61 +256,116 @@ a:hover{color:#26382E}
       <p style="font-size:18.5px;line-height:1.58;max-width:44ch">Six pieces, one mark. A single commission or the full set.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:1px;background:#D8CDB6;border:1px solid #D8CDB6;border-radius:3px;overflow:hidden;margin-top:clamp(34px,4.6vw,64px)">
-      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-headcovers.webp" alt="Commissioned leather headcovers" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
-        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
-          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">I — Headcovers</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">The set of four</h3>
-          <p style="font-size:16.5px;flex:1;line-height:1.58">Vegetable-tanned leather, hand-stamped, numbered interiors. Driver through hybrid.</p>
-          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
+    <div data-collection data-m="mask" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1px;background:#D8CDB6;border:1px solid #D8CDB6;border-radius:3px;overflow:hidden;margin-top:clamp(34px,4.6vw,64px)">
+      <div style="position:relative;background:#26382E;align-self:stretch;min-height:clamp(300px,42vw,460px);overflow:hidden">
+        <img loading="lazy" decoding="async" data-col-img="0" src="assets/img/collection-headcovers.webp" alt="Commissioned leather headcovers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:1;transform:scale(1);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
+        <img loading="lazy" decoding="async" data-col-img="1" src="assets/img/collection-stand-bag.webp" alt="Commissioned stand bag" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
+        <img loading="lazy" decoding="async" data-col-img="2" src="assets/img/collection-polo.webp" alt="Commissioned shirt with monogram" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
+        <img loading="lazy" decoding="async" data-col-img="3" src="assets/img/collection-towel.webp" alt="Commissioned towel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
+        <img loading="lazy" decoding="async" data-col-img="4" src="assets/img/collection-footwear.webp" alt="Commissioned footwear" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
+        <img loading="lazy" decoding="async" data-col-img="5" src="assets/img/collection-full-commission.webp" alt="The full commission, laid out" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);opacity:0;transform:scale(1.045);transition:opacity 1.05s cubic-bezier(.4,0,.2,1),transform 5.6s linear">
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,28,22,0) 52%,rgba(22,28,22,.62) 100%)"></span>
+        <span data-col-caption style="position:absolute;left:26px;bottom:24px;font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.6vw,64px);line-height:1;color:rgba(241,234,218,.92)">I</span>
+        <span style="position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(241,234,218,.16)"><span data-col-progress style="display:block;height:100%;width:0;background:#D8BF7F;transform-origin:left"></span></span>
+      </div>
+      <div style="background:#F1EADA;display:flex;flex-direction:column;justify-content:center">
+        <button type="button" data-col-row="0" aria-pressed="true" style="position:relative;display:block;width:100%;text-align:left;background:#FBF8F1;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
+          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(1);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+          <span style="display:flex;align-items:baseline;gap:16px">
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">I</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">The set of four</span>
+            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Headcovers</span>
+          </span>
+          <span data-col-body style="display:grid;grid-template-rows:1fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:1">
+            <span style="overflow:hidden;min-height:0">
+              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
+                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Vegetable-tanned leather, hand-stamped, numbered interiors. Driver through hybrid.</span>
+                <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
+              </span>
+            </span>
+          </span>
+        </button>
+        <button type="button" data-col-row="1" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
+          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+          <span style="display:flex;align-items:baseline;gap:16px">
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">II</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">The carry</span>
+            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Stand Bag</span>
+          </span>
+          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
+            <span style="overflow:hidden;min-height:0">
+              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
+                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Waxed canvas and saddle leather. Mark at the ball pocket, initials at the strap.</span>
+                <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
+              </span>
+            </span>
+          </span>
+        </button>
+        <button type="button" data-col-row="2" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
+          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+          <span style="display:flex;align-items:baseline;gap:16px">
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">III</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Chest, shoulder, or both</span>
+            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Shirt</span>
+          </span>
+          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
+            <span style="overflow:hidden;min-height:0">
+              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
+                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Mercerised cotton piqu&eacute;. Mark at the chest, the shoulder, or both.</span>
+                <a href="#commission" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Place the mark</a>
+              </span>
+            </span>
+          </span>
+        </button>
+        <button type="button" data-col-row="3" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
+          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+          <span style="display:flex;align-items:baseline;gap:16px">
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">IV</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Woven, not printed</span>
+            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Towel</span>
+          </span>
+          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
+            <span style="overflow:hidden;min-height:0">
+              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
+                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Turkish cotton, woven mark, leather-tab carabiner. The piece most often noticed.</span>
+                <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
+              </span>
+            </span>
+          </span>
+        </button>
+        <button type="button" data-col-row="4" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
+          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+          <span style="display:flex;align-items:baseline;gap:16px">
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">V</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Marked at the heel</span>
+            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">Footwear</span>
+          </span>
+          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
+            <span style="overflow:hidden;min-height:0">
+              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
+                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">A debossed mark at the heel counter, initials on the tongue lining.</span>
+                <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
+              </span>
+            </span>
+          </span>
+        </button>
+        <button type="button" data-col-row="5" aria-pressed="false" style="position:relative;display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid #DDD3BE;padding:20px 24px 20px 22px;cursor:pointer;font:inherit;color:inherit;transition:background .55s ease">
+          <span data-col-bar style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#9C7B41;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+          <span style="display:flex;align-items:baseline;gap:16px">
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41;min-width:34px">VI</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;line-height:1.14;color:#2A362E">Everything, as one work</span>
+            <span style="margin-left:auto;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8567">The Full Commission</span>
+          </span>
+          <span data-col-body style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0">
+            <span style="overflow:hidden;min-height:0">
+              <span style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:12px 0 2px 50px">
+                <span style="font-size:16.5px;line-height:1.58;max-width:46ch">Every piece drawn together in one colorway, presented as a set.</span>
+                <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;transition:color .3s ease,border-color .3s ease">Enquire</a>
+              </span>
+            </span>
+          </span>
+        </button>
         </div>
-      </article>
-      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-stand-bag.webp" alt="Commissioned stand bag" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
-        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
-          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">II — Stand Bag</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">The carry</h3>
-          <p style="font-size:16.5px;flex:1;line-height:1.58">Waxed canvas and saddle leather. Mark at the ball pocket, initials at the strap.</p>
-          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
-        </div>
-      </article>
-      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-polo.webp" alt="Commissioned shirt with monogram" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
-        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
-          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">III — Shirt</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Chest, shoulder, or both</h3>
-          <p style="font-size:16.5px;flex:1;line-height:1.58">Mercerised cotton piqué. Mark at the chest, the shoulder, or both.</p>
-          <a href="#commission" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Place the mark</a>
-        </div>
-      </article>
-      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-towel.webp" alt="Commissioned towel" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
-        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
-          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">IV — Towel</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Woven, not printed</h3>
-          <p style="font-size:16.5px;flex:1;line-height:1.58">Turkish cotton, woven mark, leather-tab carabiner. The piece most often noticed.</p>
-          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
-        </div>
-      </article>
-      <article data-m="mask" style="background:#FBF8F1;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-footwear.webp" alt="Commissioned footwear" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s ease"></div>
-        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
-          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#9C7B41">V — Footwear</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#2A362E;line-height:1.14">Marked at the heel</h3>
-          <p style="font-size:16.5px;flex:1;line-height:1.58">A debossed mark at the heel counter, initials on the tongue lining.</p>
-          <a href="#enquire" class="hov-ink" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(156,123,65,.35);padding-bottom:3px;align-self:flex-start;transition:color .3s ease,border-color .3s ease">Enquire</a>
-        </div>
-      </article>
-      <article data-m="mask" style="background:#26382E;display:flex;flex-direction:column">
-        <div style="overflow:hidden;aspect-ratio:16/11"><img loading="lazy" decoding="async" src="assets/img/collection-full-commission.webp" alt="The full commission, laid out" class="hov-zoom" style="width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.05) brightness(.94);transition:transform .8s ease"></div>
-        <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1">
-          <p style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#D8BF7F">VI — The Full Commission</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:#F1EADA;line-height:1.14">Everything, as one work</h3>
-          <p style="font-size:16.5px;flex:1;line-height:1.58;color:#A9A28D">Every piece drawn together in one colorway, presented as a set.</p>
-          <a href="#enquire" style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#D8BF7F;border-bottom:1px solid rgba(216,191,127,.35);padding-bottom:3px;align-self:flex-start">Enquire</a>
-        </div>
-      </article>
     </div>
   </div>
 </section>
@@ -1271,6 +1350,89 @@ function buildMotion(g, ST) {
 }
 
 initMotion(0);
+})();
+/* ---- hero typewriter ---- */
+(function () {
+  var el = document.getElementById('hero-type');
+  if (!el || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var phrases = ['to be carried.', 'to be inherited.', 'to outlast us.', 'to be commissioned.'];
+  var i = 0, n = phrases[0].length, del = false;
+  var tick = function () {
+    var p = phrases[i];
+    var wait = del ? 34 : 62;
+    if (!del && n >= p.length) { del = true; wait = 2100; }
+    else if (del && n <= 0) { del = false; i = (i + 1) % phrases.length; wait = 320; }
+    else n += del ? -1 : 1;
+    el.textContent = phrases[i].slice(0, Math.max(0, Math.min(n, phrases[i].length)));
+    setTimeout(tick, wait);
+  };
+  setTimeout(tick, 2600);
+})();
+
+/* ---- collection rotator ---- */
+(function () {
+  var root = document.querySelector('[data-collection]');
+  if (!root) return;
+  var rows = Array.prototype.slice.call(root.querySelectorAll('[data-col-row]'));
+  var imgs = Array.prototype.slice.call(root.querySelectorAll('[data-col-img]'));
+  var cap = root.querySelector('[data-col-caption]');
+  var bar = root.querySelector('[data-col-progress]');
+  var NUM = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+  var DWELL = 5200;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var idx = 0, paused = false, colTimer;
+
+  var show = function (n) {
+    idx = (n + rows.length) % rows.length;
+    rows.forEach(function (r, k) {
+      var on = k === idx;
+      r.setAttribute('aria-pressed', on ? 'true' : 'false');
+      r.style.background = on ? '#FBF8F1' : 'transparent';
+      r.querySelector('[data-col-bar]').style.transform = 'scaleY(' + (on ? 1 : 0) + ')';
+      var body = r.querySelector('[data-col-body]');
+      body.style.gridTemplateRows = on ? '1fr' : '0fr';
+      body.style.opacity = on ? '1' : '0';
+    });
+    imgs.forEach(function (im, k) {
+      var on = k === idx;
+      im.style.opacity = on ? '1' : '0';
+      im.style.transform = on ? 'scale(1.045)' : 'scale(1)';
+    });
+    if (cap) cap.textContent = NUM[idx];
+  };
+
+  var sweep = function () {
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = '0';
+    void bar.offsetWidth;
+    bar.style.transition = 'width ' + DWELL + 'ms linear';
+    bar.style.width = '100%';
+  };
+
+  var queue = function () {
+    clearTimeout(colTimer);
+    if (still || paused) return;
+    sweep();
+    colTimer = setTimeout(function () { show(idx + 1); queue(); }, DWELL);
+  };
+
+  rows.forEach(function (r, k) {
+    r.addEventListener('click', function (e) { if (e.target.closest('a')) return; show(k); queue(); });
+  });
+  root.addEventListener('pointerenter', function () {
+    paused = true; clearTimeout(colTimer);
+    if (bar) { var w = getComputedStyle(bar).width; bar.style.transition = 'none'; bar.style.width = w; }
+  });
+  root.addEventListener('pointerleave', function () { paused = false; queue(); });
+
+  show(0);
+  if (!still) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { paused = !e.isIntersecting; if (e.isIntersecting) { queue(); } else { clearTimeout(colTimer); } });
+    }, { threshold: .25 });
+    io.observe(root);
+  }
 })();
 </script>
 </body>
