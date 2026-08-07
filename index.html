@@ -1171,11 +1171,12 @@ function initMotion(tries) {
     setTimeout(function () { initMotion(tries + 1); }, 50);
     return;
   }
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Reduce Motion softens rather than silences: fades stay, movement goes.
+  var STILL = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   g.registerPlugin(ST);
   ST.config({ ignoreMobileResize: true });
-  initSmooth(g, ST);
-  buildMotion(g, ST);
+  if (!STILL) initSmooth(g, ST);
+  buildMotion(g, ST, STILL);
   // Media can settle after mount (or after `load` already fired) — recompute either way.
   var onLoad = function () { ST.refresh(); };
   if (document.readyState === 'complete') requestAnimationFrame(onLoad);
@@ -1207,7 +1208,7 @@ function initSmooth(g, ST) {
   });
 }
 
-function buildMotion(g, ST) {
+function buildMotion(g, ST, STILL) {
   var mm = g.matchMedia();
   var DESKTOP = '(min-width: 761px)';
 
@@ -1215,6 +1216,7 @@ function buildMotion(g, ST) {
   var reveal = function (els, o) {
     if (!els || !els.length) return;
     o = Object.assign({ trigger: els[0], y: M.dist.md, x: 0, clip: false, stagger: M.stag, start: 'top 84%' }, o);
+    if (STILL) { o.y = 0; o.x = 0; o.clip = false; }
     var from = { opacity: 0, y: o.y, x: o.x };
     var to = {
       opacity: 1, y: 0, x: 0, duration: M.dur.base, ease: M.ease, stagger: o.stagger,
@@ -1243,13 +1245,16 @@ function buildMotion(g, ST) {
     var mask = hero.querySelector('[data-m="heromask"]');
     var els = g.utils.toArray('[data-m="hero"]', hero);
     var tl = g.timeline({ defaults: { ease: M.ease } });
-    if (img) tl.fromTo(img, { scale: 1.085, opacity: 0 }, { scale: 1, opacity: 1, duration: 2.3, ease: 'power2.out' }, 0);
-    if (mask) tl.fromTo(mask, { yPercent: 108 }, { yPercent: 0, duration: M.dur.base }, .28);
+    if (img) tl.fromTo(img, { scale: STILL ? 1 : 1.085, opacity: 0 }, { scale: 1, opacity: 1, duration: 2.3, ease: 'power2.out' }, 0);
+    if (mask) {
+      if (STILL) tl.fromTo(mask, { opacity: 0 }, { opacity: 1, duration: M.dur.base }, .28);
+      else tl.fromTo(mask, { yPercent: 108 }, { yPercent: 0, duration: M.dur.base }, .28);
+    }
     if (els.length) {
-      g.set(els, { opacity: 0, y: M.dist.lg, filter: 'blur(7px)' });
+      g.set(els, { opacity: 0, y: STILL ? 0 : M.dist.lg, filter: STILL ? 'none' : 'blur(7px)' });
       tl.to(els, { opacity: 1, y: 0, filter: 'blur(0px)', duration: M.dur.base, stagger: M.stag, clearProps: 'filter,transform' }, .42);
     }
-    mm.add(DESKTOP, function () {
+    if (!STILL) mm.add(DESKTOP, function () {
       if (!img) return;
       g.to(img, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
     });
@@ -1260,7 +1265,7 @@ function buildMotion(g, ST) {
       onEnterBack: function () {
         var rtl = g.timeline({ defaults: { ease: M.ease } });
         if (els.length) {
-          g.set(els, { opacity: 0, y: M.dist.lg, filter: 'blur(7px)' });
+          g.set(els, { opacity: 0, y: STILL ? 0 : M.dist.lg, filter: STILL ? 'none' : 'blur(7px)' });
           rtl.to(els, {
             opacity: 1, y: 0, filter: 'blur(0px)', duration: M.dur.base,
             stagger: { each: M.stag, from: 'end' }, clearProps: 'filter,transform'
@@ -1284,7 +1289,7 @@ function buildMotion(g, ST) {
   groups('[data-m="step"]').forEach(function (els) { reveal(els, { x: -18, y: 0, stagger: .08, start: 'top 88%' }); });
 
   // ---- 3. depth: parallax on large media (desktop only) ----
-  mm.add(DESKTOP, function () {
+  if (!STILL) mm.add(DESKTOP, function () {
     g.utils.toArray('[data-m="par"]').forEach(function (img) {
       var d = parseFloat(img.getAttribute('data-d') || '.14');
       var amt = d * 22;
@@ -1298,7 +1303,7 @@ function buildMotion(g, ST) {
 
   // ---- 4. chapter I — sticky frame, scrubbed ----
   var idSec = document.getElementById('identity');
-  if (idSec) {
+  if (idSec && !STILL) {
     var wrap = idSec.firstElementChild;
     var idImg = idSec.querySelector('[data-m="idpar"]');
     var scrim = idSec.querySelector('[data-m="scrim"]');
@@ -1315,7 +1320,7 @@ function buildMotion(g, ST) {
 
   // ---- 5. signature sequence — the commission, sticky visual against five states ----
   var story = document.querySelector('[data-m="story"]');
-  if (story) {
+  if (story && !STILL) {
     var media = story.querySelector('[data-m="media"]');
     var frames = g.utils.toArray('[data-m="frame"]', story);
     var fill = story.querySelector('[data-m="track-fill"]');
